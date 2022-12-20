@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/AbdullahSokmen" />
     <file type="web" url="file://$PROJECT_DIR$/AliAkkulah" />
+    <file type="web" url="file://$PROJECT_DIR$/AliUlasEren" />
+    <file type="web" url="file://$PROJECT_DIR$/BeratAcer" />
+    <file type="web" url="file://$PROJECT_DIR$/BerkMalhatun" />
+    <file type="web" url="file://$PROJECT_DIR$/EmreUstun" />
+    <file type="web" url="file://$PROJECT_DIR$/ErenDuzel" />
+    <file type="web" url="file://$PROJECT_DIR$/ErincKocaoglu" />
     <file type="web" url="file://$PROJECT_DIR$/J01MuhammetHoca" />
+    <file type="web" url="file://$PROJECT_DIR$/MustafaKaanKonak" />
+    <file type="web" url="file://$PROJECT_DIR$/OgulcanTekin" />
+    <file type="web" url="file://$PROJECT_DIR$/SuayipGurnaz" />
+    <file type="web" url="file://$PROJECT_DIR$/VolkanGenel" />
+    <file type="web" url="file://$PROJECT_DIR$/YavuzAvci" />
   </component>
   <component name="ProjectRootManager">
     <output url="file://$PROJECT_DIR$/out" />
