@@ -1,6 +1,7 @@
 # Tüm katılımcılar için yerel gradle ve build dizinlerini önemseme
-/*/.gradle
-/*/build
+.gradle/
+bin/
+build/
 # Repositoryde atlanmak istenen diğer dosyalar dizinleriyle buraya eklenebilir
 /VolkanGenel/gradlew
 /VolkanGenel/gradlew.bat
