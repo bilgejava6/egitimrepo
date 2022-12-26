@@ -3,12 +3,12 @@ package com.emreustun.entity;
 import com.emreustun.utility.StaticValues;
 
 public abstract class BaseEntity {
-    Long id;
-    Long createDate;
-    Long updateDate;
+    private Long id;
+    private Long createDate;
+    private Long updateDate;
 
-    boolean isActive;
-    int state;// 1- silinmiş ,2 dondurulmuş
+    private boolean isActive;
+    private int state;// 1- silinmiş ,2 dondurulmuş
 
     public BaseEntity() {
         this.id = StaticValues.idOlustur();

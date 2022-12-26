@@ -77,6 +77,7 @@ public class MuhasebePersoneliController {
         muhasebePersoneli.setGorev(sc.nextLine());
 
         // Departman atamak...
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){
             System.out.println(index+" -> "+departman.getAd());

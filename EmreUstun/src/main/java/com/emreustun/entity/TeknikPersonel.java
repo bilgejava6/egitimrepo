@@ -1,8 +1,8 @@
 package com.emreustun.entity;
 
 public class TeknikPersonel extends Personel{
-    String meslekiBeceri;
-    String bolum;
+    private String meslekiBeceri;
+    private String bolum;
 
     public TeknikPersonel() {
         super();

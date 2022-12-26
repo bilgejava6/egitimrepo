@@ -1,7 +1,7 @@
 package com.emreustun.entity;
 
 public class MuhasebePersoneli extends Personel{
-    String gorev;
+    private String gorev;
 
     public MuhasebePersoneli() {
         super();

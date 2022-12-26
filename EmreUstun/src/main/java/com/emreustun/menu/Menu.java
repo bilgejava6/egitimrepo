@@ -3,8 +3,14 @@ package com.emreustun.menu;
 import com.emreustun.controller.DepartmanController;
 import com.emreustun.controller.PersonelController;
 import com.emreustun.entity.Departman;
+import com.emreustun.entity.Personel;
+import com.emreustun.utility.StaticValues;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Menu {
     Scanner sc = new Scanner(System.in);
@@ -56,6 +62,7 @@ public class Menu {
         System.out.println("3-> Departmanlara göre maaş ortalamaları");
         System.out.println("4-> Müdürlerin sorumlu olduğu departman listesi");
         System.out.println("5-> Kayıt tarihlerine göre personellerin sıralı listesi");
+        System.out.println("0-> Bir önceki menüye dön");
         System.out.println();
         System.out.println("Lütfen seçiminizi yapınız");
         int secim = 0;
@@ -63,22 +70,24 @@ public class Menu {
             secim = sc.nextInt();
             switch (secim) {
                 case 1:
-                    personelController.save();
+                    Map<Personel, List<Departman>> group = StaticValues.departmanListesi.stream().collect(Collectors.groupingBy(Departman::getPersonel));
+                    group.forEach((k,v) -> System.out.println(k +" -> "+ v));
                     break;
                 case 2:
-                    personelController.findAll();
+
                     break;
                 case 3:
-                    personelController.update();
+
                     break;
                 case 4:
-                    departmanController.save();
+
                     break;
                 case 5:
-                    departmanController.findAll();
+
                     break;
                 case 0:
-                    System.out.println("Çıkış yapılıyor");
+                    System.out.println("Bir önceki menüye dönülüyor");
+                    run();
                     break;
                 default:
                     System.out.println("Hatali tuşlama yaptınız");
@@ -94,7 +103,7 @@ public class Menu {
         System.out.println();
         System.out.println("1-> Maaş Personel Tanımlama");
         System.out.println("2-> Ödeme Listesi");
-        System.out.println("0-> Çıkış");
+        System.out.println("0-> Bir önceki menüye dön");
         System.out.println();
         System.out.println("Lütfen seçiminizi yapınız");
         int secim = 0;
@@ -102,16 +111,14 @@ public class Menu {
             secim = sc.nextInt();
             switch (secim) {
                 case 1:
-                    personelIslemleri();
+                    personelController.maasPersonelTanimlama();
                     break;
                 case 2:
-                    muhasebeIslemleri();
-                    break;
-                case 3:
-                    raporlama();
+                    personelController.odemeListesi();
                     break;
                 case 0:
-                    System.out.println("Çıkış yapılıyor");
+                    System.out.println("Bir önceki menüye dönülüyor");
+                    run();
                     break;
                 default:
                     System.out.println("Hatali tuşlama yaptınız");
@@ -131,6 +138,7 @@ public class Menu {
         System.out.println("3-> Personel Düzenleme");
         System.out.println("4-> Departman Ekleme");
         System.out.println("5-> Departman Listesi");
+        System.out.println("0-> Bir önceki menüye dön");
         System.out.println();
         System.out.println("Lütfen seçiminizi yapınız");
         int secim = 0;
@@ -153,7 +161,8 @@ public class Menu {
                     departmanController.findAll();
                     break;
                 case 0:
-                    System.out.println("Çıkış yapılıyor");
+                    System.out.println("Bir önceki menüye dönülüyor");
+                    run();
                     break;
                 default:
                     System.out.println("Hatali tuşlama yaptınız");

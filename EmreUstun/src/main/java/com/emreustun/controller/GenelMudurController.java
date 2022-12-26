@@ -75,15 +75,16 @@ public class GenelMudurController {
         System.out.println("Sorumlu olduklarıyla ilgili görev tanımı ");
         genelMudur.setGorevTanimi(sc.nextLine());
 
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
-        System.out.println("Departman Seçiniz..");
         for(Departman departman : StaticValues.departmanListesi){
             System.out.println(index+" -> "+departman.getAd());
             index++;
         }
         int secim = sc.nextInt();
         genelMudur.setDepartman(StaticValues.departmanListesi.get(secim-1));
+        System.out.println("Personel başarı ile eklendi..");
 
         genelMudurService.update(genelMudur);
     }

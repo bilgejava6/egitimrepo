@@ -3,6 +3,9 @@ package com.emreustun.entity;
 import java.util.List;
 
 public class Departman {
+
+
+    private Personel personel;
     private String ad;
     private int vardiyaSayisi;
 
@@ -17,8 +20,8 @@ public class Departman {
     @Override
     public String toString() {
         return "Departman{" +
-                "ad='" + ad + '\'' +
-                ", vardiyaSayisi=" + vardiyaSayisi +
+                "personel=" + personel +
+                ", ad='" + ad + '\'' +
                 '}';
     }
 
@@ -31,6 +34,13 @@ public class Departman {
     }
 
     public Departman() {
+    }
+    public Personel getPersonel() {
+        return personel;
+    }
+
+    public void setPersonel(Personel personel) {
+        this.personel = personel;
     }
 
 }

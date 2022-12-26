@@ -74,6 +74,7 @@ public class MudurController {
         System.out.println("Sorumlu olduklarıyla ilgili görev tanımı ");
         mudur.setGorevTanimi(sc.nextLine());
 
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){

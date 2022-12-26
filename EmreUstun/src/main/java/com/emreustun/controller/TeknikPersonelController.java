@@ -79,6 +79,7 @@ public class TeknikPersonelController {
         System.out.println("Teknik personelin bölümü..: ");
         teknikPersonel.setBolum(sc.nextLine());
 
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
         for (Departman departman : StaticValues.departmanListesi) {

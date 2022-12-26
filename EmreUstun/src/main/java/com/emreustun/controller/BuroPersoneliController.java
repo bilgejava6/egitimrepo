@@ -33,7 +33,7 @@ public class BuroPersoneliController {
         System.out.println("Büro personelinin ofis numarası...: ");
         buroPersoneli.setOfisNo(sc.nextInt());
 
-        System.out.println("Büro personelinin ekleneceği departmanı seçiniz..: ");
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
 
         // Departman atamak...
         int index = 1;

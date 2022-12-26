@@ -69,6 +69,7 @@ public class InsanKaynaklariPersoneliController {
         System.out.println("İnsan kaynaklari personelinin ofis numarasını giriniz..");
         insanKaynaklariPersoneli.setOfisNo(sc.nextInt());
 
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){

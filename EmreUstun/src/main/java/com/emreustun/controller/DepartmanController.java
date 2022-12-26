@@ -14,6 +14,7 @@ public class DepartmanController {
         departman.setAd(sc.nextLine());
         System.out.println("Vardiya Sayisini giriniz.");
         departman.setVardiyaSayisi(sc.nextInt());
+        sc.nextLine();
         departmanService.save(departman);
     }
     public void findAll() {

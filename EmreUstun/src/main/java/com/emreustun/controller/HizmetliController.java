@@ -68,6 +68,7 @@ public class HizmetliController{
         System.out.println("Hizmetinin çalışacağı yerleri giriniz...: ");
         hizmetli.setCalismaYeri(sc.nextLine());
 
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){

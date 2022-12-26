@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GenelMudur extends Personel{
-    public String gorevTanimi;
+    private String gorevTanimi;
 
     public GenelMudur() {
     }
