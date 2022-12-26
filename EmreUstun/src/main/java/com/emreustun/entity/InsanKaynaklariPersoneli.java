@@ -1,7 +1,7 @@
 package com.emreustun.entity;
 
 public class InsanKaynaklariPersoneli extends Personel{
-    int ofisNo;
+    private int ofisNo;
 
     public InsanKaynaklariPersoneli() {
     }
@@ -14,10 +14,4 @@ public class InsanKaynaklariPersoneli extends Personel{
         this.ofisNo = ofisNo;
     }
 
-    @Override
-    public String toString() {
-        return "InsanKaynaklariPersoneli{" +
-                "ofisNo=" + ofisNo +
-                '}';
-    }
 }

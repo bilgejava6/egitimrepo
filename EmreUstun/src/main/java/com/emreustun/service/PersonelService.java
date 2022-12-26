@@ -9,7 +9,6 @@ import java.util.List;
 
 public class PersonelService {
     private final PersonelRepository personelRepository;
-
     public PersonelService() {
         this.personelRepository = new PersonelRepository();
     }

@@ -10,14 +10,6 @@ public class TeknikPersonel extends Personel{
         this.bolum = bolum;
     }
 
-    @Override
-    public String toString() {
-        return "TeknikPersonel{" +
-                "meslekiBeceri='" + meslekiBeceri + '\'' +
-                ", bolum='" + bolum + '\'' +
-                '}';
-    }
-
     public String getMeslekiBeceri() {
         return meslekiBeceri;
     }

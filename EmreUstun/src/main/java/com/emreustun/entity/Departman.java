@@ -4,15 +4,21 @@ import java.util.List;
 
 public class Departman {
     private String ad;
-    private int calisanSayisi;
-    private List<Personel> departmanKisiListesi;
+    private int vardiyaSayisi;
+
+    public int getVardiyaSayisi() {
+        return vardiyaSayisi;
+    }
+
+    public void setVardiyaSayisi(int vardiyaSayisi) {
+        this.vardiyaSayisi = vardiyaSayisi;
+    }
 
     @Override
     public String toString() {
         return "Departman{" +
                 "ad='" + ad + '\'' +
-                ", calisanSayisi=" + calisanSayisi +
-                ", departmanKisiListesi=" + departmanKisiListesi +
+                ", vardiyaSayisi=" + vardiyaSayisi +
                 '}';
     }
 
@@ -24,24 +30,7 @@ public class Departman {
         this.ad = ad;
     }
 
-    public int getCalisanSayisi() {
-        return calisanSayisi;
-    }
-
-    public void setCalisanSayisi(int calisanSayisi) {
-        this.calisanSayisi = calisanSayisi;
-    }
-
-    public List<Personel> getDepartmanKisiListesi() {
-        return departmanKisiListesi;
-    }
-
-    public void setDepartmanKisiListesi(List<Personel> departmanKisiListesi) {
-        this.departmanKisiListesi = departmanKisiListesi;
-    }
-
-    public Departman(String ad) {
-        this.ad = ad;
+    public Departman() {
     }
 
 }

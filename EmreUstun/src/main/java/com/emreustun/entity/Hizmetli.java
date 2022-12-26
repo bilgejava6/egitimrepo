@@ -4,23 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hizmetli extends Personel{
-    List<String> calismaYerleri = new ArrayList<>();
+    private String calismaYeri;
 
     public Hizmetli() {
     }
 
-    @Override
-    public String toString() {
-        return "Hizmetli{" +
-                "calismaYerleri=" + calismaYerleri +
-                '}';
+    public String getCalismaYeri() {
+        return calismaYeri;
     }
 
-    public List<String> getCalismaYerleri() {
-        return calismaYerleri;
-    }
-
-    public void setCalismaYerleri(List<String> calismaYerleri) {
-        this.calismaYerleri = calismaYerleri;
+    public void setCalismaYeri(String calismaYeri) {
+        this.calismaYeri = calismaYeri;
     }
 }

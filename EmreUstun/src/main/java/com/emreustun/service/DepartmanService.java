@@ -12,11 +12,10 @@ public class DepartmanService {
     public DepartmanService(){
         this.departmanRepository = new DepartmanRepository();
     }
-    public void save(String ad, int calisanSayisi){
-        Departman departman = new Departman(ad);
+    public void save(Departman departman){
         departmanRepository.save(departman);
     }
-    public Set<Departman> findAll() {
+    public List<Departman> findAll() {
         return departmanRepository.findAll();
     }
 }

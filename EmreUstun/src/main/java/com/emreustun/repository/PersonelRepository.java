@@ -28,7 +28,6 @@ public class PersonelRepository implements ICrudPersonel<Personel> {
                 break;
             }
         }
-
     }
 
     @Override

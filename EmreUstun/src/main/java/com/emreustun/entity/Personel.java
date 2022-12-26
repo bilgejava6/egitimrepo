@@ -13,7 +13,8 @@ public abstract class Personel extends BaseEntity {
     @Override
     public String toString() {
         return "Personel{" +
-                "isim='" + adSoyad + '\'' +
+                "id= " + getId()+
+                " isim='" + adSoyad + '\'' +
                 ", maas=" + maas +
                 ", yas=" + yas +
                 ", cinsiyet='" + cinsiyet + '\'' +
@@ -27,7 +28,6 @@ public abstract class Personel extends BaseEntity {
     public void setIsim(String adSoyad) {
         this.adSoyad = adSoyad;
     }
-
 
     public int getMaas() {
         return maas;

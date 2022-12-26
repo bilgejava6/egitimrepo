@@ -16,10 +16,4 @@ public class MuhasebePersoneli extends Personel{
         this.gorev = gorev;
     }
 
-    @Override
-    public String toString() {
-        return "MuhasebePersoneli{" +
-                "gorev='" + gorev + '\'' +
-                '}';
-    }
 }

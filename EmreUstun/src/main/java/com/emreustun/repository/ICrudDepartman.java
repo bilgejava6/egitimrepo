@@ -4,7 +4,7 @@ import java.util.Set;
 
 public interface ICrudDepartman<T> {
     void save(T departman);
-    Set<T> findAll();
+    List<T> findAll();
 
 
 }

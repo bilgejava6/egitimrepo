@@ -23,10 +23,11 @@ public class PersonelController {
 
     public void save() {
         sc = new Scanner(System.in);
-        if(StaticValues.departmanListesi.isEmpty()){
-            System.out.println("Lütfen önce departman ekleyiniz..");
-        }else {
-            System.out.println("Personeli kayıt ekranina hosgeldiniz..");
+        if (StaticValues.departmanListesi.isEmpty()) {
+            System.out.println("Departman ekleyemeden personel ekleyemezsiniz!!..");
+        } else {
+            System.out.println("Personel kayıt ekranina hosgeldiniz..");
+
             System.out.println("Lütfen önce hangi ünvan'da personel ekleyeceğinizi giriniz");
             System.out.println("1. Genel Müdür");
             System.out.println("2. Müdür");
@@ -37,43 +38,83 @@ public class PersonelController {
             System.out.println("7. Hizmetli");
             int value = sc.nextInt();
             switch (value) {
-                case 1: genelMudurController.save(); break;
-                case 2: mudurController.save(); break;
-                case 3: insanKaynaklariPersoneliController.save(); break;
-                case 4: muhasebePersoneliController.save(); break;
-                case 5: buroPersoneliController.save(); break;
-                case 6: teknikPersonelController.save(); break;
-                case 7: hizmetliController.save(); break;
+                case 1:
+                    genelMudurController.save();
+                    break;
+                case 2:
+                    mudurController.save();
+                    break;
+                case 3:
+                    insanKaynaklariPersoneliController.save();
+                    break;
+                case 4:
+                    muhasebePersoneliController.save();
+                    break;
+                case 5:
+                    buroPersoneliController.save();
+                    break;
+                case 6:
+                    teknikPersonelController.save();
+                    break;
+                case 7:
+                    hizmetliController.save();
+                    break;
             }
         }
-
-
-
     }
 
     public void update() {
-        System.out.println("Personel Düzenleme");
-        System.out.println("Düzenlenecek kişinin idsi ile düzenleyiniz.");
-        StaticValues.personelListesi.forEach(System.out::println);
         sc = new Scanner(System.in);
- //       personel = new Personel();
+        System.out.println("Personel Düzenleme");
+        System.out.println("Düzenlenecek kişinin ID sini aynı girerek oluşuturunuz..: ");
+        StaticValues.personelListesi.forEach(System.out::println);
 
-        System.out.println("Kişinin  adı ve soyadi..: ");
-        personel.setIsim(sc.nextLine());
-
-        System.out.println("Kişinin yaşı");
-        personel.setMaas(sc.nextInt());
-
-        System.out.println("Kişinin maaşı");
-        personel.setMaas(sc.nextInt());
-
-        System.out.println("Kişinin cinsiyeti..: ERKEK / KADIN");
-        personel.setCinsiyet(ECinsiyet.valueOf(sc.nextLine().toUpperCase()));
-
-        System.out.println("Kişinin departmanı");
-        Departman departman = new Departman(sc.nextLine());
-        personel.setDepartman(departman);
-        service.update(personel);
-
+        System.out.println("Lütfen önce hangi ünvan'daki personeli değiştireceğinizi seçiniz..");
+        System.out.println("1. Genel Müdür");
+        System.out.println("2. Müdür");
+        System.out.println("3. İnsan Kaynaklari");
+        System.out.println("4. Muhasebe");
+        System.out.println("5. Büro Personeli");
+        System.out.println("6. Teknik Personel");
+        System.out.println("7. Hizmetli");
+        int secim = sc.nextInt();
+        switch (secim) {
+            case 1:
+                genelMudurController.update();
+                break;
+            case 2:
+                mudurController.update();
+                break;
+            case 3:
+                insanKaynaklariPersoneliController.update();
+                break;
+            case 4:
+                muhasebePersoneliController.update();
+                break;
+            case 5:
+                buroPersoneliController.update();
+                break;
+            case 6:
+                teknikPersonelController.update();
+                break;
+            case 7:
+                hizmetliController.update();
+                break;
+        }
+        int id = sc.nextInt();
+        for (Personel personel : StaticValues.personelListesi) {
+            if (id == personel.getId()) {
+                service.update(personel);
+            }
+        }
     }
+
+    public void findAll() {
+        System.out.println("Tüm Personelin Listesi");
+        for (Personel personel : service.findAll()) {
+            System.out.println(personel);
+        }
+    }
+
+
 }

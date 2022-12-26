@@ -6,13 +6,6 @@ public class BuroPersoneli extends Personel{
         super();
     }
 
-    @Override
-    public String toString() {
-        return "BuroPersoneli{" +
-                "ofisNo=" + ofisNo +
-                '}';
-    }
-
     public int getOfisNo() {
         return ofisNo;
     }

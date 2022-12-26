@@ -3,7 +3,8 @@ package com.emreustun.repository;
 import com.emreustun.entity.Departman;
 import com.emreustun.utility.StaticValues;
 
-import java.util.Set;
+import java.util.List;
+
 
 public class DepartmanRepository implements ICrudDepartman<Departman> {
 
@@ -13,7 +14,7 @@ public class DepartmanRepository implements ICrudDepartman<Departman> {
     }
 
     @Override
-    public Set<Departman> findAll() {
+    public List<Departman> findAll() {
         return StaticValues.departmanListesi;
     }
 }
