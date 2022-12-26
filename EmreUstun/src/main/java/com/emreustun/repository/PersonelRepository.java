@@ -20,7 +20,6 @@ public class PersonelRepository implements ICrudPersonel<Personel> {
             }
         }
     }
-
     @Override
     public void delete(Long id) {
         for(int i = 0 ; i < personelListesi.size(); i++) {

@@ -1,6 +1,6 @@
 package com.emreustun.entity;
 
-public class Personel extends BaseEntity {
+public abstract class Personel extends BaseEntity {
     private String adSoyad;
     private int maas;
     private int yas;
@@ -20,14 +20,6 @@ public class Personel extends BaseEntity {
                 ", departman=" + departman +
                 '}';
     }
-    public Personel(String isim, int maas, int yas, ECinsiyet cinsiyet, Departman departman) {
-        this.adSoyad = isim;
-        this.maas = maas;
-        this.yas = yas;
-        this.cinsiyet = cinsiyet;
-        this.departman = departman;
-    }
-
     public String getAdSoyad() {
         return adSoyad;
     }

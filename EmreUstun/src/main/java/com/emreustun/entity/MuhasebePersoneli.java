@@ -3,8 +3,8 @@ package com.emreustun.entity;
 public class MuhasebePersoneli extends Personel{
     String gorev;
 
-    public MuhasebePersoneli(String isim, int maas, int yas, ECinsiyet cinsiyet, String egitimSeviyesi, Departman departman, String gorev) {
-        super(isim, maas, yas, cinsiyet, departman);
+    public MuhasebePersoneli() {
+        super();
         this.gorev = gorev;
     }
 

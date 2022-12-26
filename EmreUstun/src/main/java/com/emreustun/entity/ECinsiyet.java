@@ -1,5 +1,5 @@
 package com.emreustun.entity;
 
 public enum ECinsiyet {
-    ERKEK, KADIN, DIGER
+    ERKEK, KADIN, BELIRTMEKISTEMIYOR
 }

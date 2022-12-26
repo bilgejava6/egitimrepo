@@ -4,8 +4,8 @@ public class TeknikPersonel extends Personel{
     String meslekiBeceri;
     String bolum;
 
-    public TeknikPersonel(String isim, int maas, int yas, ECinsiyet cinsiyet, Departman departman, String meslekiBeceri, String bolum) {
-        super(isim, maas, yas, cinsiyet, departman);
+    public TeknikPersonel() {
+        super();
         this.meslekiBeceri = meslekiBeceri;
         this.bolum = bolum;
     }
