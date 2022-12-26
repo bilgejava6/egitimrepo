@@ -1,1 +1,6 @@
-/EmreUstun/build/classes/java/main/com/emreustun/entity/BaseEntity.class
+# Tüm katılımcılar için yerel gradle ve build dizinlerini önemseme
+/*/.gradle
+/*/build
+# Repositoryde atlanmak istenen diğer dosyalar dizinleriyle buraya eklenebilir
+/VolkanGenel/gradlew
+/VolkanGenel/gradlew.bat
