@@ -1,5 +1,8 @@
 package com.aliakkulah.entity;
 
+import static com.aliakkulah.utility.Utility.departmanListesi;
+import static com.aliakkulah.utility.Utility.personelListesi;
+
 public class IKPersoneli extends Personel {
     private int iletisimKurmnaDerecesi;
     private int iseAlimSayisi;
@@ -9,8 +12,8 @@ public class IKPersoneli extends Personel {
     public IKPersoneli() {
     }
 
-    public IKPersoneli(String ad, String soyad, String unvan, String iseGirisTarihi, int dogumYili, String cinsiyet, double maas, int iletisimKurmnaDerecesi, int iseAlimSayisi, int istenCikarmaSayisi, int girdigiMulakatSayisi) {
-        super(ad, soyad, unvan, iseGirisTarihi, dogumYili, cinsiyet, maas);
+    public IKPersoneli(String ad, String soyad, String unvan, String iseGirisTarihi, int dogumYili, String cinsiyet, double maas, int depIndex, int iletisimKurmnaDerecesi, int iseAlimSayisi, int istenCikarmaSayisi, int girdigiMulakatSayisi) {
+        super(ad, soyad, unvan, iseGirisTarihi, dogumYili, cinsiyet, maas, depIndex);
         this.iletisimKurmnaDerecesi = iletisimKurmnaDerecesi;
         this.iseAlimSayisi = iseAlimSayisi;
         this.istenCikarmaSayisi = istenCikarmaSayisi;

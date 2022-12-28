@@ -6,6 +6,7 @@ public abstract class Personel {
     public String getCinsiyet() {
         return cinsiyet;
     }
+    private Departman departman;
     private Long id;
     private String ad;
     private String soyad;
@@ -19,7 +20,7 @@ public abstract class Personel {
     public Personel() {
     }
 
-    public Personel(String ad, String soyad, String unvan, String iseGirisTarihi, int dogumYili, String cinsiyet, double maas) {
+    public Personel(String ad, String soyad, String unvan, String iseGirisTarihi, int dogumYili, String cinsiyet, double maas, int  depIndex) {
         this.ad = ad;
         this.soyad = soyad;
         this.unvan = unvan;
@@ -28,6 +29,30 @@ public abstract class Personel {
         this.cinsiyet = cinsiyet;
         this.maas = maas;
         this.id = idOlustur();
+        this.departman = departmanListesi.get(depIndex);
+    }
+
+    @Override
+    public String toString() {
+        return "Personel{" +
+                "departman=" + departman +
+                ", id=" + id +
+                ", ad='" + ad + '\'' +
+                ", soyad='" + soyad + '\'' +
+                ", unvan='" + unvan + '\'' +
+                ", iseGirisTarihi='" + iseGirisTarihi + '\'' +
+                ", dogumYili=" + dogumYili +
+                ", cinsiyet='" + cinsiyet + '\'' +
+                ", maas=" + maas +
+                '}';
+    }
+
+    public Departman getDepartman() {
+        return departman;
+    }
+
+    public void setDepartman(Departman departman) {
+        this.departman = departman;
     }
 
     public Long getId() {

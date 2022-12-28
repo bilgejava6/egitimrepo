@@ -1,13 +1,16 @@
 package com.aliakkulah.entity;
 
+import static com.aliakkulah.utility.Utility.departmanListesi;
+import static com.aliakkulah.utility.Utility.personelListesi;
+
 public class GenelMudur extends Personel {
     private int bonusZamOrani;
 
     public GenelMudur() {
     }
 
-    public GenelMudur(String ad, String soyad, String unvan, String iseGirisTarihi, int dogumYili, String cinsiyet, double maas, int bonusZamOrani) {
-        super(ad, soyad, unvan, iseGirisTarihi, dogumYili, cinsiyet, maas);
+    public GenelMudur(String ad, String soyad, String unvan, String iseGirisTarihi, int dogumYili, String cinsiyet, double maas, int depIndex, int bonusZamOrani) {
+        super(ad, soyad, unvan, iseGirisTarihi, dogumYili, cinsiyet, maas, depIndex);
         this.bonusZamOrani = bonusZamOrani;
     }
 
