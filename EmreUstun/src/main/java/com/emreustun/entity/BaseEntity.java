@@ -8,7 +8,7 @@ public abstract class BaseEntity {
     private Long updateDate;
 
     private boolean isActive;
-    private int state;// 1- silinmiş ,2 dondurulmuş
+    private int state;
 
     public BaseEntity() {
         this.id = StaticValues.idOlustur();

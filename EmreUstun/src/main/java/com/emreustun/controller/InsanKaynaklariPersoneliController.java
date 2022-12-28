@@ -18,7 +18,7 @@ public class InsanKaynaklariPersoneliController {
         insanKaynaklariPersoneli = new InsanKaynaklariPersoneli();
         System.out.println("İnsan Kaynaklari Personeli Kayıt ediyorusunuz..");
 
-        System.out.println("İnsan Kaynaklari Personeli adı..: ");
+        System.out.println("İnsan Kaynaklari Personeli adı ve soyadı..: ");
         insanKaynaklariPersoneli.setIsim(sc.nextLine());
 
         System.out.println("İnsan Kaynaklari Personeli cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
@@ -33,6 +33,7 @@ public class InsanKaynaklariPersoneliController {
         System.out.println("İnsan kaynaklari personelinin ofis numarasını giriniz..");
         insanKaynaklariPersoneli.setOfisNo(sc.nextInt());
 
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){
@@ -41,6 +42,7 @@ public class InsanKaynaklariPersoneliController {
         }
         int secim = sc.nextInt();
         insanKaynaklariPersoneli.setDepartman(StaticValues.departmanListesi.get(secim-1));
+        insanKaynaklariPersoneli.getDepartman().getDepartmanPersonelListesi().add(insanKaynaklariPersoneli);
 
         insanKaynaklariPersoneliService.save(insanKaynaklariPersoneli);
     }
@@ -54,7 +56,7 @@ public class InsanKaynaklariPersoneliController {
         insanKaynaklariPersoneli.setId(sc.nextLong());
 
         sc.nextLine();
-        System.out.println("İnsan kaynakları personeli adi..: ");
+        System.out.println("İnsan kaynakları personeli adı ve soyadı..: ");
         insanKaynaklariPersoneli.setIsim(sc.nextLine());
 
         System.out.println("İnsan kaynakları personeli cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
@@ -78,6 +80,7 @@ public class InsanKaynaklariPersoneliController {
         }
         int secim = sc.nextInt();
         insanKaynaklariPersoneli.setDepartman(StaticValues.departmanListesi.get(secim-1));
+        insanKaynaklariPersoneli.getDepartman().getDepartmanPersonelListesi().add(insanKaynaklariPersoneli);
 
         insanKaynaklariPersoneliService.update(insanKaynaklariPersoneli);
 

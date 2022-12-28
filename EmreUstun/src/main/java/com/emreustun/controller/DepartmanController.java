@@ -10,7 +10,7 @@ public class DepartmanController {
     Scanner sc = new Scanner(System.in);
     public void save(){
         Departman departman = new Departman();
-        System.out.println("Departman adi giriniz");
+        System.out.println("Departman adını giriniz");
         departman.setAd(sc.nextLine());
         System.out.println("Vardiya Sayisini giriniz.");
         departman.setVardiyaSayisi(sc.nextInt());

@@ -14,7 +14,7 @@ public abstract class Personel extends BaseEntity {
     public String toString() {
         return "Personel{" +
                 "id= " + getId()+
-                " isim='" + adSoyad + '\'' +
+                " isim soyisim='" + adSoyad + '\'' +
                 ", maas=" + maas +
                 ", yas=" + yas +
                 ", cinsiyet='" + cinsiyet + '\'' +

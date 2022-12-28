@@ -1,5 +1,6 @@
 package com.emreustun.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Departman {
@@ -8,6 +9,15 @@ public class Departman {
     private Personel personel;
     private String ad;
     private int vardiyaSayisi;
+    private List<Personel> departmanPersonelListesi;
+
+    public List<Personel> getDepartmanPersonelListesi() {
+        return departmanPersonelListesi;
+    }
+
+    public void setDepartmanPersonelListesi(List<Personel> departmanPersonelListesi) {
+        this.departmanPersonelListesi = departmanPersonelListesi;
+    }
 
     public int getVardiyaSayisi() {
         return vardiyaSayisi;
@@ -20,8 +30,7 @@ public class Departman {
     @Override
     public String toString() {
         return "Departman{" +
-                "personel=" + personel +
-                ", ad='" + ad + '\'' +
+                "ad='" + ad + '\'' +
                 '}';
     }
 
@@ -34,6 +43,7 @@ public class Departman {
     }
 
     public Departman() {
+        departmanPersonelListesi = new ArrayList<>();
     }
     public Personel getPersonel() {
         return personel;

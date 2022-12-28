@@ -2,12 +2,9 @@ package com.emreustun.controller;
 
 import com.emreustun.entity.Departman;
 import com.emreustun.entity.ECinsiyet;
-import com.emreustun.entity.GenelMudur;
 import com.emreustun.entity.Mudur;
 import com.emreustun.service.MudurService;
-import com.emreustun.service.PersonelService;
 import com.emreustun.utility.StaticValues;
-
 import java.util.Scanner;
 
 public class MudurController {
@@ -19,7 +16,7 @@ public class MudurController {
         mudur = new Mudur();
         System.out.println("Müdür Kayıt ediyorusunuz..");
 
-        System.out.println("Müdürün adı..: ");
+        System.out.println("Müdürün adı ve soyadı..: ");
         mudur.setIsim(sc.nextLine());
 
         System.out.println("Müdürün cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
@@ -32,9 +29,35 @@ public class MudurController {
         mudur.setMaas(sc.nextInt());
 
         sc.nextLine();
-        System.out.println("Müdürn görev tanımını giriniz..: ");
+        System.out.println("Müdürün görev tanımını giriniz..: ");
         mudur.setGorevTanimi(sc.nextLine());
 
+        //mudurun sorumlu oldugu departmanları atamak
+        System.out.println("Müdürün sorumlu olduğu departmanı giriniz.");
+        var value = 0;
+        do{
+            System.out.println("1-> Departman ata");
+            System.out.println("0-> CIK");
+            value = sc.nextInt();
+            switch (value) {
+                case 1:
+                    int index2 = 1;
+                    for (Departman departman : StaticValues.departmanListesi) {
+                        System.out.println(index2 + " -> " + departman.getAd());
+                        index2++;
+                    }
+                    int secim2 = sc.nextInt();
+                    mudur.getMudurlerinSorumluOlduguDepartmanListesi().add(StaticValues.departmanListesi.get(secim2 - 1));
+                    break;
+                case 0:
+                    System.out.println("Cıkıs Yapiliyor");
+                    break;
+                default:
+            }
+        }while(value != 0);
+        // stat values da mapin içine atıyoruz
+        StaticValues.mapMudurDepartmanListesi.put(mudur,mudur.getMudurlerinSorumluOlduguDepartmanListesi());
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){
@@ -43,6 +66,9 @@ public class MudurController {
         }
         int secim = sc.nextInt();
         mudur.setDepartman(StaticValues.departmanListesi.get(secim-1));
+
+
+        mudur.getDepartman().getDepartmanPersonelListesi().add(mudur);
 
         mudurService.save(mudur);
     }
@@ -58,7 +84,7 @@ public class MudurController {
         mudur.setId(sc.nextLong());
 
         sc.nextLine();
-        System.out.println("Mudurun adı..: ");
+        System.out.println("Mudurun adı ve soyadı..: ");
         mudur.setIsim(sc.nextLine());
 
         System.out.println("Müdürün cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
@@ -74,6 +100,31 @@ public class MudurController {
         System.out.println("Sorumlu olduklarıyla ilgili görev tanımı ");
         mudur.setGorevTanimi(sc.nextLine());
 
+        System.out.println("Müdürün sorumlu olduğu departmanı giriniz.");
+        //müdüre sorumlu olduğu departmanı atamak...
+        var value = 0;
+        do{
+            System.out.println("1-> Departman ata");
+            System.out.println("0-> CIK");
+            value = sc.nextInt();
+            switch (value) {
+                case 1:
+                    int index2 = 1;
+                    for (Departman departman : StaticValues.departmanListesi) {
+                        System.out.println(index2 + " -> " + departman.getAd());
+                        index2++;
+                    }
+                    int secim2 = sc.nextInt();
+                    mudur.getMudurlerinSorumluOlduguDepartmanListesi().add(StaticValues.departmanListesi.get(secim2 - 1));
+                    break;
+                case 0:
+                    System.out.println("Cıkıs Yapiliyor");
+                    break;
+                default:
+            }
+        }while(value != 0);
+        // stat values da mapin içine atıyoruz
+        StaticValues.mapMudurDepartmanListesi.put(mudur,mudur.getMudurlerinSorumluOlduguDepartmanListesi());
         System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
@@ -83,7 +134,11 @@ public class MudurController {
         }
         int secim = sc.nextInt();
         mudur.setDepartman(StaticValues.departmanListesi.get(secim-1));
+        mudur.getDepartman().getDepartmanPersonelListesi().add(mudur);
 
         mudurService.update(mudur);
+    }
+    public void mudurlerinSorumluOlduguDepartmanListesi(){
+        mudur.getMudurlerinSorumluOlduguDepartmanListesi().stream();
     }
 }

@@ -21,7 +21,7 @@ public class MuhasebePersoneliController {
         muhasebePersoneli = new MuhasebePersoneli();
         System.out.println("Muhasabe Personeli Kayıt ediyorusunuz..");
 
-        System.out.println("Muhasabe personelin adı..: ");
+        System.out.println("Muhasabe personelin adı ve soyadı..: ");
         muhasebePersoneli.setIsim(sc.nextLine());
 
         System.out.println("Muhasabe personelinin cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
@@ -37,6 +37,7 @@ public class MuhasebePersoneliController {
         System.out.println("Muhasabe personeli görevi..: ");
         muhasebePersoneli.setGorev(sc.nextLine());
 
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){
@@ -45,6 +46,7 @@ public class MuhasebePersoneliController {
         }
         int secim = sc.nextInt();
         muhasebePersoneli.setDepartman(StaticValues.departmanListesi.get(secim-1));
+        muhasebePersoneli.getDepartman().getDepartmanPersonelListesi().add(muhasebePersoneli);
 
         muhasebePersoneliService.save(muhasebePersoneli);
     }
@@ -60,7 +62,7 @@ public class MuhasebePersoneliController {
         muhasebePersoneli.setId(sc.nextLong());
 
         sc.nextLine();
-        System.out.println("Muhasabe personeli adı..: ");
+        System.out.println("Muhasabe personeli adı ve soyadı..: ");
         muhasebePersoneli.setIsim(sc.nextLine());
 
         System.out.println("Muhasabe personeli cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
@@ -76,6 +78,7 @@ public class MuhasebePersoneliController {
         System.out.println("Muhasabe personeli görevi..: ");
         muhasebePersoneli.setGorev(sc.nextLine());
 
+
         // Departman atamak...
         System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         int index = 1;
@@ -85,6 +88,7 @@ public class MuhasebePersoneliController {
         }
         int secim = sc.nextInt();
         muhasebePersoneli.setDepartman(StaticValues.departmanListesi.get(secim-1));
+        muhasebePersoneli.getDepartman().getDepartmanPersonelListesi().add(muhasebePersoneli);
 
         muhasebePersoneliService.update(muhasebePersoneli);
     }

@@ -18,7 +18,7 @@ public class TeknikPersonelController {
         teknikPersonel = new TeknikPersonel();
         System.out.println("Teknik Personel Kayıt ediyorusunuz..");
 
-        System.out.println("Teknik personelin adı..: ");
+        System.out.println("Teknik personelin adı ve soyadı..: ");
         teknikPersonel.setIsim(sc.nextLine());
 
         System.out.println("Teknik personelin cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
@@ -37,6 +37,7 @@ public class TeknikPersonelController {
         System.out.println("Teknik personelin bölümü..: ");
         teknikPersonel.setBolum(sc.nextLine());
 
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
         for (Departman departman : StaticValues.departmanListesi) {
@@ -45,6 +46,7 @@ public class TeknikPersonelController {
         }
         int secim = sc.nextInt();
         teknikPersonel.setDepartman(StaticValues.departmanListesi.get(secim - 1));
+        teknikPersonel.getDepartman().getDepartmanPersonelListesi().add(teknikPersonel);
 
         teknikPersonelService.save(teknikPersonel);
     }
@@ -60,7 +62,7 @@ public class TeknikPersonelController {
         teknikPersonel.setId(sc.nextLong());
 
         sc.nextLine();
-        System.out.println("Teknik personel adı..: ");
+        System.out.println("Teknik personel adı ve soyadı..: ");
         teknikPersonel.setIsim(sc.nextLine());
 
         System.out.println("Teknik personel cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
@@ -88,6 +90,8 @@ public class TeknikPersonelController {
         }
         int secim = sc.nextInt();
         teknikPersonel.setDepartman(StaticValues.departmanListesi.get(secim - 1));
+
+        teknikPersonel.getDepartman().getDepartmanPersonelListesi().add(teknikPersonel);
 
         teknikPersonelService.update(teknikPersonel);
     }

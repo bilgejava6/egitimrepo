@@ -18,7 +18,7 @@ public class BuroPersoneliController {
         buroPersoneli = new BuroPersoneli();
         System.out.println("Büro Personel Kayıt ediyorusunuz..");
 
-        System.out.println("Büro personelin adı..: ");
+        System.out.println("Büro personelin adı ve soyadı..: ");
         buroPersoneli.setIsim(sc.nextLine());
 
         System.out.println("Büro personelin cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
@@ -33,8 +33,8 @@ public class BuroPersoneliController {
         System.out.println("Büro personelinin ofis numarası...: ");
         buroPersoneli.setOfisNo(sc.nextInt());
 
-        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
 
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){
@@ -43,6 +43,9 @@ public class BuroPersoneliController {
         }
         int secim = sc.nextInt();
         buroPersoneli.setDepartman(StaticValues.departmanListesi.get(secim-1));
+
+        //girilen personeli departmanın personel listesinede atmalıyız.
+        buroPersoneli.getDepartman().getDepartmanPersonelListesi().add(buroPersoneli);
 
         buroPersoneliService.save(buroPersoneli);
     }
@@ -58,7 +61,7 @@ public class BuroPersoneliController {
         buroPersoneli.setId(sc.nextLong());
 
         sc.nextLine();
-        System.out.println("Buro personeli adı..: ");
+        System.out.println("Buro personeli adı ve soyadı..: ");
         buroPersoneli.setIsim(sc.nextLine());
 
         System.out.println("Buro personeli cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
@@ -73,6 +76,7 @@ public class BuroPersoneliController {
         System.out.println("Büro personelinin ofis numarası...: ");
         buroPersoneli.setOfisNo(sc.nextInt());
 
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){
@@ -81,6 +85,8 @@ public class BuroPersoneliController {
         }
         int secim = sc.nextInt();
         buroPersoneli.setDepartman(StaticValues.departmanListesi.get(secim-1));
+
+        buroPersoneli.getDepartman().getDepartmanPersonelListesi().add(buroPersoneli);
 
         buroPersoneliService.update(buroPersoneli);
     }

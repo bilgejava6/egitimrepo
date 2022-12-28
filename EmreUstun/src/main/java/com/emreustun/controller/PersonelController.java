@@ -21,11 +21,12 @@ public class PersonelController {
     Scanner sc;
     Personel personel;
 
-    public void save() {
+    public void  save() {
         sc = new Scanner(System.in);
         if (StaticValues.departmanListesi.isEmpty()) {
-            System.out.println("Departman ekleyemeden personel ekleyemezsiniz!!..");
-            System.out.println("Geri gitmek için 0'ı tuşlayınız");
+            System.out.println();
+            System.out.println("DEPARTMAN EKLEMEDEN PERSONEL EKLEYEMEZSİNİZ !!");
+            System.out.println();
         } else {
             System.out.println("Personel kayıt ekranina hosgeldiniz..");
 
@@ -66,10 +67,9 @@ public class PersonelController {
 
     public void update() {
         sc = new Scanner(System.in);
-        System.out.println("Personel Yenileme");
-
         System.out.println("Düzenlenecek kişinin ID sini aynı girerek oluşuturunuz..: ");
         StaticValues.personelListesi.forEach(System.out::println);
+        System.out.println();
         System.out.println("Lütfen önce yeni gireceğiniz personelin ünvanını seçiniz..");
         System.out.println("1. Genel Müdür");
         System.out.println("2. Müdür");
@@ -109,7 +109,7 @@ public class PersonelController {
                 service.update(personel);
             }
         }
-        StaticValues.id--; // id'yi bir azaltıyoruz.
+        StaticValues.id--; // id'yi bir azaltıyoruz. çünkü baseentitydeki idOlustur() metodu tekrar calısıyor.
     }
 
     public void findAll() {
@@ -121,7 +121,7 @@ public class PersonelController {
 
 
     public void maasPersonelTanimlama() {
-        System.out.println("Maaşını değiştirmek istediğiniz kullanıcının id'sini giriniz.");
+        System.out.println("Maaşını değiştirmek istediğiniz personelin id'sini giriniz.");
         StaticValues.personelListesi.forEach(System.out::println);
         int secim = sc.nextInt();
         System.out.println("Yeni maaşı giriniz ...: ");

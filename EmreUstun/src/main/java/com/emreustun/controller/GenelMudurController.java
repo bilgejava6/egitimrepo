@@ -20,7 +20,7 @@ public class GenelMudurController {
         genelMudur = new GenelMudur();
         System.out.println("Genel Müdür Kayıt ediyorusunuz..");
 
-        System.out.println("Genel Mudurun adı..: ");
+        System.out.println("Genel Mudurun adı ve soyadı..: ");
         genelMudur.setIsim(sc.nextLine());
 
         System.out.println("Genel Müdürün cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
@@ -36,6 +36,31 @@ public class GenelMudurController {
         System.out.println("Sorumlu olduklarıyla ilgili görev tanımı ");
         genelMudur.setGorevTanimi(sc.nextLine());
 
+        // genel mudurun sorumlu oldugu departmanları atamak
+        System.out.println("Müdürün sorumlu olduğu departmanı giriniz.");
+        var value = 0;
+        do{
+            System.out.println("1-> Departman ata");
+            System.out.println("0-> CIK");
+            value = sc.nextInt();
+            switch (value) {
+                case 1:
+                    int index2 = 1;
+                    for (Departman departman : StaticValues.departmanListesi) {
+                        System.out.println(index2 + " -> " + departman.getAd());
+                        index2++;
+                    }
+                    int secim2 = sc.nextInt();
+                    genelMudur.getGenelMudurlerinSorumluOlduguDepartmanListesi().add(StaticValues.departmanListesi.get(secim2 - 1));
+                    break;
+                case 0:
+                    System.out.println("Cıkıs Yapiliyor");
+                    break;
+                default:
+            }
+        }while(value != 0);
+        StaticValues.mapGenelMudurDepartmanListesi.put(genelMudur,genelMudur.getGenelMudurlerinSorumluOlduguDepartmanListesi());
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){
@@ -44,6 +69,7 @@ public class GenelMudurController {
         }
         int secim = sc.nextInt();
         genelMudur.setDepartman(StaticValues.departmanListesi.get(secim-1));
+        genelMudur.getDepartman().getDepartmanPersonelListesi().add(genelMudur);
 
         genelMudurService.save(genelMudur);
     }
@@ -59,7 +85,7 @@ public class GenelMudurController {
         genelMudur.setId(sc.nextLong());
 
         sc.nextLine();
-        System.out.println("Genel Mudurun adı..: ");
+        System.out.println("Genel Mudurun adı ve soyadı..: ");
         genelMudur.setIsim(sc.nextLine());
 
         System.out.println("Genel Müdürün cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
@@ -75,6 +101,31 @@ public class GenelMudurController {
         System.out.println("Sorumlu olduklarıyla ilgili görev tanımı ");
         genelMudur.setGorevTanimi(sc.nextLine());
 
+        // genel mudurun sorumlu oldugu departmanları atamak
+        System.out.println("Müdürün sorumlu olduğu departmanı giriniz.");
+        var value = 0;
+        do{
+            System.out.println("1-> Departman ata");
+            System.out.println("0-> CIK");
+            value = sc.nextInt();
+            switch (value) {
+                case 1:
+                    int index2 = 1;
+                    for (Departman departman : StaticValues.departmanListesi) {
+                        System.out.println(index2 + " -> " + departman.getAd());
+                        index2++;
+                    }
+                    int secim2 = sc.nextInt();
+                    genelMudur.getGenelMudurlerinSorumluOlduguDepartmanListesi().add(StaticValues.departmanListesi.get(secim2 - 1));
+                    break;
+                case 0:
+                    System.out.println("Cıkıs Yapiliyor");
+                    break;
+                default:
+            }
+        }while(value != 0);
+        StaticValues.mapGenelMudurDepartmanListesi.put(genelMudur,genelMudur.getGenelMudurlerinSorumluOlduguDepartmanListesi());
+
         System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
@@ -84,6 +135,8 @@ public class GenelMudurController {
         }
         int secim = sc.nextInt();
         genelMudur.setDepartman(StaticValues.departmanListesi.get(secim-1));
+
+        genelMudur.getDepartman().getDepartmanPersonelListesi().add(genelMudur);
         System.out.println("Personel başarı ile eklendi..");
 
         genelMudurService.update(genelMudur);
