@@ -1,6 +1,7 @@
 package com.yavuzavci.utility.menu;
 
 import com.yavuzavci.entity.Departman;
+import com.yavuzavci.entity.Mudur;
 import com.yavuzavci.entity.Personel;
 
 import java.util.*;
@@ -89,7 +90,7 @@ public class RaporlamaMenu extends AnaMenu {
                                         Departman::getAd,
                                         d -> d.getPersonelListesi()
                                                 .stream()
-                                                .collect(Collectors.averagingInt(Personel::getYas))
+                                                .collect(Collectors.averagingDouble(Personel::getMaas))
                                 )
                         )
                         .forEach((k, v) ->
@@ -105,6 +106,25 @@ public class RaporlamaMenu extends AnaMenu {
                     System.out.println("Bilgi: Sistemde kayıtlı departman yoktur.");
                     break;
                 }
+                if (personelController.findAll()
+                        .stream()
+                        .filter(Mudur.class::isInstance)
+                        .map(Mudur.class::cast)
+                        .toList()
+                        .isEmpty()) {
+                    System.out.println("Bilgi: Sistemde kayıtlı müdür veya genel müdür yoktur.");
+                }
+                System.out.println("## Müdürler ve sorumlu olduğu departmanlar ##");
+                personelController.findAll()
+                        .stream()
+                        .filter(Mudur.class::isInstance)
+                        .map(Mudur.class::cast)
+                        .toList()
+                        .forEach(m -> {
+                            System.out.println(m.getClass().getSimpleName() +  " - " + m.getAdSoyad());
+                            System.out.println("Sorumlu olduğu departmanlar");
+                            m.getDepartmanlar().forEach(System.out::println);
+                        });
                 break;
             case 5:
                 if (personelController.findAll().isEmpty()) {
@@ -115,7 +135,7 @@ public class RaporlamaMenu extends AnaMenu {
                 personelController.findAll()
                         .stream()
                         .sorted(Comparator.comparing(Personel::getCreateDate))
-                        .collect(Collectors.toList())
+                        .toList()
                         .forEach(System.out::println);
                 break;
             case 6:
@@ -129,13 +149,13 @@ public class RaporlamaMenu extends AnaMenu {
                         .stream()
                         .filter(p ->
                                 Collections.frequency(personelController.findAll(),p.getCreateDate()) > 1)
-                        .collect(Collectors.toList())
+                        .toList()
                         .forEach(System.out::println);
                 break;
             case 0:
                 break;
             default:
-                System.err.println("HATA: Geçersiz seçim yaptınız.");
+                System.out.println("HATA: Geçersiz seçim yaptınız.");
                 break;
         }
     }

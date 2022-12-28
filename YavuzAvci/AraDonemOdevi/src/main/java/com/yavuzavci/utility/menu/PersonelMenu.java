@@ -43,13 +43,13 @@ public class PersonelMenu extends AnaMenu {
                 break;
             case 3:
                 if(personelController.findAll().isEmpty()){
-                    System.err.println("HATA: Sistemde kayıtlı personel yoktur.");
+                    System.out.println("HATA: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
                 System.out.print("Bilgilerini güncellemek istediğiniz personelin numarasını giriniz..: ");
                 long id = scanner.nextLong();
                 if(personelController.findById(id).equals(null)){
-                    System.err.println("HATA: Sistemde " + id + " numaralı personel yoktur.");
+                    System.out.println("HATA: Sistemde " + id + " numaralı personel yoktur.");
                     break;
                 }
                 personelController.update();
@@ -68,7 +68,7 @@ public class PersonelMenu extends AnaMenu {
             case 0:
                 break;
             default:
-                System.err.println("HATA: Geçersiz seçim yaptınız.");
+                System.out.println("HATA: Geçersiz seçim yaptınız.");
                 break;
         }
     }

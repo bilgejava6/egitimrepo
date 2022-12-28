@@ -44,7 +44,7 @@ public class AnaMenu implements IMenu {
             case 0:
                 break;
             default:
-                System.err.println("HATA: Geçersiz seçim yaptınız.");
+                System.out.println("HATA: Geçersiz seçim yaptınız.");
                 break;
         }
     }

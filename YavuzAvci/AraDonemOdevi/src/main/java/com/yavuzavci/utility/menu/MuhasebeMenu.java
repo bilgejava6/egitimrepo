@@ -36,14 +36,14 @@ public class MuhasebeMenu extends AnaMenu {
         switch(secim){
             case 1:
                 if (personelController.findAll().isEmpty()) {
-                    System.err.println("HATA: Sistemde kayıtlı personel yoktur.");
+                    System.out.println("HATA: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
                 System.out.print("Maaş bilgisini tanımlayacağınız personelin numarasını giriniz..: ");
                 id = scanner.nextLong();
                 personel = personelController.findById(id);
                 if (personel.equals(null)) {
-                    System.err.println("HATA: Sistemde " + id + " numaralı personel yoktur.");
+                    System.out.println("HATA: Sistemde " + id + " numaralı personel yoktur.");
                     break;
                 }
                 Double maas = PersonelUtility.maasAl();
@@ -54,13 +54,13 @@ public class MuhasebeMenu extends AnaMenu {
                 break;
             case 2:
                 if (personelController.findAll().isEmpty()) {
-                    System.err.println("HATA: Sistemde kayıtlı personel yoktur.");
+                    System.out.println("HATA: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
                 System.out.print("Kaç personele ödeme yapılacağını giriniz..: ");
                 int personelSayisi = scanner.nextInt();
                 if (personelSayisi <= 0) {
-                    System.err.println("HATA: En az 1 personel için ödeme yapmak zorundasınız.");
+                    System.out.println("HATA: En az 1 personel için ödeme yapmak zorundasınız.");
                     break;
                 }
                 for (int i = 0; i < personelSayisi; i++) {
@@ -68,8 +68,8 @@ public class MuhasebeMenu extends AnaMenu {
                     id = scanner.nextLong();
                     personel = personelController.findById(id);
                     if (personel.equals(null)) {
-                        System.err.println("HATA: Sistemde " + id + " numaralı personel yoktur.");
-                        System.err.println("İşlem personel için başarısız.");
+                        System.out.println("HATA: Sistemde " + id + " numaralı personel yoktur.");
+                        System.out.println("İşlem personel için başarısız.");
                         continue;
                     }
                     System.out.println("Personele maaş ödemesi yapacaksanız 'maas'\n" +
@@ -86,8 +86,8 @@ public class MuhasebeMenu extends AnaMenu {
                             System.out.print("Personele ödenecek tutarı giriniz..: ");
                             Double tutar = scanner.nextDouble();
                             if(tutar <= 0){
-                                System.err.println("HATA: Ödenecek tutar sıfırdan büyük olmalıdır.");
-                                System.err.println("İşlem personel için başarısız.");
+                                System.out.println("HATA: Ödenecek tutar sıfırdan büyük olmalıdır.");
+                                System.out.println("İşlem personel için başarısız.");
                                 break;
                             }
                             personel.setOdenmisUcret(tutar);
@@ -95,8 +95,8 @@ public class MuhasebeMenu extends AnaMenu {
                                     .set(personelController.findAll().indexOf(personel), personel);
                             break;
                         default:
-                            System.err.println("HATA: Geçersiz seçim.");
-                            System.err.println("İşlem personel için başarısız.");
+                            System.out.println("HATA: Geçersiz seçim.");
+                            System.out.println("İşlem personel için başarısız.");
                             break;
                     }
                 }
@@ -104,7 +104,7 @@ public class MuhasebeMenu extends AnaMenu {
             case 0:
                 break;
             default:
-                System.err.println("HATA: Geçersiz seçim yaptınız.");
+                System.out.println("HATA: Geçersiz seçim yaptınız.");
                 break;
         }
     }
