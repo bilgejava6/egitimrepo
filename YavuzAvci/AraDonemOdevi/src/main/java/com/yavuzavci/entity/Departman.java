@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Departman extends BaseEntity {
     private String ad;
-    private int calisanSayisi;
     private List<Personel> personelListesi;
 
     public Departman(String ad){
@@ -22,14 +21,6 @@ public class Departman extends BaseEntity {
         this.ad = ad;
     }
 
-    public int getCalisanSayisi() {
-        return calisanSayisi;
-    }
-
-    public void setCalisanSayisi(int calisanSayisi) {
-        this.calisanSayisi = calisanSayisi;
-    }
-
     public List<Personel> getPersonelListesi() {
         return personelListesi;
     }
@@ -42,7 +33,7 @@ public class Departman extends BaseEntity {
     public String toString() {
         return "Departman{" +
                 "ad='" + ad + '\'' +
-                ", calisanSayisi=" + calisanSayisi +
+                ", calisanSayisi=" + personelListesi.size() +
                 '}';
     }
 }
