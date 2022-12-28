@@ -1,5 +1,9 @@
 package com.yavuzavci.controller;
 
+import static com.yavuzavci.entity.ECinsiyet.*;
+
+import com.yavuzavci.entity.BuroPersoneli;
+import com.yavuzavci.entity.Departman;
 import com.yavuzavci.entity.Personel;
 import com.yavuzavci.service.PersonelService;
 
@@ -12,13 +16,16 @@ public class PersonelController {
         personelService = new PersonelService();
     }
 
-    public void save(Personel personel){
+    public void save(){
+        Personel personel = new BuroPersoneli("", DIGER,0,"",new Departman(""));
         personelService.save(personel);
     }
-    public void update(Personel personel){
+    public void update(){
+        Personel personel = new BuroPersoneli("", DIGER,0,"",new Departman(""));
         personelService.update(personel);
     }
-    public void delete(Long id) {
+    public void delete() {
+        Long id = 0L;
         personelService.delete(id);
     }
     public Personel findById(Long id){

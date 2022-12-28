@@ -12,13 +12,16 @@ public class DepartmanController {
         departmanService = new DepartmanService();
     }
 
-    public void save(Departman departman){
+    public void save(){
+        Departman departman = new Departman("");
         departmanService.save(departman);
     }
-    public void update(Departman departman){
+    public void update(){
+        Departman departman = new Departman("");
         departmanService.update(departman);
     }
-    public void delete(Long id) {
+    public void delete() {
+        Long id = 0L;
         departmanService.delete(id);
     }
     public Departman findById(Long id){
