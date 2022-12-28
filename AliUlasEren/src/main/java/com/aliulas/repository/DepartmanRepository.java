@@ -1,16 +1,19 @@
-package com.yavuzavci.repository;
+package com.aliulas.repository;
 
-import com.yavuzavci.entity.Departman;
+import java.util.HashMap;
+import com.aliulas.repository.entity.Departman;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
-import static com.yavuzavci.utility.StaticValues.departmanListesi;
-
-public class DepartmanRepository implements ICrud<Departman> {
+public class DepartmanRepository implements ICrudD<Departman> {
+    private Map<Long, Departman> departmanListesi;
 
 
     public DepartmanRepository() {
-
+        departmanListesi = new HashMap<>();
     }
 
     @Override

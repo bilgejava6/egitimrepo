@@ -1,10 +1,16 @@
 package com.yavuzavci.utility.menu;
 
-import static com.yavuzavci.utility.StaticValues.anaMenu;
-import static com.yavuzavci.utility.StaticValues.scanner;
+import com.yavuzavci.entity.Departman;
+import com.yavuzavci.entity.Mudur;
+import com.yavuzavci.entity.Personel;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static com.yavuzavci.utility.StaticValues.*;
 
 public class RaporlamaMenu extends AnaMenu {
-    private void raporlamaMenuBaslik(){
+    private void raporlamaMenuBaslik() {
         System.out.println("*************************************************************");
         System.out.println("******************* RAPORLAMA İŞLEMLERİ *********************");
         System.out.println("*************************************************************");
@@ -16,10 +22,11 @@ public class RaporlamaMenu extends AnaMenu {
         System.out.println("6 -> Aynı Gün İçinde İşe Başlayan Personellerin Listesi");
         System.out.println("0 -> Ana Menüye Dön");
     }
+
     @Override
     public void menu() {
         int secim = 0;
-        do{
+        do {
             raporlamaMenuBaslik();
             System.out.print("Lütfen seçiminizi yapınız...: ");
             secim = scanner.nextInt();
@@ -31,29 +38,124 @@ public class RaporlamaMenu extends AnaMenu {
 
     @Override
     public void islemSec(int secim) {
-        switch(secim){
+        switch (secim) {
             case 1:
-
+                if (personelController.findAll().isEmpty()) {
+                    System.out.println("Bilgi: Sistemde kayıtlı personel yoktur.");
+                    break;
+                }
+                if (departmanController.findAll().isEmpty()) {
+                    System.out.println("Bilgi: Sistemde kayıtlı departman yoktur.");
+                    break;
+                }
+                for (Departman departman : departmanController.findAll()) {
+                    if (departman.getPersonelListesi().isEmpty())
+                        continue;
+                    System.out.println("Departman: " + departman.getAd());
+                    departman.getPersonelListesi().forEach(System.out::println);
+                }
                 break;
             case 2:
-
+                if (personelController.findAll().isEmpty()) {
+                    System.out.println("Bilgi: Sistemde kayıtlı personel yoktur.");
+                    break;
+                }
+                if (departmanController.findAll().isEmpty()) {
+                    System.out.println("Bilgi: Sistemde kayıtlı departman yoktur.");
+                    break;
+                }
+                String ad = departmanController.findAll()
+                        .stream()
+                        .collect(Collectors.toMap(
+                                Departman::getAd,
+                                d -> d.getPersonelListesi().size()))
+                        .entrySet().stream()
+                        .max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1)
+                        .get()
+                        .getKey();
+                System.out.println("En çok personel bulunan departman : " + ad);
                 break;
             case 3:
-
+                if (personelController.findAll().isEmpty()) {
+                    System.out.println("Bilgi: Sistemde kayıtlı personel yoktur.");
+                    break;
+                }
+                if (departmanController.findAll().isEmpty()) {
+                    System.out.println("Bilgi: Sistemde kayıtlı departman yoktur.");
+                    break;
+                }
+                departmanController.findAll().stream()
+                        .collect(
+                                Collectors.toMap(
+                                        Departman::getAd,
+                                        d -> d.getPersonelListesi()
+                                                .stream()
+                                                .collect(Collectors.averagingDouble(Personel::getMaas))
+                                )
+                        )
+                        .forEach((k, v) ->
+                                System.out.println("Departman -> " + k + " | Maaş Ortalaması -> " + v + " TL")
+                        );
                 break;
             case 4:
-
+                if (personelController.findAll().isEmpty()) {
+                    System.out.println("Bilgi: Sistemde kayıtlı personel yoktur.");
+                    break;
+                }
+                if (departmanController.findAll().isEmpty()) {
+                    System.out.println("Bilgi: Sistemde kayıtlı departman yoktur.");
+                    break;
+                }
+                if (personelController.findAll()
+                        .stream()
+                        .filter(Mudur.class::isInstance)
+                        .map(Mudur.class::cast)
+                        .toList()
+                        .isEmpty()) {
+                    System.out.println("Bilgi: Sistemde kayıtlı müdür veya genel müdür yoktur.");
+                }
+                System.out.println("## Müdürler ve sorumlu olduğu departmanlar ##");
+                personelController.findAll()
+                        .stream()
+                        .filter(Mudur.class::isInstance)
+                        .map(Mudur.class::cast)
+                        .toList()
+                        .forEach(m -> {
+                            System.out.println(m.getClass().getSimpleName() +  " - " + m.getAdSoyad());
+                            System.out.println("Sorumlu olduğu departmanlar");
+                            m.getDepartmanlar().forEach(System.out::println);
+                        });
                 break;
             case 5:
-
+                if (personelController.findAll().isEmpty()) {
+                    System.out.println("Bilgi: Sistemde kayıtlı personel yoktur.");
+                    break;
+                }
+                System.out.println("## Kayıt tarihine göre personeller ##");
+                personelController.findAll()
+                        .stream()
+                        .sorted(Comparator.comparing(Personel::getCreateDate))
+                        .toList()
+                        .forEach(System.out::println);
                 break;
             case 6:
-
+                if (personelController.findAll().isEmpty()) {
+                    System.out.println("Bilgi: Sistemde kayıtlı personel yoktur.");
+                    break;
+                }
+                // (Personel p1, Personel p2) -> p1.getCreateDate().equals(p2.getCreateDate())
+                System.out.println("## Aynı gün işe başlayan personeller ##");
+                personelController.findAll()
+                        .stream()
+                        .filter(p ->
+                                Collections.frequency(personelController.findAll(),p.getCreateDate()) > 1)
+                        .toList()
+                        .forEach(System.out::println);
                 break;
             case 0:
                 break;
             default:
-                System.err.println("HATA: Geçersiz seçim yaptınız.");
+                System.out.println("HATA: Geçersiz seçim yaptınız.");
                 break;
         }
     }

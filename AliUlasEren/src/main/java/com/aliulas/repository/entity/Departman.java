@@ -1,11 +1,17 @@
-package com.yavuzavci.entity;
+package com.aliulas.repository.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Departman extends BaseEntity {
+public class Departman extends BaseEntity{
     private String ad;
+    private int calisanSayisi;
     private List<Personel> personelListesi;
+
+    public Departman() {
+        super();
+        personelListesi = new ArrayList<>();
+    }
 
     public Departman(String ad){
         super();
@@ -21,6 +27,14 @@ public class Departman extends BaseEntity {
         this.ad = ad;
     }
 
+    public int getCalisanSayisi() {
+        return calisanSayisi;
+    }
+
+    public void setCalisanSayisi(int calisanSayisi) {
+        this.calisanSayisi = calisanSayisi;
+    }
+
     public List<Personel> getPersonelListesi() {
         return personelListesi;
     }
@@ -28,12 +42,6 @@ public class Departman extends BaseEntity {
     public void setPersonelListesi(List<Personel> personelListesi) {
         this.personelListesi = personelListesi;
     }
-
-    @Override
-    public String toString() {
-        return "Departman{" +
-                "ad='" + ad + '\'' +
-                ", calisanSayisi=" + personelListesi.size() +
-                '}';
-    }
 }
+
+

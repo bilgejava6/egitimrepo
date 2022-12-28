@@ -1,16 +1,26 @@
-package com.yavuzavci.repository;
+package com.aliulas.repository;
 
-import com.yavuzavci.entity.Personel;
+import com.aliulas.repository.entity.Personel;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
-import static com.yavuzavci.utility.StaticValues.personelListesi;
-
-public class PersonelRepository implements ICrud<Personel> {
+public class PersonelRepository implements ICrudD<Personel> {
+    private List<Personel> personelListesi;
 
     public PersonelRepository(){
-
+        personelListesi = new ArrayList<>();
     }
+
+    public List<Personel> getPersonelListesi() {
+        return personelListesi;
+    }
+
+    public void setPersonelListesi(List<Personel> personelListesi) {
+        this.personelListesi = personelListesi;
+    }
+
 
     @Override
     public void save(Personel personel) {

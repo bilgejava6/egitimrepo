@@ -1,7 +1,7 @@
-package com.yavuzavci.controller;
+package com.aliulas.controller;
 
-import com.yavuzavci.entity.Departman;
-import com.yavuzavci.service.DepartmanService;
+import com.aliulas.repository.entity.Departman;
+import com.aliulas.service.DepartmanService;
 
 import java.util.List;
 
@@ -12,16 +12,13 @@ public class DepartmanController {
         departmanService = new DepartmanService();
     }
 
-    public void save(){
-        Departman departman = new Departman("");
+    public void save(Departman departman){
         departmanService.save(departman);
     }
-    public void update(){
-        Departman departman = new Departman("");
+    public void update(Departman departman){
         departmanService.update(departman);
     }
-    public void delete() {
-        Long id = 0L;
+    public void delete(Long id) {
         departmanService.delete(id);
     }
     public Departman findById(Long id){
@@ -30,5 +27,4 @@ public class DepartmanController {
     public List<Departman> findAll() {
         return departmanService.findAll();
     }
-
 }

@@ -2,6 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="YavuzAvci.AraDonemOdevi" target="17" />
+      <module name="YavuzAvci.AraDonemOdevi.main" target="17" />
+      <module name="YavuzAvci.AraDonemOdevi.test" target="17" />
       <module name="YavuzAvci.main" target="17" />
       <module name="YavuzAvci.test" target="17" />
     </bytecodeTargetLevel>
