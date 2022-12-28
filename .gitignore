@@ -2,6 +2,7 @@
 .gradle/
 bin/
 build/
+.idea/
 # Repositoryde atlanmak istenen diğer dosyalar dizinleriyle buraya eklenebilir
 /VolkanGenel/gradlew
 /VolkanGenel/gradlew.bat
