@@ -40,6 +40,14 @@ public abstract class Personel extends BaseEntity {
         this.adSoyad = adSoyad;
     }
 
+    public ECinsiyet getCinsiyet() {
+        return cinsiyet;
+    }
+
+    public void setCinsiyet(ECinsiyet cinsiyet) {
+        this.cinsiyet = cinsiyet;
+    }
+
     public Integer getYas() {
         return yas;
     }
