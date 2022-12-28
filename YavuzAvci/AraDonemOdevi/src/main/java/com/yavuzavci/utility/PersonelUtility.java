@@ -1,10 +1,9 @@
 package com.yavuzavci.utility;
 
-import static com.yavuzavci.utility.StaticValues.departmanController;
-import static com.yavuzavci.utility.StaticValues.scanner;
-
 import com.yavuzavci.entity.Departman;
 import com.yavuzavci.entity.ECinsiyet;
+
+import static com.yavuzavci.utility.StaticValues.*;
 
 public class PersonelUtility {
     public static ECinsiyet cinsiyetAl(){
@@ -46,5 +45,41 @@ public class PersonelUtility {
     public static Double maasAl(){
         System.out.print("Personelin alacağı maaşı giriniz..: ");
         return scanner.nextDouble();
+    }
+
+    public static Long silinecekPersonelIdAl(){
+        System.out.print("Silmek istediğiniz personelin numarasını giriniz..: ");
+        return scanner.nextLong();
+    }
+
+    public static int yeniPersonelTuruSec(){
+        System.out.println("Oluşturabileceğiniz personel türleri ve kodları aşağıdaki gibidir.");
+        System.out.println("1 - Büro Personeli [Buro]");
+        System.out.println("2 - Genel Müdür [GenelMudur]");
+        System.out.println("3 - Hizmetli [Hizmetli]");
+        System.out.println("4 - İnsan Kaynakları Personeli [InsanKaynaklariPersoneli]");
+        System.out.println("5 - Müdür [Mudur]");
+        System.out.println("6 - Muhasebe Personeli [Muhasebe]");
+        System.out.println("7 - Teknik Personel [Teknik]");
+        System.out.print("Lütfen seçiniz..: ");
+        String personelTuru = scanner.nextLine();
+        switch (personelTuru.toLowerCase()){
+            case "buro":
+                return 1;
+            case "genelmudur":
+                return 2;
+            case "hizmetli":
+                return 3;
+            case "insankaynaklari":
+                return 4;
+            case "mudur":
+                return 5;
+            case "muhasebe":
+                return 6;
+            case "teknik":
+                return 7;
+            default:
+                return -1;
+        }
     }
 }
