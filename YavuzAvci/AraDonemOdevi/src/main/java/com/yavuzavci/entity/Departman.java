@@ -8,11 +8,6 @@ public class Departman extends BaseEntity {
     private int calisanSayisi;
     private List<Personel> personelListesi;
 
-    public Departman() {
-        super();
-        personelListesi = new ArrayList<>();
-    }
-
     public Departman(String ad){
         super();
         this.ad = ad;
@@ -41,5 +36,13 @@ public class Departman extends BaseEntity {
 
     public void setPersonelListesi(List<Personel> personelListesi) {
         this.personelListesi = personelListesi;
+    }
+
+    @Override
+    public String toString() {
+        return "Departman{" +
+                "ad='" + ad + '\'' +
+                ", calisanSayisi=" + calisanSayisi +
+                '}';
     }
 }
