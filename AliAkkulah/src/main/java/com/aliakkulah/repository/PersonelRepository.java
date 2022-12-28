@@ -20,8 +20,7 @@ public class PersonelRepository implements ICrud<Personel>{
         Long id = personel.getId();
         for(int i = 0; i < personelListesi.size(); i++) {
             if(personelListesi.get(i).getId().equals(id)) {
-                personelListesi.remove(i);
-                personelListesi.add(personel);
+                personelListesi.set(i,personel);
             }
         }
         System.out.println("Boyle id'ye sahip bir personel bulunmamaktadir.");

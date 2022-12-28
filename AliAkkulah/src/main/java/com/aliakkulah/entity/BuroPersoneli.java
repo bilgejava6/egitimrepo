@@ -1,5 +1,7 @@
 package com.aliakkulah.entity;
 
+import static com.aliakkulah.utility.Utility.departmanListesi;
+
 public class BuroPersoneli extends Personel {
     private int dosyalamaHiziDerecesi;
 
@@ -7,8 +9,8 @@ public class BuroPersoneli extends Personel {
     }
 
     public BuroPersoneli(String ad, String soyad, String unvan, String iseGirisTarihi, int dogumYili,
-                         String cinsiyet, double maas, int dosyalamaHiziDerecesi) {
-        super(ad, soyad, unvan, iseGirisTarihi, dogumYili, cinsiyet, maas);
+                         String cinsiyet, double maas, int depIndex, int dosyalamaHiziDerecesi) {
+        super(ad, soyad, unvan, iseGirisTarihi, dogumYili, cinsiyet, maas, depIndex);
         this.dosyalamaHiziDerecesi = dosyalamaHiziDerecesi;
     }
 

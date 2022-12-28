@@ -56,8 +56,12 @@ public class PersonelController {
                         case 2:
                             findAll();
                             break;
-                        case 3: break;
-                        case 4: break;
+                        case 3:
+
+                            break;
+                        case 4:
+
+                            break;
                         case 5: break;
                         case 0: break;
                         default: System.out.println("Lutfen gecerli secim yapiniz.\nAna menuye donuldu.");
@@ -136,7 +140,6 @@ public class PersonelController {
                 break;
         }
     }
-
     public Stack<String> ortakOzellikleriAl() {
         sc = new Scanner(System.in);
         Stack<String> ortakOzellikler = new Stack<>();
@@ -156,10 +159,14 @@ public class PersonelController {
         ortakOzellikler.add(sc.nextLine());
         return ortakOzellikler;
     }
-
     public void buroEkle(Stack<String> ortakOzellikler) {
         sc = new Scanner(System.in);
         int dosyalamaHizi = Integer.parseInt(sc.nextLine());
+        int depIndex = 0;
+        for(int i = 0; i < departmanListesi.size(); i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase("Buro"))
+                depIndex = i;
+        }
         Personel buroPersoneli = new BuroPersoneli(ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
@@ -167,12 +174,18 @@ public class PersonelController {
                 Integer.parseInt(ortakOzellikler.pop()),
                 ortakOzellikler.pop(),
                 Double.parseDouble(ortakOzellikler.pop()),
+                depIndex,
                 dosyalamaHizi);
         ps.save(buroPersoneli);
     }
     public void genelMudurEkle(Stack<String> ortakOzellikler) {
         sc = new Scanner(System.in);
         int bonusZamOrani = Integer.parseInt(sc.nextLine());
+        int depIndex = 0;
+        for(int i = 0; i < departmanListesi.size(); i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase("Genel Mudur"))
+                depIndex = i;
+        }
         Personel genelMudur = new GenelMudur(ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
@@ -180,12 +193,20 @@ public class PersonelController {
                 Integer.parseInt(ortakOzellikler.pop()),
                 ortakOzellikler.pop(),
                 Double.parseDouble(ortakOzellikler.pop()),
+                depIndex,
                 bonusZamOrani);
         ps.save(genelMudur);
     }
     public void hizmetliEkle(Stack<String> ortakOzellikler) {
         sc = new Scanner(System.in);
         int temizlikDerecesi = Integer.parseInt(sc.nextLine());
+        int depIndex = 0;
+        for(int i = 0; i < departmanListesi.size(); i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase("Hizmetli")) {
+                depIndex = i;
+                break;
+            }
+        }
         Personel hizmetli = new Hizmetli(ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
@@ -193,6 +214,7 @@ public class PersonelController {
                 Integer.parseInt(ortakOzellikler.pop()),
                 ortakOzellikler.pop(),
                 Double.parseDouble(ortakOzellikler.pop()),
+                depIndex,
                 temizlikDerecesi);
         ps.save(hizmetli);
     }
@@ -202,6 +224,11 @@ public class PersonelController {
         int iseAlimSayisi = Integer.parseInt(sc.nextLine());
         int istenCikarmaSayisi = Integer.parseInt(sc.nextLine());
         int girdigiMulakatSayisi = Integer.parseInt(sc.nextLine());
+        int depIndex = 0;
+        for(int i = 0; i < departmanListesi.size(); i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase("Insan Kaynaklari"))
+                depIndex = i;
+        }
         Personel ik = new IKPersoneli(ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
@@ -209,6 +236,7 @@ public class PersonelController {
                 Integer.parseInt(ortakOzellikler.pop()),
                 ortakOzellikler.pop(),
                 Double.parseDouble(ortakOzellikler.pop()),
+                depIndex,
                 iletisimKurmnaDerecesi,
                 iseAlimSayisi,
                 istenCikarmaSayisi,
@@ -219,7 +247,11 @@ public class PersonelController {
         sc = new Scanner(System.in);
         int bonusZamMiktari = Integer.parseInt(sc.nextLine());
         List<Personel> sorumluOlduguCalisanlar = null;
-
+        int depIndex = 0;
+        for(int i = 0; i < departmanListesi.size(); i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase("Mudur"))
+                depIndex = i;
+        }
         Personel mudur = new Mudur(ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
@@ -227,6 +259,7 @@ public class PersonelController {
                 Integer.parseInt(ortakOzellikler.pop()),
                 ortakOzellikler.pop(),
                 Double.parseDouble(ortakOzellikler.pop()),
+                depIndex,
                 bonusZamMiktari,
                 sorumluOlduguCalisanlar);
         ps.save(mudur);
@@ -235,6 +268,11 @@ public class PersonelController {
         sc = new Scanner(System.in);
         double yatirdigiMaasMiktari = Double.parseDouble(sc.nextLine());
         int yatirdigiMaasAdeti = Integer.parseInt(sc.nextLine());
+        int depIndex = 0;
+        for(int i = 0; i < departmanListesi.size(); i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase("Muhasebe"))
+                depIndex = i;
+        }
         Personel muhasebe = new MuhasebePersoneli(ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
@@ -242,6 +280,7 @@ public class PersonelController {
                 Integer.parseInt(ortakOzellikler.pop()),
                 ortakOzellikler.pop(),
                 Double.parseDouble(ortakOzellikler.pop()),
+                depIndex,
                 yatirdigiMaasMiktari,
                 yatirdigiMaasAdeti);
         ps.save(muhasebe);
@@ -262,6 +301,11 @@ public class PersonelController {
             meslekYeterlilikBelgesiVarMi = false;
             System.out.println("Yanlis deger girildi.\nOtomatik olarak mesleki yeterlilik belgesi yok olarak kaydedildi.");
         }
+        int depIndex = 0;
+        for(int i = 0; i < departmanListesi.size(); i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase("Teknik"))
+                depIndex = i;
+        }
         Personel teknik = new TeknikPersonel(ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
                 ortakOzellikler.pop(),
@@ -269,40 +313,74 @@ public class PersonelController {
                 Integer.parseInt(ortakOzellikler.pop()),
                 ortakOzellikler.pop(),
                 Double.parseDouble(ortakOzellikler.pop()),
+                depIndex,
                 meslekYeterlilikBelgesiVarMi);
         ps.save(teknik);
     }
 
     public void baslangicKisileriAtama() {
-        Personel bp1 = new BuroPersoneli("Umit","Gelecek","Yeni","09.01.2022",2000,"Erkek",10_000,3);
-        Personel gm1 = new GenelMudur("Ozgur","Erturk","Genel Mudur","08.02.2007",1988,"Erkek",63_500,15);
-        Personel hzmt1 = new Hizmetli("Selda","Dogru","Kidemli","22.11.2001",1985,"Kadin",11_500,5);
-        Personel ik1 = new IKPersoneli("Yeliz","Serin","Kidemli","22.11.2001",1990,"Kadin",22_500,5,32,18,83);
-        Personel mudur1 = new Mudur("Murat","Ozben","Mudur","11.08.2010",1985,"Erkek",47_880,1250,null);
-        Personel mhsb1 = new MuhasebePersoneli("Fazli","Gunes","Yeni","20.10.2021",1993,"Erkek",13_750,1_253_532,90);
-        Personel tp1 = new TeknikPersonel("Muammer","Karatas","Kidemli","08.02.2007",1991,"Erkek",19_500,false);
-        Personel bp2 = new BuroPersoneli("Ahmet","Kocaman","Kidemli","09.07.2014",1985,"Erkek",16_000,4);
-        Personel hzmt2 = new Hizmetli("Buse","Yildiz","Yeni","20.10.2021",2001,"Kadin",8_500,3);
-        Personel ik2 = new IKPersoneli("Aynur","Sulak","Yeni","20.07.2019",1972,"Kadin",33_500,5,5,0,30);
-        Personel mudur2 = new Mudur("Umut","Saygin","Kidemli","09.07.2014",1970,"Erkek",29_880,1750,null);
-        Personel mhsb2 = new MuhasebePersoneli("Ufuk","Yilmaz","Kidemli","08.02.2007",1980,"Erkek",29_770,3_845_552,445);
-        Personel tp2 = new TeknikPersonel("Samet","Demirer","Yeni","05.10.2018",1999,"Erkek",11_500,false);
+        Departman dp1 = new Departman("Buro");
+        departmanListesi.add(dp1);
+        Departman dp2 = new Departman("Genel Mudur");
+        departmanListesi.add(dp2);
+        Departman dp3 = new Departman("Hizmetli");
+        departmanListesi.add(dp3);
+        Departman dp4 = new Departman("Insan Kaynaklari");
+        departmanListesi.add(dp4);
+        Departman dp5 = new Departman("Mudur");
+        departmanListesi.add(dp5);
+        Departman dp6 = new Departman("Muhasebe");
+        departmanListesi.add(dp6);
+        Departman dp7 = new Departman("Teknik");
+        departmanListesi.add(dp7);
+
+
+        Personel bp1 = new BuroPersoneli("Umit","Gelecek","Yeni","09.01.2022",
+                2000,"Erkek",10_000,0,3);
+        Personel gm1 = new GenelMudur("Ozgur","Erturk","Genel Mudur","08.02.2007",
+                1988,"Erkek",63_500,1,15);
+        Personel hzmt1 = new Hizmetli("Selda","Dogru","Kidemli","22.11.2001",
+                1985,"Kadin",11_500,2,5);
+        Personel ik1 = new IKPersoneli("Yeliz","Serin","Kidemli","22.11.2001",
+                1990,"Kadin",22_500,3,32,18,3,83);
+        Personel mudur1 = new Mudur("Murat","Ozben","Mudur","11.08.2010",
+                1985,"Erkek",47_880,4,1250,null);
+        Personel mhsb1 = new MuhasebePersoneli("Fazli","Gunes","Yeni","20.10.2021",
+                1993,"Erkek",13_750,5,1_253_532,90);
+        Personel tp1 = new TeknikPersonel("Muammer","Karatas","Kidemli","08.02.2007",
+                1991,"Erkek",19_500,6,false);
+        Personel bp2 = new BuroPersoneli("Ahmet","Kocaman","Kidemli","09.07.2014",
+                1985,"Erkek",16_000,0,3);
+        Personel hzmt2 = new Hizmetli("Buse","Yildiz","Yeni","20.10.2021",
+                2001,"Kadin",8_500,2,3);
+        Personel ik2 = new IKPersoneli("Aynur","Sulak","Yeni","20.07.2019",
+                1972,"Kadin",33_500,3,3,5,3,30);
+        Personel mudur2 = new Mudur("Umut","Saygin","Kidemli","09.07.2014",
+                1970,"Erkek",29_880,4,1250,null);
+        Personel mhsb2 = new MuhasebePersoneli("Ufuk","Yilmaz","Kidemli","08.02.2007",
+                1980,"Erkek",29_770,5,3_845_552,445);
+        Personel tp2 = new TeknikPersonel("Samet","Demirer","Yeni","05.10.2018",
+                1999,"Erkek",11_500,6,false);
         personelListesi.add(bp1);
+        personelListesi.add(bp2);
         personelListesi.add(gm1);
         personelListesi.add(hzmt1);
-        personelListesi.add(ik1);
-        personelListesi.add(mudur1);
-        personelListesi.add(mhsb1);
-        personelListesi.add(tp1);
-        personelListesi.add(bp2);
         personelListesi.add(hzmt2);
+        personelListesi.add(ik1);
         personelListesi.add(ik2);
+        personelListesi.add(mudur1);
         personelListesi.add(mudur2);
+        personelListesi.add(mhsb1);
         personelListesi.add(mhsb2);
+        personelListesi.add(tp1);
         personelListesi.add(tp2);
     }
 
+    public void guncellenecekPersonelSecme() {
+
+    }
     public void update(Personel personel){
+
         ps.update(personel);
     }
     public void deleteById(){
