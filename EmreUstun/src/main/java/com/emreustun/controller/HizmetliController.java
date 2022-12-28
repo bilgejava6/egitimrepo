@@ -33,6 +33,17 @@ public class HizmetliController{
         hizmetli.setCalismaYeri(sc.nextLine());
 
         System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
+
+        System.out.println("Personelin işe başlama tarihi..: ");
+        System.out.println("Lütfen rakamları kullanınız !!");
+        System.out.println("Yıl giriniz");
+        int yil = sc.nextInt();
+        System.out.println("Ay giriniz");
+        int ay = sc.nextInt();
+        System.out.println("Gün giriniz");
+        int gun = sc.nextInt();
+        hizmetli.setIseBaslamaTarihi(yil-1900,ay-1,gun);
+
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){
@@ -71,6 +82,17 @@ public class HizmetliController{
         hizmetli.setCalismaYeri(sc.nextLine());
 
         System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
+
+        System.out.println("Personelin işe başlama tarihi..: ");
+        System.out.println("Lütfen rakamları kullanınız !!");
+        System.out.println("Yıl giriniz");
+        int yil = sc.nextInt();
+        System.out.println("Ay giriniz");
+        int ay = sc.nextInt();
+        System.out.println("Gün giriniz");
+        int gun = sc.nextInt();
+        hizmetli.setIseBaslamaTarihi(yil-1900,ay-1,gun);
+
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){

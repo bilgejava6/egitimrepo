@@ -32,13 +32,21 @@ public class MudurController {
         System.out.println("Müdürün görev tanımını giriniz..: ");
         mudur.setGorevTanimi(sc.nextLine());
 
+        System.out.println("Personelin işe başlama tarihi..: ");
+        System.out.println("Lütfen rakamları kullanınız !!");
+        System.out.println("Yıl giriniz");
+        int yil = sc.nextInt();
+        System.out.println("Ay giriniz");
+        int ay = sc.nextInt();
+        System.out.println("Gün giriniz");
+        int gun = sc.nextInt();
+        mudur.setIseBaslamaTarihi(yil-1900,ay-1,gun);
+
         //mudurun sorumlu oldugu departmanları atamak
         System.out.println("Müdürün sorumlu olduğu departmanı giriniz.");
-        var value = 0;
+        var value = 1;
+        var departmanSahiplikSayisi = 1;
         do{
-            System.out.println("1-> Departman ata");
-            System.out.println("0-> CIK");
-            value = sc.nextInt();
             switch (value) {
                 case 1:
                     int index2 = 1;
@@ -52,12 +60,16 @@ public class MudurController {
                 case 0:
                     System.out.println("Cıkıs Yapiliyor");
                     break;
-                default:
             }
+            departmanSahiplikSayisi++;
+            System.out.println("1-> "+departmanSahiplikSayisi+". Departmanı ata");
+            System.out.println("0-> Personelin bilgilerini oluşturmaya devam et");
+            value = sc.nextInt();
         }while(value != 0);
         // stat values da mapin içine atıyoruz
         StaticValues.mapMudurDepartmanListesi.put(mudur,mudur.getMudurlerinSorumluOlduguDepartmanListesi());
         System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
+
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){
@@ -100,13 +112,21 @@ public class MudurController {
         System.out.println("Sorumlu olduklarıyla ilgili görev tanımı ");
         mudur.setGorevTanimi(sc.nextLine());
 
+        System.out.println("Müdürün işe başlama tarihi..: ");
+        System.out.println("Lütfen rakamları kullanınız !!");
+        System.out.println("Yıl giriniz");
+        int yil = sc.nextInt();
+        System.out.println("Ay giriniz");
+        int ay = sc.nextInt();
+        System.out.println("Gün giriniz");
+        int gun = sc.nextInt();
+        mudur.setIseBaslamaTarihi(yil-1900,ay-1,gun);
+
         System.out.println("Müdürün sorumlu olduğu departmanı giriniz.");
         //müdüre sorumlu olduğu departmanı atamak...
-        var value = 0;
+        var value = 1;
+        var departmanSahiplikSayisi = 1;
         do{
-            System.out.println("1-> Departman ata");
-            System.out.println("0-> CIK");
-            value = sc.nextInt();
             switch (value) {
                 case 1:
                     int index2 = 1;
@@ -120,8 +140,11 @@ public class MudurController {
                 case 0:
                     System.out.println("Cıkıs Yapiliyor");
                     break;
-                default:
             }
+            departmanSahiplikSayisi++;
+            System.out.println("1-> "+departmanSahiplikSayisi+". Departmanı ata");
+            System.out.println("0-> Personelin bilgilerini oluşturmaya devam et");
+            value = sc.nextInt();
         }while(value != 0);
         // stat values da mapin içine atıyoruz
         StaticValues.mapMudurDepartmanListesi.put(mudur,mudur.getMudurlerinSorumluOlduguDepartmanListesi());

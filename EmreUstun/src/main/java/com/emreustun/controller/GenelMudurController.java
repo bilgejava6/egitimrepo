@@ -36,13 +36,21 @@ public class GenelMudurController {
         System.out.println("Sorumlu olduklarıyla ilgili görev tanımı ");
         genelMudur.setGorevTanimi(sc.nextLine());
 
+        System.out.println("Genel müdürün işe başlama tarihi..: ");
+        System.out.println("Lütfen rakamları kullanınız !!");
+        System.out.println("Yıl giriniz");
+        int yil = sc.nextInt();
+        System.out.println("Ay giriniz");
+        int ay = sc.nextInt();
+        System.out.println("Gün giriniz");
+        int gun = sc.nextInt();
+        genelMudur.setIseBaslamaTarihi(yil-1900,ay-1,gun);
+
         // genel mudurun sorumlu oldugu departmanları atamak
         System.out.println("Müdürün sorumlu olduğu departmanı giriniz.");
-        var value = 0;
+        var value = 1;
+        var departmanSahiplikSayisi = 1;
         do{
-            System.out.println("1-> Departman ata");
-            System.out.println("0-> CIK");
-            value = sc.nextInt();
             switch (value) {
                 case 1:
                     int index2 = 1;
@@ -56,11 +64,15 @@ public class GenelMudurController {
                 case 0:
                     System.out.println("Cıkıs Yapiliyor");
                     break;
-                default:
             }
+            departmanSahiplikSayisi++;
+            System.out.println("[1] -> "+departmanSahiplikSayisi+". Departmanı ata");
+            System.out.println("[0] -> Personelin bilgilerini oluşturmaya devam et");
+            value = sc.nextInt();
         }while(value != 0);
         StaticValues.mapGenelMudurDepartmanListesi.put(genelMudur,genelMudur.getGenelMudurlerinSorumluOlduguDepartmanListesi());
         System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
+
         // Departman atamak...
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){
@@ -70,7 +82,6 @@ public class GenelMudurController {
         int secim = sc.nextInt();
         genelMudur.setDepartman(StaticValues.departmanListesi.get(secim-1));
         genelMudur.getDepartman().getDepartmanPersonelListesi().add(genelMudur);
-
         genelMudurService.save(genelMudur);
     }
 
@@ -100,6 +111,16 @@ public class GenelMudurController {
         sc.nextLine();
         System.out.println("Sorumlu olduklarıyla ilgili görev tanımı ");
         genelMudur.setGorevTanimi(sc.nextLine());
+
+        System.out.println("Genel müdürün işe başlama tarihi..: ");
+        System.out.println("Lütfen rakamları kullanınız !!");
+        System.out.println("Yıl giriniz");
+        int yil = sc.nextInt();
+        System.out.println("Ay giriniz");
+        int ay = sc.nextInt();
+        System.out.println("Gün giriniz");
+        int gun = sc.nextInt();
+        genelMudur.setIseBaslamaTarihi(yil-1900,ay-1,gun);
 
         // genel mudurun sorumlu oldugu departmanları atamak
         System.out.println("Müdürün sorumlu olduğu departmanı giriniz.");

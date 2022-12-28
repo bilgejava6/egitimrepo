@@ -33,6 +33,15 @@ public class BuroPersoneliController {
         System.out.println("Büro personelinin ofis numarası...: ");
         buroPersoneli.setOfisNo(sc.nextInt());
 
+        System.out.println("Büro personelinin işe başlama tarihi..: ");
+        System.out.println("Lütfen rakamları kullanınız !!");
+        System.out.println("Yıl giriniz");
+        int yil = sc.nextInt();
+        System.out.println("Ay giriniz");
+        int ay = sc.nextInt();
+        System.out.println("Gün giriniz");
+        int gun = sc.nextInt();
+        buroPersoneli.setIseBaslamaTarihi(yil-1900,ay-1,gun);
 
         System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
@@ -75,6 +84,16 @@ public class BuroPersoneliController {
 
         System.out.println("Büro personelinin ofis numarası...: ");
         buroPersoneli.setOfisNo(sc.nextInt());
+
+        System.out.println("Büro personelinin işe başlama tarihi..: ");
+        System.out.println("Lütfen rakamları kullanınız !!");
+        System.out.println("Yıl giriniz");
+        int yil = sc.nextInt();
+        System.out.println("Ay giriniz");
+        int ay = sc.nextInt();
+        System.out.println("Gün giriniz");
+        int gun = sc.nextInt();
+        buroPersoneli.setIseBaslamaTarihi(yil-1900,ay-1,gun);
 
         System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
