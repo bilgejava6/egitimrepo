@@ -3,28 +3,28 @@ package com.aliulas.repository.entity;
 import java.util.List;
 
 public class GenelMudur extends Personel {
-    private String sorumluOlduguAlanlar;
+    private String sorumluOlduguDepartmanlar;
 
     public GenelMudur() {
     }
 
     public GenelMudur(String ad, String soyad, String email, String telefon, String pozisyon, int maas, String kayitTarihi, String sorumluOlduguAlanlar) {
         super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi);
-        this.sorumluOlduguAlanlar = sorumluOlduguAlanlar;
+        this.sorumluOlduguDepartmanlar = sorumluOlduguAlanlar;
     }
 
     public String getSorumluOlduguAlanlar() {
-        return sorumluOlduguAlanlar;
+        return sorumluOlduguDepartmanlar;
     }
 
     public void setSorumluOlduguAlanlar(String sorumluOlduguAlanlar) {
-        this.sorumluOlduguAlanlar = sorumluOlduguAlanlar;
+        this.sorumluOlduguDepartmanlar = sorumluOlduguAlanlar;
     }
 
     @Override
     public String toString() {
         return "GenelMudur{" +
-                "sorumluOlduguAlanlar='" + sorumluOlduguAlanlar + '\'' +
+                "sorumluOlduguAlanlar='" + sorumluOlduguDepartmanlar + '\'' +
                 "} " + super.toString();
     }
 }

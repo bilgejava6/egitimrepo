@@ -7,8 +7,8 @@ public class InsanKaynaklariPersoneli extends Personel{
 
     }
 
-    public InsanKaynaklariPersoneli(String ad, String soyad, String email, String telefon, Departman departman, String pozisyon, int maas, String kayitTarihi, String calismaAlani) {
-        super(ad, soyad, email, telefon, departman, pozisyon, maas, kayitTarihi);
+    public InsanKaynaklariPersoneli(String ad, String soyad, String email, String telefon, String pozisyon, int maas, String kayitTarihi, String calismaAlani) {
+        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi);
         this.calismaAlani = calismaAlani;
     }
 

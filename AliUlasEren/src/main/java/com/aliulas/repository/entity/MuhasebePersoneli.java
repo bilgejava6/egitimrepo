@@ -1,27 +1,31 @@
 package com.aliulas.repository.entity;
 
-public class MuhasebePersoneli extends Personel{
-    private String muhasebeAlani;
+public class MuhasebePersoneli extends Personel {
+    private double maasEkle;
+
     public MuhasebePersoneli() {
         super();
 
     }
 
-    public MuhasebePersoneli(String ad, String soyad, String email, String telefon, Departman departman, String pozisyon, int maas, String kayitTarihi, String muhasebeAlani) {
-        super(ad, soyad, email, telefon, departman, pozisyon, maas, kayitTarihi);
-        this.muhasebeAlani = muhasebeAlani;
+    public MuhasebePersoneli(String ad, String soyad, String email, String telefon, String pozisyon, int maas, String kayitTarihi, double maasEkle) {
+        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi);
+        this.maasEkle = maasEkle;
     }
 
-    public String getMuhasebeAlanı() {
-        return muhasebeAlani;
+    public double getMaasEkle() {
+        return maasEkle;
     }
 
-    public void setMuhasebeAlanı(String muhasebeAlanı) {
-        this.muhasebeAlani = muhasebeAlanı;
+    public void setMaasEkle(double maasEkle) {
+        this.maasEkle = maasEkle;
     }
 
     @Override
     public String toString() {
-        return "MuhasebePersoneli [muhasebeAlanı=" + muhasebeAlani + ", calismaYılı=" +  "]";
+        return "MuhasebePersoneli{" +
+                "maasEkle=" + maasEkle +
+                "} " + super.toString();
     }
+
 }
