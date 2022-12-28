@@ -1,7 +1,6 @@
 package com.yavuzavci.utility.menu;
 
-import static com.yavuzavci.utility.StaticValues.anaMenu;
-import static com.yavuzavci.utility.StaticValues.scanner;
+import static com.yavuzavci.utility.StaticValues.*;
 
 public class PersonelMenu extends AnaMenu {
     private void personelMenuBaslik(){
@@ -32,19 +31,39 @@ public class PersonelMenu extends AnaMenu {
     public void islemSec(int secim) {
         switch(secim){
             case 1:
-
+                personelController.save();
                 break;
             case 2:
-
+                if(personelController.findAll().isEmpty()){
+                    System.out.println("Bilgi : Sistemde kayıtlı personel bulunmamaktadır.");
+                    break;
+                }
+                System.out.println("### Personel Listesi ###");
+                personelController.findAll().forEach(System.out::println);
                 break;
             case 3:
-
+                if(personelController.findAll().isEmpty()){
+                    System.err.println("HATA: Sistemde kayıtlı personel yoktur.");
+                    break;
+                }
+                System.out.print("Bilgilerini güncellemek istediğiniz personelin numarasını giriniz..: ");
+                long id = scanner.nextLong();
+                if(personelController.findById(id).equals(null)){
+                    System.err.println("HATA: Sistemde " + id + " numaralı personel yoktur.");
+                    break;
+                }
+                personelController.update();
                 break;
             case 4:
-
+                departmanController.save();
                 break;
             case 5:
-
+                if(departmanController.findAll().isEmpty()){
+                    System.out.println("Bilgi : Sistemde kayıtlı departman bulunmamaktadır.");
+                    break;
+                }
+                System.out.println("### Departman Listesi ###");
+                departmanController.findAll().forEach(System.out::println);
                 break;
             case 0:
                 break;
