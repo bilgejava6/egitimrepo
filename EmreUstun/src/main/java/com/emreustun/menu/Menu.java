@@ -7,10 +7,7 @@ import com.emreustun.entity.GenelMudur;
 import com.emreustun.entity.Personel;
 import com.emreustun.utility.StaticValues;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -65,6 +62,7 @@ public class Menu {
             System.out.println("3-> Departmanlara göre maaş ortalamaları");
             System.out.println("4-> Müdürlerin sorumlu olduğu departman listesi");
             System.out.println("5-> Kayıt tarihlerine göre personellerin sıralı listesi");
+            System.out.println("6-> Ayni gün içinde işe başlayan personellerin listesi");
             System.out.println("0-> Bir önceki menüye dön");
             System.out.println();
             System.out.println("Lütfen seçiminizi yapınız");
@@ -99,10 +97,16 @@ public class Menu {
                     StaticValues.mapMudurDepartmanListesi.forEach((k,v) -> System.out.println(k+"Sorumlu oldugu departmanlar -> "+ v));
                     break;
                 case 5:
-
+                    System.out.println("Kayıt tarihlerine göre personellerin sıralı listesi..: ");
+                    List<Personel> kayitTarihlerineGoreSiralanmisListe = StaticValues.personelListesi.stream()
+                            .sorted((p1, p2) -> Long.compare(p1.getCreateDate(), p2.getCreateDate()))
+                            .collect(Collectors.toList());
+                    kayitTarihlerineGoreSiralanmisListe.forEach(System.out::println);
                     break;
                 case 6:
-
+                    System.out.println("Aynı gün içinde işe başlayanların listesi");
+                    Map<Date,List<Personel>> groupByDate = StaticValues.personelListesi.stream().collect(Collectors.groupingBy(x-> x.getIseBaslamaTarihi()));
+                    groupByDate.forEach((k,v) -> System.out.println(k + " tarihinde işe başlayanların listesi -> "+ v));
                     break;
                 case 0:
                     System.out.println("Bir önceki menüye dönülüyor");
