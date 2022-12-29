@@ -35,7 +35,7 @@ public class MuhasebePersoneli extends Personel {
 
     @Override
     public String toString() {
-        return "MuhasebePersoneli [yatirdigiMaasMiktari=" + yatirdigiMaasMiktari + ", yatirdigiMaasAdeti="
+        return super.toString() + "MuhasebePersoneli [yatirdigiMaasMiktari=" + yatirdigiMaasMiktari + ", yatirdigiMaasAdeti="
                 + yatirdigiMaasAdeti + ", getCinsiyet()=" + getCinsiyet() + ", getId()=" + getId() + ", getAd()="
                 + getAd() + ", getSoyad()=" + getSoyad() + ", getUnvan()=" + getUnvan() + ", getIseGirisTarihi()="
                 + getIseGirisTarihi() + ", getDogumYili()=" + getDogumYili() + ", getMaas()=" + getMaas() + "]";

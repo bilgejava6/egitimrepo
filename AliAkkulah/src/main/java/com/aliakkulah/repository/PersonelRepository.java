@@ -5,8 +5,11 @@ import com.aliakkulah.entity.Personel;
 import static com.aliakkulah.utility.Utility.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class PersonelRepository implements ICrud<Personel>{
+
     @Override
     public void save(Personel personel) {
         personelListesi.add(personel);
@@ -55,5 +58,14 @@ public class PersonelRepository implements ICrud<Personel>{
             }
         }
         System.out.println("Boyle id'ye sahip bir personel bulunmamaktadir.");
+    }
+
+    @Override
+    public Map<String,Double> odemeListesi() {
+        Map<String,Double> odemeListesi = new TreeMap<>();
+        personelListesi.forEach(x-> {
+            odemeListesi.put("id: " + x.getId() + " Isım Soyisim:" + x.getAd()+" "+x.getSoyad(), x.getMaas());
+        });
+        return odemeListesi;
     }
 }
