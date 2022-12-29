@@ -9,6 +9,13 @@ public abstract class Personel extends BaseEntity {
     private Departman departman;
     private Double maas;
     private Double odenmisUcret;
+    /**
+     * Sadece ilgili personel için geçerli olan yetkilendirmeler.
+     * Varsayılan olarak yetki olmayacaktır.
+     */
+    private boolean odemeyeYetkiliMi; // muhasebe,genel müdür
+    private boolean maasTanimlayabilirMi; // ik, muhasebe, genel müdür
+    private boolean istenCikarabilirMi; // müdür, genel müdür
 
     public Personel(String adSoyad, ECinsiyet cinsiyet, Integer yas, String telefon, Departman departman) {
         super();
@@ -19,6 +26,9 @@ public abstract class Personel extends BaseEntity {
         this.departman = departman;
         maas = 0D;
         odenmisUcret = 0D;
+        odemeyeYetkiliMi = false;
+        maasTanimlayabilirMi = false;
+        istenCikarabilirMi = false;
     }
 
     public Personel(String adSoyad, ECinsiyet cinsiyet, Integer yas, String telefon, Departman departman, Double maas) {
@@ -30,6 +40,9 @@ public abstract class Personel extends BaseEntity {
         this.departman = departman;
         this.maas = maas;
         odenmisUcret = 0D;
+        odemeyeYetkiliMi = false;
+        maasTanimlayabilirMi = false;
+        istenCikarabilirMi = false;
     }
 
     public String getAdSoyad() {
@@ -88,15 +101,38 @@ public abstract class Personel extends BaseEntity {
         this.odenmisUcret = odenmisUcret;
     }
 
+    public boolean isOdemeyeYetkiliMi() {
+        return odemeyeYetkiliMi;
+    }
+
+    public void setOdemeyeYetkiliMi(boolean odemeyeYetkiliMi) {
+        this.odemeyeYetkiliMi = odemeyeYetkiliMi;
+    }
+
+    public boolean isMaasTanimlayabilirMi() {
+        return maasTanimlayabilirMi;
+    }
+
+    public void setMaasTanimlayabilirMi(boolean maasTanimlayabilirMi) {
+        this.maasTanimlayabilirMi = maasTanimlayabilirMi;
+    }
+
+    public boolean isIstenCikarabilirMi() {
+        return istenCikarabilirMi;
+    }
+
+    public void setIstenCikarabilirMi(boolean istenCikarabilirMi) {
+        this.istenCikarabilirMi = istenCikarabilirMi;
+    }
+
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() +
-                '{' +
-                "adSoyad= '" + adSoyad + '\'' +
-                ", yas= " + yas +
-                ", telefon= '" + telefon + '\'' +
-                ", departman= " + departman +
-                ", maas= " + maas +
-                '}';
+        return "Standart Personel" + '\n'
+                + "Adı - Soyadı -> " + adSoyad + '\n'
+                + "Yaşı -> " + yas + '\n'
+                + "Telefonu -> " + telefon + '\n'
+                + "Departmanı -> " + departman.getAd() + '\n'
+                + "Maaşı -> " + maas + " TL" + '\n'
+                + "Yetkileri -> Yok\n";
     }
 }
