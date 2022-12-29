@@ -45,7 +45,7 @@ public class Mudur extends Personel {
                 + (isIstenCikarabilirMi()
                     ? "İşten Çıkarma\n"
                     : "\n")
-                + "Bağlı Departmanlar -> " + departmanlar.stream().toString()
+                + "Bağlı Departmanlar -> " + departmanlar
                 + '\n';
     }
 }

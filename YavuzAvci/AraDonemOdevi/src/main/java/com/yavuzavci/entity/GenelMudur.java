@@ -6,14 +6,14 @@ public class GenelMudur extends Mudur {
 
     public GenelMudur(String adSoyad, ECinsiyet cinsiyet, Integer yas, String telefon, Departman departman,
                       boolean odemeyeYetkiliMi, boolean maasTanimlayabilirMi, boolean istenCikarabilirMi) {
-        super(adSoyad, cinsiyet, yas, telefon, departman,maasTanimlayabilirMi,istenCikarabilirMi);
+        super(adSoyad,cinsiyet,yas,telefon,departman,maasTanimlayabilirMi,istenCikarabilirMi);
         setDepartmanlar(departmanListesi.values().stream().toList());
         setOdemeyeYetkiliMi(odemeyeYetkiliMi);
     }
 
     public GenelMudur(String adSoyad, ECinsiyet cinsiyet, Integer yas, String telefon, Departman departman,
                       Double maas, boolean odemeyeYetkiliMi, boolean maasTanimlayabilirMi, boolean istenCikarabilirMi) {
-        super(adSoyad, cinsiyet, yas, telefon, departman,maasTanimlayabilirMi,istenCikarabilirMi);
+        super(adSoyad,cinsiyet,yas,telefon,departman,maas,maasTanimlayabilirMi,istenCikarabilirMi);
         setDepartmanlar(departmanListesi.values().stream().toList());
         setOdemeyeYetkiliMi(odemeyeYetkiliMi);
     }
@@ -35,7 +35,7 @@ public class GenelMudur extends Mudur {
                 + (isIstenCikarabilirMi()
                     ? "İşten Çıkarma\n"
                     : "\n")
-                + "Bağlı Departmanlar -> " + getDepartmanlar().stream().toString()
+                + "Bağlı Departmanlar -> " + getDepartmanlar()
                 + '\n';
     }
 }
