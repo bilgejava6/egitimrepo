@@ -2,11 +2,13 @@ package com.yavuzavci.controller;
 
 import static com.yavuzavci.entity.ECinsiyet.*;
 import static com.yavuzavci.utility.PersonelUtility.*;
+import static com.yavuzavci.utility.StaticValues.*;
 
 import com.yavuzavci.entity.*;
 import com.yavuzavci.service.PersonelService;
 
 import java.util.List;
+import java.util.Objects;
 
 public class PersonelController {
     private final PersonelService personelService;
@@ -85,8 +87,124 @@ public class PersonelController {
         }
     }
     public void update(){
-        Personel personel = new BuroPersoneli("", DIGER,0,"",new Departman(""));
-        personelService.update(personel);
+        // her personel için geçerli
+        if(personelService.findAll().isEmpty()){
+            System.out.println("HATA: Sistemde kayıtlı personel yoktur. Güncelleme işlemi yapılamaz.");
+            return;
+        }
+        System.out.print("Bilgilerini güncellemek istediğiniz personelin numarasını giriniz..: ");
+        long id = scanner.nextLong();
+        Personel personel = personelService.findById(id);
+        if(Objects.isNull(personel)){
+            System.out.println("HATA: Sistemde " + id + " numaralı personel yoktur.");
+            return;
+        }
+        String adSoyad = adSoyadAl();
+        ECinsiyet cinsiyet = cinsiyetAl();
+        Integer yas = yasAl();
+        String telefon = telefonAl();
+        Departman departman = departmanAl();
+        // personel türüne göre değişen işlemler
+        int personelTuru = personelTuruBelirle(personel.getClass().getSimpleName());
+        switch (personelTuru){
+            case 1: {
+                personel.setAdSoyad(adSoyad);
+                personel.setCinsiyet(cinsiyet);
+                personel.setYas(yas);
+                personel.setTelefon(telefon);
+                personel.setDepartman(departman);
+                personel.setUpdateDate(sistemSaatiniAl());
+                personelService.update(personel);
+                break;
+            }
+            case 2: {
+                boolean odemeyeYetkiliMi = odemeYetkisiAl();
+                boolean maasTanimlayabilirMi = maasTanimlamaYetkisiAl();
+                boolean istenCikarabilirMi = istenCikarmaYetkisiAl();
+                personel.setAdSoyad(adSoyad);
+                personel.setCinsiyet(cinsiyet);
+                personel.setYas(yas);
+                personel.setTelefon(telefon);
+                personel.setDepartman(departman);
+                personel.setOdemeyeYetkiliMi(odemeyeYetkiliMi);
+                personel.setMaasTanimlayabilirMi(maasTanimlayabilirMi);
+                personel.setIstenCikarabilirMi(istenCikarabilirMi);
+                personel.setUpdateDate(sistemSaatiniAl());
+                personelService.update(personel);
+                break;
+            }
+            case 3:{
+                Integer vardiyaSuresi = vardiyaSuresiTanimla();
+                personel.setAdSoyad(adSoyad);
+                personel.setCinsiyet(cinsiyet);
+                personel.setYas(yas);
+                personel.setTelefon(telefon);
+                personel.setDepartman(departman);
+                ((Hizmetli) personel).setVardiyaSuresi(vardiyaSuresi);
+                personel.setUpdateDate(sistemSaatiniAl());
+                personelService.update(personel);
+                break;
+            }
+            case 4:{
+                boolean maasTanimlayabilirMi = maasTanimlamaYetkisiAl();
+                personel.setAdSoyad(adSoyad);
+                personel.setCinsiyet(cinsiyet);
+                personel.setYas(yas);
+                personel.setTelefon(telefon);
+                personel.setDepartman(departman);
+                personel.setMaasTanimlayabilirMi(maasTanimlayabilirMi);
+                personel.setUpdateDate(sistemSaatiniAl());
+                personelService.update(personel);
+                break;
+            }
+            case 5:{
+                boolean maasTanimlayabilirMi = maasTanimlamaYetkisiAl();
+                boolean istenCikarabilirMi = istenCikarmaYetkisiAl();
+                personel.setAdSoyad(adSoyad);
+                personel.setCinsiyet(cinsiyet);
+                personel.setYas(yas);
+                personel.setTelefon(telefon);
+                personel.setDepartman(departman);
+                personel.setMaasTanimlayabilirMi(maasTanimlayabilirMi);
+                personel.setIstenCikarabilirMi(istenCikarabilirMi);
+                personel.setUpdateDate(sistemSaatiniAl());
+                personelService.update(personel);
+                break;
+            }
+            case 6:{
+                boolean odemeyeYetkiliMi = odemeYetkisiAl();
+                boolean maasTanimlayabilirMi = maasTanimlamaYetkisiAl();
+                personel.setAdSoyad(adSoyad);
+                personel.setCinsiyet(cinsiyet);
+                personel.setYas(yas);
+                personel.setTelefon(telefon);
+                personel.setDepartman(departman);
+                personel.setOdemeyeYetkiliMi(odemeyeYetkiliMi);
+                personel.setMaasTanimlayabilirMi(maasTanimlayabilirMi);
+                personel.setUpdateDate(sistemSaatiniAl());
+                personelService.update(personel);
+                break;
+            }
+            case 7:{
+                Integer vardiyaSuresi = vardiyaSuresiTanimla();
+                String teknikAlan = teknikAlanBilgisiAl();
+                personel.setAdSoyad(adSoyad);
+                personel.setCinsiyet(cinsiyet);
+                personel.setYas(yas);
+                personel.setTelefon(telefon);
+                personel.setDepartman(departman);
+                ((TeknikPersonel) personel).setVardiyaSuresi(vardiyaSuresi);
+                ((TeknikPersonel) personel).setTeknikAlan(teknikAlan);
+                personel.setUpdateDate(sistemSaatiniAl());
+                personelService.update(personel);
+                break;
+            }
+            default:{
+                System.out.println("HATA: Yanlış personel türü seçtiniz.");
+                System.out.println("İşlem başarısız.");
+                break;
+            }
+        }
     }
     public void delete() {
         Long id = silinecekPersonelIdAl();
