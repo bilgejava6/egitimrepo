@@ -1,11 +1,29 @@
 package com.emreustun.entity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public abstract class Personel extends BaseEntity {
+    SimpleDateFormat tarihFormati = new SimpleDateFormat("dd/MM/yyyy");
     private String adSoyad;
     private int maas;
     private int yas;
     private ECinsiyet cinsiyet;
     private Departman departman;
+    private Date iseBaslamaTarihi;
+
+    public void setAdSoyad(String adSoyad) {
+        this.adSoyad = adSoyad;
+    }
+
+    public Date getIseBaslamaTarihi() {
+        return iseBaslamaTarihi;
+    }
+
+    public void setIseBaslamaTarihi(int yil, int ay, int gun ) {
+        this.iseBaslamaTarihi = new Date(yil,ay,gun);;
+    }
+
 
     public Personel() {
     }
@@ -19,6 +37,7 @@ public abstract class Personel extends BaseEntity {
                 ", yas=" + yas +
                 ", cinsiyet='" + cinsiyet + '\'' +
                 ", departman=" + departman +
+                ", işe başlama tarihi=" + tarihFormati.format((iseBaslamaTarihi)) +
                 '}';
     }
     public String getAdSoyad() {

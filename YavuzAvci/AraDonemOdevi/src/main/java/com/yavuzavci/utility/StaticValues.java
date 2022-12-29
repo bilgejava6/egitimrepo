@@ -21,13 +21,46 @@ public class StaticValues {
     public static final PersonelMenu personelMenu = new PersonelMenu();
     public static final RaporlamaMenu raporlamaMenu = new RaporlamaMenu();
     public static final List<Personel> personelListesi = new ArrayList<>();
-    public static final Map<Long, Departman> departmanListesi = new HashMap<>();
+    public static final Map<Long, Departman> departmanListesi = new TreeMap<>();
     // Değişkenler
     public static Long personelId = 0L;
     public static Long departmanId = 0L;
     // Methodlar
     public static void run(){
+        init();
         anaMenu.menu();
+    }
+
+    /**
+     * Başlangıçta gerekli olan değerler burada atanır.
+     */
+    public static void init(){
+        // özel amaçla eklenen departmanlar, burayı silmeyin.
+        Departman aktifOlmayanPersonel = new Departman("Aktif Olmayan Personel");
+        aktifOlmayanPersonel.setId(-2L);
+        departmanListesi.put(aktifOlmayanPersonel.getId(),aktifOlmayanPersonel);
+        Departman yok = new Departman("Yok");
+        yok.setId(-1L);
+        departmanListesi.put(yok.getId(),yok);
+        Departman mudurler = new Departman("Müdürler");
+        mudurler.setId(0L);
+        departmanListesi.put(mudurler.getId(),mudurler);
+        departmanId = 0L;
+        // Varsayılan personel departmanları
+        Departman departman = new Departman("Hizmetliler");
+        departmanListesi.put(departman.getId(),departman);
+        departman = new Departman("İnsan Kaynakları");
+        departmanListesi.put(departman.getId(),departman);
+        departman = new Departman("Muhasebe");
+        departmanListesi.put(departman.getId(),departman);
+        departman = new Departman("Satış");
+        departmanListesi.put(departman.getId(),departman);
+        departman = new Departman("İhracat");
+        departmanListesi.put(departman.getId(),departman);
+        departman = new Departman("Depo");
+        departmanListesi.put(departman.getId(),departman);
+        departman = new Departman("Üretim");
+        departmanListesi.put(departman.getId(),departman);
     }
     public static long yeniPersonelIdAl(){
         return ++personelId;

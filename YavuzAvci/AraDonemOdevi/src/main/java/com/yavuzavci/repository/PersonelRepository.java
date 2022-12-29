@@ -15,6 +15,7 @@ public class PersonelRepository implements ICrud<Personel> {
     @Override
     public void save(Personel personel) {
         personelListesi.add(personel);
+        personel.getDepartman().getPersonelListesi().add(personel);
     }
 
     @Override
@@ -22,6 +23,11 @@ public class PersonelRepository implements ICrud<Personel> {
         for(int i = 0 ; i < personelListesi.size();i++) {
             if(personelListesi.get(i).getId().equals(personel.getId())){
                 personelListesi.set(i,personel);
+                personel.getDepartman()
+                        .getPersonelListesi()
+                        .set(
+                                personel.getDepartman().getPersonelListesi().indexOf(personel),
+                                personel);
                 break;
             }
         }
@@ -32,6 +38,9 @@ public class PersonelRepository implements ICrud<Personel> {
         for(int i = 0 ; i < personelListesi.size(); i++) {
             if(personelListesi.get(i).getId().equals(id)){
                 personelListesi.remove(i);
+                personelListesi.get(i).getDepartman()
+                        .getPersonelListesi()
+                        .remove(personelListesi.get(i));
                 break;
             }
         }

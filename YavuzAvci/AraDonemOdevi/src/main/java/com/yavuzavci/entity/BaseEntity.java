@@ -19,6 +19,14 @@ public abstract class BaseEntity {
         return id;
     }
 
+    /**
+     * Başlangıç ve özel durumlarda değiştirebilmek için eklendi.
+     * @param id
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Long getCreateDate() {
         return createDate;
     }

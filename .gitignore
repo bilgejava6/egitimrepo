@@ -4,5 +4,6 @@ bin/
 build/
 .idea/
 # Repositoryde atlanmak istenen diğer dosyalar dizinleriyle buraya eklenebilir
+.idea/encodings.xml
 /VolkanGenel/gradlew
 /VolkanGenel/gradlew.bat

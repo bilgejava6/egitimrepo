@@ -8,7 +8,7 @@ import static com.yavuzavci.utility.StaticValues.*;
 public class PersonelUtility {
     public static ECinsiyet cinsiyetAl(){
         System.out.println("Personelin cinsiyet bilgisini giriniz");
-        System.out.print("erkek / kadın için => 1 / 2, diğer durumlar için başka bir sayı seçin..: ");
+        System.out.println("erkek / kadın için => 1 / 2, diğer durumlar için başka bir sayı seçin.");
         int secim = scanner.nextInt();
         scanner.nextLine();
         switch (secim){
@@ -22,46 +22,52 @@ public class PersonelUtility {
     }
 
     public static String adSoyadAl(){
-        System.out.print("Personelin adını ve soyadını giriniz..: ");
-        return scanner.nextLine();
+        System.out.println("Personelin adını ve soyadını giriniz.");
+        String adSoyad = scanner.nextLine();
+        return adSoyad;
     }
 
     public static Integer yasAl(){
-        System.out.print("Personelin yaşını giriniz..: ");
-        return scanner.nextInt();
+        System.out.println("Personelin yaşını giriniz.");
+        Integer yas = scanner.nextInt();
+        return yas;
     }
 
     public static String telefonAl(){
-        System.out.print("Personelin telefon numarasını giriniz..: ");
-        return scanner.nextLine();
+        System.out.println("Personelin telefon numarasını giriniz.");
+        String telefon = scanner.nextLine();
+        return telefon;
     }
 
     public static Departman departmanAl(){
-        System.out.print("Departman numarasını giriniz..: ");
+        System.out.println("Departman numarasını giriniz.");
         long id = scanner.nextLong();
+        scanner.nextLine();
         return departmanController.findById(id);
     }
 
     public static Double maasAl(){
-        System.out.print("Personelin alacağı maaşı giriniz..: ");
-        return scanner.nextDouble();
+        System.out.println("Personelin alacağı maaşı giriniz.");
+        Double maas = scanner.nextDouble();
+        return maas;
     }
 
     public static Long silinecekPersonelIdAl(){
-        System.out.print("Silmek istediğiniz personelin numarasını giriniz..: ");
-        return scanner.nextLong();
+        System.out.print("Silmek istediğiniz personelin numarasını giriniz.");
+        Long id = scanner.nextLong();
+        return id;
     }
 
     public static int yeniPersonelTuruSec(){
         System.out.println("Oluşturabileceğiniz personel türleri ve kodları aşağıdaki gibidir.");
-        System.out.println("1 - Büro Personeli [Buro]");
-        System.out.println("2 - Genel Müdür [GenelMudur]");
-        System.out.println("3 - Hizmetli [Hizmetli]");
-        System.out.println("4 - İnsan Kaynakları Personeli [InsanKaynaklariPersoneli]");
-        System.out.println("5 - Müdür [Mudur]");
-        System.out.println("6 - Muhasebe Personeli [Muhasebe]");
-        System.out.println("7 - Teknik Personel [Teknik]");
-        System.out.print("Lütfen seçiniz..: ");
+        System.out.println("1 - Büro Personeli [buro]");
+        System.out.println("2 - Genel Müdür [genelmudur]");
+        System.out.println("3 - Hizmetli [hizmetli]");
+        System.out.println("4 - İnsan Kaynakları Personeli [insankaynaklari]");
+        System.out.println("5 - Müdür [mudur]");
+        System.out.println("6 - Muhasebe Personeli [muhasebe]");
+        System.out.println("7 - Teknik Personel [teknik]");
+        System.out.println("Lütfen seçiniz.");
         String personelTuru = scanner.nextLine();
         switch (personelTuru.toLowerCase()){
             case "buro":
@@ -81,5 +87,85 @@ public class PersonelUtility {
             default:
                 return -1;
         }
+    }
+
+    public static int personelTuruSec(){
+        System.out.println("Aşağıda bilgilerini güncelleyebileceğiniz personel türleri ve kodları yer almaktadır.");
+        System.out.println("1 - Büro Personeli [buro]");
+        System.out.println("2 - Genel Müdür [genelmudur]");
+        System.out.println("3 - Hizmetli [hizmetli]");
+        System.out.println("4 - İnsan Kaynakları Personeli [insankaynaklari]");
+        System.out.println("5 - Müdür [mudur]");
+        System.out.println("6 - Muhasebe Personeli [muhasebe]");
+        System.out.println("7 - Teknik Personel [teknik]");
+        System.out.println("Lütfen seçiniz.");
+        String personelTuru = scanner.nextLine();
+        switch (personelTuru.toLowerCase()){
+            case "buro":
+                return 1;
+            case "genelmudur":
+                return 2;
+            case "hizmetli":
+                return 3;
+            case "insankaynaklari":
+                return 4;
+            case "mudur":
+                return 5;
+            case "muhasebe":
+                return 6;
+            case "teknik":
+                return 7;
+            default:
+                return -1;
+        }
+    }
+
+    public static boolean istenCikarmaYetkisiAl(){
+        System.out.println("İşten çıkarma yetkisi vermek için E ye basınız.");
+        String iYetki = scanner.nextLine();
+        switch (iYetki.toUpperCase()){
+            case "E":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public static boolean maasTanimlamaYetkisiAl(){
+        System.out.print("Maaş tanımlama yetkisi vermek için E ye basınız.");
+        String mYetki = scanner.nextLine();
+        switch (mYetki.toUpperCase()){
+            case "E":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public static boolean odemeYetkisiAl(){
+        System.out.println("Ödeme yetkisi vermek için E ye basınız.");
+        String oYetki = scanner.nextLine();
+        switch (oYetki.toUpperCase()){
+            case "E":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    /**
+     * Hizmetli ve teknik personeller için ortak.
+     */
+    public static Integer vardiyaSuresiTanimla(){
+        System.out.println("Personelin vardiya süresini giriniz.");
+        Integer vardiya = scanner.nextInt();
+        scanner.nextLine();
+        return vardiya;
+    }
+
+    public static String teknikAlanBilgisiAl(){
+        System.out.println("Teknik personelin alanını giriniz.");
+        String teknikAlan = scanner.nextLine();
+        return teknikAlan;
     }
 }
