@@ -54,13 +54,13 @@ public class PersonelUtility {
 
     public static int yeniPersonelTuruSec(){
         System.out.println("Oluşturabileceğiniz personel türleri ve kodları aşağıdaki gibidir.");
-        System.out.println("1 - Büro Personeli [Buro]");
-        System.out.println("2 - Genel Müdür [GenelMudur]");
-        System.out.println("3 - Hizmetli [Hizmetli]");
-        System.out.println("4 - İnsan Kaynakları Personeli [InsanKaynaklariPersoneli]");
-        System.out.println("5 - Müdür [Mudur]");
-        System.out.println("6 - Muhasebe Personeli [Muhasebe]");
-        System.out.println("7 - Teknik Personel [Teknik]");
+        System.out.println("1 - Büro Personeli [buro]");
+        System.out.println("2 - Genel Müdür [genelmudur]");
+        System.out.println("3 - Hizmetli [hizmetli]");
+        System.out.println("4 - İnsan Kaynakları Personeli [insankaynaklari]");
+        System.out.println("5 - Müdür [mudur]");
+        System.out.println("6 - Muhasebe Personeli [muhasebe]");
+        System.out.println("7 - Teknik Personel [teknik]");
         System.out.print("Lütfen seçiniz..: ");
         String personelTuru = scanner.nextLine();
         switch (personelTuru.toLowerCase()){
