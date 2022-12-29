@@ -46,12 +46,6 @@ public class PersonelMenu extends AnaMenu {
                     System.out.println("HATA: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
-                System.out.print("Bilgilerini güncellemek istediğiniz personelin numarasını giriniz..: ");
-                long id = scanner.nextLong();
-                if(personelController.findById(id).equals(null)){
-                    System.out.println("HATA: Sistemde " + id + " numaralı personel yoktur.");
-                    break;
-                }
                 personelController.update();
                 break;
             case 4:
