@@ -24,8 +24,8 @@ public class StaticValues {
     public static final List<Personel> personelListesi = new ArrayList<>();
     public static final Map<Long, Departman> departmanListesi = new TreeMap<>();
     // Değişkenler
-    public static Long personelId = 0L;
-    public static Long departmanId = 0L;
+    private static Long personelId = 0L;
+    private static Long departmanId = 0L;
     // Methodlar
     public static void run(){
         init();
