@@ -33,9 +33,9 @@ public class GenelMudur extends Mudur {
                     ? "Maaş Tanımlama, "
                     : "")
                 + (isIstenCikarabilirMi()
-                    ? "İşten Çıkarma"
-                    : "")
-                + "Bağlı Departmanlar -> " + getDepartmanlar()
+                    ? "İşten Çıkarma\n"
+                    : "\n")
+                + "Bağlı Departmanlar -> " + getDepartmanlar().stream().toString()
                 + '\n';
     }
 }

@@ -22,7 +22,7 @@ public class PersonelService {
         else if(personel.getYas() < 18)
             System.out.println("HATA: Personelin yaşı on sekizden küçük olamaz.");
         else if(Objects.isNull(personel.getDepartman()))
-            System.out.println("HATA: Personelin ad-soyad bilgisi boş bırakılamaz.");
+            System.out.println("HATA: Personelin departman bilgisi boş bırakılamaz.");
         else
             personelRepository.save(personel);
     }

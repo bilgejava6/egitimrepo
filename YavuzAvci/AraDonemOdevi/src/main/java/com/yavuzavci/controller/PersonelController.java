@@ -24,7 +24,8 @@ public class PersonelController {
         Departman departman = departmanAl();
         // personel türüne göre değişen işlemler
         Personel personel;
-        switch (yeniPersonelTuruSec()){
+        int personelTuru = yeniPersonelTuruSec();
+        switch (personelTuru){
             case 1: {
                 personel = new BuroPersoneli(adSoyad, cinsiyet, yas, telefon, departman);
                 personelService.save(personel);

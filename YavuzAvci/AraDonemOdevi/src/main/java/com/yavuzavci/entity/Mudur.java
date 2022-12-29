@@ -43,9 +43,9 @@ public class Mudur extends Personel {
                     ? "Maaş Tanımlama, "
                     : "")
                 + (isIstenCikarabilirMi()
-                    ? "İşten Çıkarma"
-                    : "")
-                + "Bağlı Departmanlar -> " + departmanlar
+                    ? "İşten Çıkarma\n"
+                    : "\n")
+                + "Bağlı Departmanlar -> " + departmanlar.stream().toString()
                 + '\n';
     }
 }
