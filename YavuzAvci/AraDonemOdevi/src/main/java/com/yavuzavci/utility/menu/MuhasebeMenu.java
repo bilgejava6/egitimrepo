@@ -7,6 +7,10 @@ import java.util.Objects;
 import static com.yavuzavci.utility.PersonelUtility.*;
 import static com.yavuzavci.utility.StaticValues.*;
 
+/**
+ * Muhasebe işlemlerinin yapıldığı menü.
+ * @author Yavuz AVCI
+ */
 public class MuhasebeMenu implements IMenu {
     private void muhasebeMenuBaslik(){
         System.out.println("********************************************************");

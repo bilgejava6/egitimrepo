@@ -10,6 +10,10 @@ import com.yavuzavci.service.PersonelService;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Kullanıcıların personel bilgileriyle işlem yapmak için
+ * eriştiği katman.
+ */
 public class PersonelController {
     private final PersonelService personelService;
 

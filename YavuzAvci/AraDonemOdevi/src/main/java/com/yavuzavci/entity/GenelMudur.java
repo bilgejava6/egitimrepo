@@ -2,6 +2,22 @@ package com.yavuzavci.entity;
 
 import static com.yavuzavci.utility.StaticValues.departmanListesi;
 
+/**
+ * Genel müdür sınıfı.
+ * <br>
+ * <br>
+ * Genel müdür departmanların tümünden sorumludur. Genel müdür
+ * işten çıkarılamaz ve sistemden silinemez. Genel müdürün
+ * yetkileri tamdır.
+ * <br>
+ * <br>
+ * Sistemde yalnızca 1 genel müdür olması isteniyorsa, genel müdürün
+ * kendi isteğiyle işten çıkması ve/veya bilgilerinin silinmesi isteniyorsa
+ * ve genel müdürün değiştirilebilmesi isteniyorsa bu sınıfı ve ilgili
+ * katmanları değiştirin
+ *
+ * @author Yavuz AVCI
+ */
 public class GenelMudur extends Mudur {
 
     public GenelMudur(String adSoyad, ECinsiyet cinsiyet, Integer yas, String telefon, Departman departman,

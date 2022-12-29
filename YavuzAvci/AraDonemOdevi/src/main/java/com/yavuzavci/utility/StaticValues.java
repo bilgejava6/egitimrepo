@@ -12,6 +12,11 @@ import java.util.*;
 
 import static com.yavuzavci.entity.ECinsiyet.*;
 
+/**
+ * Uygulama başlangıcında ve sonrasında kullanılacak verilerin tutulduğu
+ * işlevsel sınıf.
+ * @author Yavuz AVCI
+ */
 public class StaticValues {
     // Sabitler
     public static final Scanner scanner = new Scanner(System.in);
@@ -27,6 +32,10 @@ public class StaticValues {
     private static Long personelId = 0L;
     private static Long departmanId = 0L;
     // Methodlar
+
+    /**
+     * Uygulama buradan başlar.
+     */
     public static void run(){
         init();
         anaMenu.menu();
@@ -127,6 +136,11 @@ public class StaticValues {
         return System.currentTimeMillis();
     }
 
+    /**
+     * Uygulama başlarken kullanılan departman bulma methodu.
+     * @param id Departman Numarası
+     * @return {@code Departman} döner. Bulamadığı yerde {@code null} döner.
+     */
     private static Departman departmanBul(Long id){
         for(Departman departman : departmanListesi.values()){
             if(departman.getId().equals(id))

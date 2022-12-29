@@ -5,6 +5,11 @@ import com.yavuzavci.entity.Departman;
 import static com.yavuzavci.utility.StaticValues.departmanController;
 import static com.yavuzavci.utility.StaticValues.scanner;
 
+/**
+ * Departman işlemlerini kolaylaştırmak amacıyla
+ * oluşturulmuş işlevsel sınıf.
+ * @author Yavuz AVCI
+ */
 public class DepartmanUtility {
     public static Departman departmanOlustur(){
         System.out.println("Departmanın adını giriniz.");

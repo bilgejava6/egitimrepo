@@ -2,6 +2,10 @@ package com.yavuzavci.utility.menu;
 
 import static com.yavuzavci.utility.StaticValues.*;
 
+/**
+ * Personel işlemlerinin yapıldığı menü.
+ * @author Yavuz AVCI
+ */
 public class PersonelMenu implements IMenu {
     private void personelMenuBaslik(){
         System.out.println("************************************************************");

@@ -8,6 +8,10 @@ import java.util.Objects;
 
 import static com.yavuzavci.utility.DepartmanUtility.adaGoreDepartmanBul;
 
+/**
+ * Departman verilerinin sisteme işlenmeden önce
+ * denetlendiği katman.
+ */
 public class DepartmanService {
     private final DepartmanRepository departmanRepository;
 

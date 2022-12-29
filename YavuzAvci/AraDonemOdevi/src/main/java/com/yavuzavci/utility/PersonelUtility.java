@@ -5,6 +5,11 @@ import com.yavuzavci.entity.ECinsiyet;
 
 import static com.yavuzavci.utility.StaticValues.*;
 
+/**
+ * Personel işlemlerini kolaylaştırmak amacıyla
+ * oluşturulmuş işlevsel sınıf.
+ * @author Yavuz AVCI
+ */
 public class PersonelUtility {
     public static ECinsiyet cinsiyetAl(){
         System.out.println("Personelin cinsiyet bilgisini giriniz");
@@ -57,6 +62,14 @@ public class PersonelUtility {
         return id;
     }
 
+    /**
+     * Yeni personel eklerken, personel türüne göre
+     * eklenecek yeni özellikleri belirlemek için
+     * kullanılan method.
+     * @return Hedef personel türü sistemde varsa
+     * personel türüne göre sıfırdan büyük bir değer,
+     * diğer durumlarda sıfırdan küçük bir değer döner.
+     */
     public static int yeniPersonelTuruSec(){
         System.out.println("Oluşturabileceğiniz personel türleri ve kodları aşağıdaki gibidir.");
         System.out.println("1 - Büro Personeli [buro]");
@@ -88,6 +101,13 @@ public class PersonelUtility {
         }
     }
 
+    /**
+     * Mevcut personeli güncellerken, personel türüne göre
+     * güncellenecek özellikleri belirlemek için kullanılan method.
+     * @return Hedef personel türü sistemde varsa
+     * personel türüne göre sıfırdan büyük bir değer,
+     * diğer durumlarda sıfırdan küçük bir değer döner.
+     */
     public static int personelTuruBelirle(String personelTuru){
         switch (personelTuru){
             case "Buro":
@@ -143,7 +163,8 @@ public class PersonelUtility {
     }
 
     /**
-     * Hizmetli ve teknik personeller için ortak.
+     * Hizmetli ve teknik personeller için ortak
+     * vardiya süresi tanımlama methodu.
      */
     public static Integer vardiyaSuresiTanimla(){
         System.out.println("Personelin vardiya süresini giriniz.");

@@ -6,6 +6,9 @@ import java.util.List;
 
 import static com.yavuzavci.utility.StaticValues.departmanListesi;
 
+/**
+ * Departman verilerinin sisteme işlendiği katman.
+ */
 public class DepartmanRepository implements ICrud<Departman> {
 
 

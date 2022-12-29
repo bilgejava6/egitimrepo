@@ -9,6 +9,10 @@ import java.util.stream.Collectors;
 
 import static com.yavuzavci.utility.StaticValues.*;
 
+/**
+ * Raporlamalar için kullanılan menü.
+ * @author Yavuz AVCI
+ */
 public class RaporlamaMenu implements IMenu {
     private void raporlamaMenuBaslik() {
         System.out.println("*************************************************************");

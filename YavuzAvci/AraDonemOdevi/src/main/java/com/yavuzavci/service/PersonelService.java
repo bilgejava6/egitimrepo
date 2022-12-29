@@ -9,6 +9,10 @@ import java.util.Objects;
 
 import static com.yavuzavci.utility.PersonelUtility.*;
 
+/**
+ * Personel verilerinin sisteme işlenmeden önce
+ * denetlendiği katman.
+ */
 public class PersonelService {
     private final PersonelRepository personelRepository;
 
@@ -42,6 +46,13 @@ public class PersonelService {
             System.out.println("HATA: Personelin departman bilgisi boş bırakılamaz.");
         else{
             switch (PersonelUtility.personelTuruBelirle(personel.getClass().getSimpleName())){
+                /**
+                 * Aksi belirtilmedikçe büro personeli ve genel müdürler için ilave
+                 * bilgi girişi yapılmayacaktır. Doğrudan güncelleme servisi işlemi
+                 * çağrılabilir. Eğer büro personellerinin ve genel müdürün farklı
+                 * bilgileri güncellenmek isteniyorsa {@code BuroPersoneli} ve
+                 * {@code GenelMudur} sınıfları ile bu switch işlemi değiştirilmelidir.
+                 */
                 case 1,2: {
                     personelRepository.update(personel);
                     break;

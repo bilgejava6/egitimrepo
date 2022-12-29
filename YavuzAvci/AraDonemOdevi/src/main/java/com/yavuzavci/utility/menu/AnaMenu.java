@@ -2,6 +2,10 @@ package com.yavuzavci.utility.menu;
 
 import static com.yavuzavci.utility.StaticValues.*;
 
+/**
+ * Uygulama ana menüsü.
+ * @author Yavuz AVCI
+ */
 public class AnaMenu implements IMenu {
 
     private void anaMenuBaslik(){

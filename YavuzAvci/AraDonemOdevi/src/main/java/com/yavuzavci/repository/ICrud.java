@@ -2,6 +2,10 @@ package com.yavuzavci.repository;
 
 import java.util.List;
 
+/**
+ * Temel ekleme, silme, güncelleme ve bulma
+ * işlemleri için oluşturulmuş ara yüz.
+ */
 public interface ICrud<T> {
 	void save(T t);
 	void update(T t);

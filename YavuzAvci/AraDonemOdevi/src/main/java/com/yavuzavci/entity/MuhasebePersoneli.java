@@ -1,5 +1,16 @@
 package com.yavuzavci.entity;
 
+/**
+ * Muhasebe personeli sınıfı.
+ * <br>
+ * <br>
+ * İnsan kaynakları personelleri gibi muhasebe personellerinin
+ * de maaş tanımlama yetkisi vardır. Bunun yanında muhasebe personellerine
+ * insan kaynakları personellerinden farklı olarak ödeme yetkisi
+ * tanımlanabilmektedir.
+ *
+ * @author Yavuz AVCI
+ */
 public class MuhasebePersoneli extends Personel {
 
     public MuhasebePersoneli(String adSoyad, ECinsiyet cinsiyet, Integer yas, String telefon, Departman departman,

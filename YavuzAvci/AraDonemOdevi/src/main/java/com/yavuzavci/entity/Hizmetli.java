@@ -1,5 +1,17 @@
 package com.yavuzavci.entity;
 
+/**
+ * Hizmetli personel sınıfı.
+ * <br>
+ * <br>
+ * Teknik personeller gibi hizmetli personellerin
+ * de vardiyaları vardır fakat sorumlu oldukları hizmet
+ * alanı tanımlanmamıştır. Hizmetli personel için sorumlu
+ * oldukları alan bilgisi tanımlanmak isteniyorsa
+ * {@code TeknikPersonel} sınıfındaki gibi tanımlanabilir.
+ *
+ * @author Yavuz AVCI
+ */
 public class Hizmetli extends Personel {
     private Integer vardiyaSuresi;
 

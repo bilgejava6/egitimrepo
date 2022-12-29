@@ -10,6 +10,10 @@ import static com.yavuzavci.utility.DepartmanUtility.*;
 import static com.yavuzavci.utility.StaticValues.scanner;
 import static com.yavuzavci.utility.StaticValues.sistemSaatiniAl;
 
+/**
+ * Kullanıcıların departman bilgileriyle işlem yapmak için
+ * eriştiği katman.
+ */
 public class DepartmanController {
     private final DepartmanService departmanService;
 
