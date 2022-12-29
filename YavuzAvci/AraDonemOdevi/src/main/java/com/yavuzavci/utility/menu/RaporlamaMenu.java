@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 import static com.yavuzavci.utility.StaticValues.*;
 
-public class RaporlamaMenu extends AnaMenu {
+public class RaporlamaMenu implements IMenu {
     private void raporlamaMenuBaslik() {
         System.out.println("*************************************************************");
         System.out.println("******************* RAPORLAMA İŞLEMLERİ *********************");

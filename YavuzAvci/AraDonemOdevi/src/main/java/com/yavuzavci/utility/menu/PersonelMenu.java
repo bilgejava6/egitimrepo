@@ -2,7 +2,7 @@ package com.yavuzavci.utility.menu;
 
 import static com.yavuzavci.utility.StaticValues.*;
 
-public class PersonelMenu extends AnaMenu {
+public class PersonelMenu implements IMenu {
     private void personelMenuBaslik(){
         System.out.println("************************************************************");
         System.out.println("******************* PERSONEL İŞLEMLERİ *********************");
