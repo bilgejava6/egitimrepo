@@ -83,6 +83,37 @@ public class PersonelUtility {
         }
     }
 
+    public static int personelTuruSec(){
+        System.out.println("Aşağıda bilgilerini güncelleyebileceğiniz personel türleri ve kodları yer almaktadır.");
+        System.out.println("1 - Büro Personeli [buro]");
+        System.out.println("2 - Genel Müdür [genelmudur]");
+        System.out.println("3 - Hizmetli [hizmetli]");
+        System.out.println("4 - İnsan Kaynakları Personeli [insankaynaklari]");
+        System.out.println("5 - Müdür [mudur]");
+        System.out.println("6 - Muhasebe Personeli [muhasebe]");
+        System.out.println("7 - Teknik Personel [teknik]");
+        System.out.print("Lütfen seçiniz..: ");
+        String personelTuru = scanner.nextLine();
+        switch (personelTuru.toLowerCase()){
+            case "buro":
+                return 1;
+            case "genelmudur":
+                return 2;
+            case "hizmetli":
+                return 3;
+            case "insankaynaklari":
+                return 4;
+            case "mudur":
+                return 5;
+            case "muhasebe":
+                return 6;
+            case "teknik":
+                return 7;
+            default:
+                return -1;
+        }
+    }
+
     public static boolean istenCikarmaYetkisiAl(){
         System.out.print("İşten çıkarma yetkisi vermek için E ye basınız..: ");
         String oYetki = scanner.nextLine();
