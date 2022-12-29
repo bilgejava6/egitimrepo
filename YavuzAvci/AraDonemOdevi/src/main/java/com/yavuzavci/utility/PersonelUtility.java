@@ -82,4 +82,50 @@ public class PersonelUtility {
                 return -1;
         }
     }
+
+    public static boolean istenCikarmaYetkisiAl(){
+        System.out.print("İşten çıkarma yetkisi vermek için E ye basınız..: ");
+        String oYetki = scanner.nextLine();
+        switch (oYetki.toUpperCase()){
+            case "E":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public static boolean maasTanimlamaYetkisiAl(){
+        System.out.print("Maaş tanımlama yetkisi vermek için E ye basınız..: ");
+        String oYetki = scanner.nextLine();
+        switch (oYetki.toUpperCase()){
+            case "E":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public static boolean odemeYetkisiAl(){
+        System.out.print("Ödeme yetkisi vermek için E ye basınız..: ");
+        String oYetki = scanner.nextLine();
+        switch (oYetki.toUpperCase()){
+            case "E":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    /**
+     * Hizmetli ve teknik personeller için ortak.
+     */
+    public static Integer vardiyaSuresiTanimla(){
+        System.out.print("Personelin vardiya süresini giriniz..: ");
+        return scanner.nextInt();
+    }
+
+    public static String teknikAlanBilgisiAl(){
+        System.out.print("Teknik personelin alanını giriniz..: ");
+        return scanner.nextLine();
+    }
 }
