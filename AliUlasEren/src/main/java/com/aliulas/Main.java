@@ -12,6 +12,6 @@ public class Main {
     public static void main(String[] args) {
         PersonelController pc = new PersonelController();
         pc.anaMenu();
-
+        pc.anaMenu();
     }
 }
