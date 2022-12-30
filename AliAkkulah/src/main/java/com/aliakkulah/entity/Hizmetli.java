@@ -27,9 +27,6 @@ public class Hizmetli extends Personel {
 
     @Override
     public String toString() {
-        return "Hizmetli [temizlikDerecesi=" + temizlikDerecesi + ", getCinsiyet()=" + getCinsiyet() + ", getId()="
-                + getId() + ", getAd()=" + getAd() + ", getSoyad()=" + getSoyad() + ", getUnvan()=" + getUnvan()
-                + ", getIseGirisTarihi()=" + getIseGirisTarihi() + ", getDogumYili()=" + getDogumYili() + ", getMaas()="
-                + getMaas() + "]";
+        return "Hizmetli [temizlikDerecesi=" + temizlikDerecesi + "," + super.toString();
     }
 }

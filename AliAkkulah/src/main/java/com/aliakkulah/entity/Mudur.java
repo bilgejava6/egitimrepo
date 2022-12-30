@@ -37,8 +37,6 @@ public class Mudur extends Personel {
     @Override
     public String toString() {
         return "Mudur [bonusZamMiktari=" + bonusZamMiktari + ", sorumluOlduguCalisanlar=" + sorumluOlduguCalisanlar
-                + ", getCinsiyet()=" + getCinsiyet() + ", getId()=" + getId() + ", getAd()=" + getAd() + ", getSoyad()="
-                + getSoyad() + ", getUnvan()=" + getUnvan() + ", getIseGirisTarihi()=" + getIseGirisTarihi()
-                + ", getDogumYili()=" + getDogumYili() + ", getMaas()=" + getMaas() + "]";
+                + "," + super.toString();
     }
 }

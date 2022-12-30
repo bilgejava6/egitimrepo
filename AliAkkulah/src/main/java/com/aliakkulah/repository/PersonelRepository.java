@@ -4,6 +4,7 @@ import com.aliakkulah.entity.Personel;
 
 import static com.aliakkulah.utility.Utility.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -65,5 +66,9 @@ public class PersonelRepository implements ICrud<Personel>{
         Map<String,Double> odemeListesi = new TreeMap<>();
         personelListesi.forEach(x-> odemeListesi.put("id: " + x.getId() + " Isım Soyisim:" + x.getAd()+" "+x.getSoyad(), x.getMaas()));
         return odemeListesi;
+    }
+
+    public void siraliPersonelListesi(){
+        personelListesi.forEach(System.out::println);
     }
 }

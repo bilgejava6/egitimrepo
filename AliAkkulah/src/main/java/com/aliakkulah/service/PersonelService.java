@@ -40,4 +40,6 @@ public class PersonelService {
     public Map<String,Double> odemeListesi() {
         return pr.odemeListesi();
     }
+
+    public void siraliPersonelListesi() {pr.siraliPersonelListesi();}
 }

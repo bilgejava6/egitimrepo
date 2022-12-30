@@ -24,9 +24,6 @@ public class GenelMudur extends Personel {
 
     @Override
     public String toString() {
-        return "GenelMudur [bonusZamOrani=" + bonusZamOrani + ", getCinsiyet()=" + getCinsiyet() + ", getId()="
-                + getId() + ", getAd()=" + getAd() + ", getSoyad()=" + getSoyad() + ", getUnvan()=" + getUnvan()
-                + ", getIseGirisTarihi()=" + getIseGirisTarihi() + ", getDogumYili()=" + getDogumYili() + ", getMaas()="
-                + getMaas() + "]";
+        return "GenelMudur [bonusZamOrani=" + bonusZamOrani + "," + super.toString();
     }
 }
