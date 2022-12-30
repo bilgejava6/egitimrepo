@@ -6,8 +6,8 @@ public class TeknikPersonel extends Personel{
 
     }
 
-    public TeknikPersonel(String ad, String soyad, String email, String telefon,  String pozisyon, int maas, String kayitTarihi, String bilgiSeviyesi) {
-        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi);
+    public TeknikPersonel(String ad, String soyad, String email, String telefon,  String pozisyon, int maas, String kayitTarihi, String bilgiSeviyesi,String departman) {
+        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi,departman);
         this.bilgiSeviyesi = bilgiSeviyesi;
     }
 
