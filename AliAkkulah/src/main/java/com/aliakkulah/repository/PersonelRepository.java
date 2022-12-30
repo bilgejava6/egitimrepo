@@ -1,5 +1,6 @@
 package com.aliakkulah.repository;
 
+import com.aliakkulah.entity.Departman;
 import com.aliakkulah.entity.Personel;
 
 import static com.aliakkulah.utility.Utility.*;
@@ -32,6 +33,7 @@ public class PersonelRepository implements ICrud<Personel>{
 
     @Override
     public void delete(Personel personel) {
+        personel.getDepartman().getPersonelList().remove(personel);
         personelListesi.remove(personel);
     }
 
@@ -52,13 +54,18 @@ public class PersonelRepository implements ICrud<Personel>{
 
     @Override
     public void deleteById(Long id) {
+        boolean silindimi = false;
         for(int i = 0; i < personelListesi.size(); i++) {
             if(personelListesi.get(i).getId().equals(id)) {
+                personelListesi.get(i).getDepartman().getPersonelList().remove(personelListesi.get(i));
                 personelListesi.remove(i);
                 System.out.println("Personel basarili bir sekilde silinmistir.");
+                silindimi = true;
+                break;
+                }
             }
-        }
-        System.out.println("Boyle id'ye sahip bir personel bulunmamaktadir.");
+        if(!silindimi)
+            System.out.println("Boyle id'ye sahip bir personel bulunmamaktadir.");
     }
 
     @Override

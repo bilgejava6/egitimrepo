@@ -3,6 +3,8 @@ package com.aliakkulah.controller;
 import com.aliakkulah.entity.*;
 import com.aliakkulah.service.PersonelService;
 import static com.aliakkulah.utility.Utility.*;
+
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
@@ -14,7 +16,6 @@ public class PersonelController {
     public PersonelController() {
         this.ps = new PersonelService();
     }
-
     public void odemeListesi(Personel yetkili) {
         sc = new Scanner(System.in);
         if(yetkili.getDepartman().getAd().equalsIgnoreCase("Muhasebe")){
@@ -40,7 +41,6 @@ public class PersonelController {
         }else
             System.out.println("Maas tanimlama yetkiniz bulunmamaktadir.");
     }
-
     public void guncellenecekPersonelSecme() {
         sc = new Scanner(System.in);
         System.out.println("Guncellenecek personel id'sini giriniz.");
@@ -55,12 +55,22 @@ public class PersonelController {
         }else
             System.out.println("Girilen id'ye ait bir personel bulunmamaktadir. Guncelleme yapilamadi.");
     }
-
     public void deleteById(){
-        ps.deleteById(null);
+        sc = new Scanner(System.in);
+        System.out.println("Silmek istediginiz personelin id'sini giriniz.");
+        Long id = Long.parseLong(sc.nextLine());
+        ps.deleteById(id);
     }
-    public void delete(Long id){
-        ps.delete(null);
+    public void delete(){
+        sc = new Scanner(System.in);
+        for(Personel personel : personelListesi){
+            int i = 1;
+            System.out.println(i + ") " + personel.getAd() + " " + personel.getSoyad());
+            i++;
+        }
+        System.out.println("Silmek istediginiz personelin sira numarasini giriniz.");
+        int index = Integer.parseInt(sc.nextLine()) - 1;
+        ps.delete(personelListesi.get(index));
     }
     public void findAll(){
         ps.findAll().forEach(System.out::println);

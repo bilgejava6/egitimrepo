@@ -36,6 +36,8 @@ public class Menu {
                     System.out.println("3. Personel Duzenleme");
                     System.out.println("4. Departman Ekleme"); //yapıldı.
                     System.out.println("5. Departman Listesi"); //yapıldı.
+                    System.out.println("6. Personel Sil");
+                    System.out.println("7. Id'ye Gore Personel Sil");
                     System.out.println("0. Ana Menuye Don"); //yapıldı.
                     System.out.println("Secim yapiniz.");
                     secim2 = sc.nextInt();
@@ -62,6 +64,12 @@ public class Menu {
                             break;
                         case 5:
                             dc.findAll();
+                            break;
+                        case 6:
+                            pc.delete();
+                            break;
+                        case 7:
+                            pc.deleteById();
                             break;
                         case 0: break;
                         default: System.out.println("Lutfen gecerli secim yapiniz.\nAna menuye donuldu.");
