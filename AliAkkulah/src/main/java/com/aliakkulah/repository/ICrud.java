@@ -8,7 +8,7 @@ public interface ICrud<T> {
     public void update (T t);
     public void delete (T t);
     public List<T> findAll ();
-    public T findById(Long id);
+    public void findById(Long id);
     public void deleteById(Long id);
     public Map<String,Double> odemeListesi();
 }

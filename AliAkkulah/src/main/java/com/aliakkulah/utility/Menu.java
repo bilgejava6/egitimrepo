@@ -38,6 +38,8 @@ public class Menu {
                     System.out.println("5. Departman Listesi"); //yapıldı.
                     System.out.println("6. Personel Sil");
                     System.out.println("7. Id'ye Gore Personel Sil");
+                    System.out.println("8. Id'ye Gore Personel Bul");
+                    System.out.println("9. Mudure Sorumlu Oldugu Departmani Ekle");
                     System.out.println("0. Ana Menuye Don"); //yapıldı.
                     System.out.println("Secim yapiniz.");
                     secim2 = sc.nextInt();
@@ -70,6 +72,12 @@ public class Menu {
                             break;
                         case 7:
                             pc.deleteById();
+                            break;
+                        case 8:
+                            pc.findById();
+                            break;
+                        case 9:
+                            pc.mudureSorumluOlduguDepartmanEkle();
                             break;
                         case 0: break;
                         default: System.out.println("Lutfen gecerli secim yapiniz.\nAna menuye donuldu.");
@@ -118,7 +126,7 @@ public class Menu {
                             dc.departmanaGoreMaasOrtalamalari();
                             break;
                         case 4:
-
+                            pc.mudurlerinSorumluOlduguDepartmanlar();
                             break;
                         case 5:
                             pc.siraliPersonelListesi();

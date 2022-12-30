@@ -1,21 +1,18 @@
 package com.aliakkulah.repository;
 
 import com.aliakkulah.entity.Departman;
+import com.aliakkulah.entity.Mudur;
 import com.aliakkulah.entity.Personel;
 
 import static com.aliakkulah.utility.Utility.*;
 
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class PersonelRepository implements ICrud<Personel>{
 
     @Override
-    public void save(Personel personel) {
-        personelListesi.add(personel);
-    }
+    public void save(Personel personel) {personelListesi.add(personel);}
 
     /**
      * Not id hiç bir zaman update edilmeyeceği varsayılmıştır.
@@ -28,7 +25,6 @@ public class PersonelRepository implements ICrud<Personel>{
                 personelListesi.set(i,personel);
             }
         }
-        System.out.println("Boyle id'ye sahip bir personel bulunmamaktadir.");
     }
 
     @Override
@@ -38,18 +34,20 @@ public class PersonelRepository implements ICrud<Personel>{
     }
 
     @Override
-    public List<Personel> findAll() {
-        return personelListesi;
-    }
+    public List<Personel> findAll() {return personelListesi;}
 
     @Override
-    public Personel findById(Long id) {
+    public void findById(Long id) {
+        boolean control = false;
         for (Personel personel : personelListesi) {
-            if (personel.getId().equals(id))
-                return personel;
+            if (personel.getId() == id) {
+                System.out.println(personel);
+                control = true;
+            }
         }
-        System.out.println("Boyle id'ye sahip bir personel bulunmamaktadir.");
-        return null;
+        if(!control) {
+            System.out.println("Boyle id'ye sahip bir personel bulunmamaktadir.");
+        }
     }
 
     @Override
@@ -75,10 +73,7 @@ public class PersonelRepository implements ICrud<Personel>{
         return odemeListesi;
     }
 
-    public void siraliPersonelListesi(){
-        personelListesi.forEach(System.out::println);
-    }
-
+    public void siraliPersonelListesi(){personelListesi.forEach(System.out::println);}
     public void ayniGunBaslayanlarListesi() {
         Map<String, List<Personel>> ayniGunBaslayanlarMap= personelListesi.stream().collect(Collectors.groupingBy(Personel::getIseGirisTarihi));
         ayniGunBaslayanlarMap.forEach((x,y)->{
@@ -87,5 +82,31 @@ public class PersonelRepository implements ICrud<Personel>{
                     System.out.println(z.getAd() + " " + z.getSoyad())
             );
         });
+    }
+    public void mudureSorumluOlduguDepartmanEkle(Mudur mudur, Departman departman) {
+        boolean control = false;
+        for(int i = 0; i < mudur.getSorumluOlduguDepartmanlar().size(); i++){
+            if(mudur.getSorumluOlduguDepartmanlar().get(i).equals(departman))
+                control = true;
+            break;
+        }
+        if(control)
+            System.out.println("Eklenmek istenen departman zaten tanimli.");
+        else {
+            mudur.getSorumluOlduguDepartmanlar().add(departman);
+            System.out.println("Departman eklendi.");
+        }
+    }
+    public void mudurlerinSorumluOlduguDepartmanlar() {
+        List<Personel> mudurler = new ArrayList<>();
+        for(Departman departman : departmanListesi){
+            if(departman.getAd().equalsIgnoreCase("Mudur"))
+                mudurler = departman.getPersonelList();
+        }
+        for(int i = 0; i < mudurler.size(); i++) {
+            Mudur mudur = (Mudur) mudurler.get(i);
+            System.out.println((i + 1) + ". Mudur: " + mudur.getAd() + " " + mudur.getSoyad() + "'nın departmanları:");
+            mudur.getSorumluOlduguDepartmanlar().forEach(System.out::println);
+        }
     }
 }
