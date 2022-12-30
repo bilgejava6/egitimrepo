@@ -3,15 +3,12 @@ package com.aliulas.utility;
 import com.aliulas.repository.entity.Departman;
 import com.aliulas.repository.entity.Personel;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class StaticValues {
     public static Long id = 0L;
 
-    public static Set<Departman> departmanListesi = new HashSet<>();
+    public static Map<Long, Departman> departmanListesi = new HashMap<Long, Departman>();
 
     public static long idOlustur() {
         ++id;

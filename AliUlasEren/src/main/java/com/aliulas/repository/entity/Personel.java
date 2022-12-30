@@ -8,25 +8,26 @@ public class Personel extends BaseEntity {
     private String soyad;
     private String email;
     private String telefon;
-    //private Departman departman;
+
+
+
+    private String departman;
     private String pozisyon;
     private String kayitTarihi;
     private int maas;
-
-
 
     public Personel() {
         super();
     }
 
     public Personel(String ad, String soyad, String email, String telefon,  String pozisyon,
-                    int maas,String kayitTarihi) {
+                    int maas,String kayitTarihi,String departman) {
         super();
         this.ad = ad;
         this.soyad = soyad;
         this.email = email;
         this.telefon = telefon;
-
+        this.departman = departman;
         this.pozisyon = pozisyon;
         this.maas = maas;
         this.kayitTarihi = kayitTarihi;
@@ -93,5 +94,11 @@ public class Personel extends BaseEntity {
         this.id = id;
     }
 
+    public String getDepartman() {
+        return departman;
+    }
 
+    public void setDepartman(String departman) {
+        this.departman = departman;
+    }
 }

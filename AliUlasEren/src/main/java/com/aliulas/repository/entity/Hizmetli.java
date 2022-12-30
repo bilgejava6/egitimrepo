@@ -9,8 +9,8 @@ public class Hizmetli extends Personel{
 
     }
 
-    public Hizmetli(String ad, String soyad, String email, String telefon,  String pozisyon, int maas, String kayitTarihi, String hizmetAlani,int calismaSaatleri) {
-        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi);
+    public Hizmetli(String ad, String soyad, String email, String telefon,  String pozisyon, int maas, String kayitTarihi, String hizmetAlani,int calismaSaatleri,String departman) {
+        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi,departman);
         this.hizmetAlani = hizmetAlani;
         this.calismaSaatleri= calismaSaatleri;
     }

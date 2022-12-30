@@ -5,8 +5,8 @@ public class Mudur extends Personel{
     public Mudur() {
     }
 
-    public Mudur(String ad, String soyad, String email, String telefon, String pozisyon, int maas, String kayitTarihi, String sorumluOlduguDepartman) {
-        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi);
+    public Mudur(String ad, String soyad, String email, String telefon, String pozisyon, int maas, String kayitTarihi, String sorumluOlduguDepartman,String departman) {
+        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi,departman);
         this.sorumluOlduguDepartman = sorumluOlduguDepartman;
     }
 
