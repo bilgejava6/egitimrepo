@@ -2,7 +2,6 @@ package com.aliakkulah.utility;
 
 import com.aliakkulah.controller.DepartmanController;
 import com.aliakkulah.controller.PersonelController;
-import com.aliakkulah.entity.Departman;
 
 import java.util.Scanner;
 
@@ -10,7 +9,6 @@ public class Menu {
     private static Scanner sc;
     private final PersonelController pc;
     private final DepartmanController dc;
-
 
     public Menu() {
         this.pc = new PersonelController();
@@ -92,7 +90,7 @@ public class Menu {
                     System.out.println("3 Departmanlara Gore Maas Ortalamalari"); //yapıldı.
                     System.out.println("4 Mudurlerin Sorumlu Oldugu Departman Listesi");
                     System.out.println("5 Kayit Tarihlerine Gore Personellerin Sirali Listesi"); //yapıldı.
-                    System.out.println("6 Ayni Gun Icinde Ise Baslayan Personellerin Listesi");
+                    System.out.println("6 Ayni Gun Icinde Ise Baslayan Personellerin Listesi"); //yapıldı.
                     System.out.println("0. Ana Menuye Don");
                     System.out.println("Secim yapiniz.");
                     secim2 = sc.nextInt();
@@ -117,7 +115,9 @@ public class Menu {
                         case 5:
                             pc.siraliPersonelListesi();
                             break;
-                        case 6: break;
+                        case 6:
+                            pc.ayniGunBaslayanlarListesi();
+                            break;
                         case 0: break;
                         default: System.out.println("Lutfen gecerli secim yapiniz.\nAna menuye donuldu.");
                             break;
@@ -125,7 +125,7 @@ public class Menu {
                 case 0:
                     secim = 0;
                     break;
-                default:
+                default: System.out.println("Lutfen gecerli secim yapiniz.\nAna menuye donuldu.");
                     break;
             }
         }while(secim!=0);

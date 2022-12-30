@@ -337,6 +337,6 @@ public class PersonelController {
         personelListesi.add(tp1);
         personelListesi.add(tp2);
     }
-
     public void siraliPersonelListesi() {ps.siraliPersonelListesi();}
+    public void ayniGunBaslayanlarListesi() { ps.ayniGunBaslayanlarListesi();}
 }

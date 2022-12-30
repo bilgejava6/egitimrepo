@@ -4,10 +4,10 @@ import com.aliakkulah.entity.Personel;
 
 import static com.aliakkulah.utility.Utility.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class PersonelRepository implements ICrud<Personel>{
 
@@ -70,5 +70,15 @@ public class PersonelRepository implements ICrud<Personel>{
 
     public void siraliPersonelListesi(){
         personelListesi.forEach(System.out::println);
+    }
+
+    public void ayniGunBaslayanlarListesi() {
+        Map<String, List<Personel>> ayniGunBaslayanlarMap= personelListesi.stream().collect(Collectors.groupingBy(Personel::getIseGirisTarihi));
+        ayniGunBaslayanlarMap.forEach((x,y)->{
+            System.out.println(x + " tarihinde ise baslayanlar:");
+            y.forEach(z->
+                    System.out.println(z.getAd() + " " + z.getSoyad())
+            );
+        });
     }
 }
