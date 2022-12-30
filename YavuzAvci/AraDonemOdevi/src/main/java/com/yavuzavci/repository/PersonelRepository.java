@@ -6,6 +6,9 @@ import java.util.List;
 
 import static com.yavuzavci.utility.StaticValues.personelListesi;
 
+/**
+ * Personel verilerinin sisteme işlendiği katman.
+ */
 public class PersonelRepository implements ICrud<Personel> {
 
     public PersonelRepository(){

@@ -1,6 +1,7 @@
 package com.aliakkulah.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.aliakkulah.entity.Personel;
 import com.aliakkulah.repository.PersonelRepository;
@@ -34,5 +35,9 @@ public class PersonelService {
 
     public void deleteById(Long id) {
 
+    }
+
+    public Map<String,Double> odemeListesi() {
+        return pr.odemeListesi();
     }
 }

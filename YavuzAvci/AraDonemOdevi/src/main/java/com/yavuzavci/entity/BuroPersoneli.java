@@ -1,5 +1,9 @@
 package com.yavuzavci.entity;
 
+/**
+ * Aksi tercih edilmedikçe oluşturabileceğimiz
+ * varsayılan personel türü.
+ */
 public class BuroPersoneli extends Personel {
 
     public BuroPersoneli(String adSoyad, ECinsiyet cinsiyet, Integer yas, String telefon, Departman departman) {

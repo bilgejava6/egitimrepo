@@ -35,7 +35,7 @@ public abstract class Personel {
     @Override
     public String toString() {
         return "Personel{" +
-                "departman=" + departman +
+                "departman=" + departman.getAd() + " departman id=" + departman.getId() +
                 ", id=" + id +
                 ", ad='" + ad + '\'' +
                 ", soyad='" + soyad + '\'' +

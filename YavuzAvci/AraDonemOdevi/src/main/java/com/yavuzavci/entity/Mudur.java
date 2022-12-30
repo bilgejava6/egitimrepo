@@ -3,6 +3,17 @@ package com.yavuzavci.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Departman müdürleri sınıfı.
+ * <br>
+ * <br>
+ * Her müdürün sorumlu olduğu departmanların listesi vardır.
+ * Varsayılan olarak her müdürün personel maaşı tanımlama ve işten
+ * çıkarma yetkisi vardır. Eğer müdürler için ödeme yetkisi tanımlanmak
+ * istenirse bu sınıfı ve bu sınıfla ilgili katmanları değiştirin.
+ *
+ * @author Yavuz AVCI
+ */
 public class Mudur extends Personel {
     private List<Departman> departmanlar;
 
@@ -45,7 +56,7 @@ public class Mudur extends Personel {
                 + (isIstenCikarabilirMi()
                     ? "İşten Çıkarma\n"
                     : "\n")
-                + "Bağlı Departmanlar -> " + departmanlar.stream().toString()
+                + "Bağlı Departmanlar -> " + departmanlar
                 + '\n';
     }
 }

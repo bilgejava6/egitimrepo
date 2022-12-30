@@ -1,5 +1,14 @@
 package com.yavuzavci.entity;
 
+/**
+ * Personel temel sınıfı. Bütün personellerde yer alan
+ * özellikler burada yer alır.
+ * <br>
+ * Personel yetkileri burada tutulmakta olup, ilgili
+ * personel türüne göre değerleri değişmektedir.
+ *
+ * @author Yavuz AVCI
+ */
 public abstract class Personel extends BaseEntity {
 
     private String adSoyad;

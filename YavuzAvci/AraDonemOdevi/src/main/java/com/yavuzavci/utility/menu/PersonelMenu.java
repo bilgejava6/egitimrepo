@@ -2,7 +2,11 @@ package com.yavuzavci.utility.menu;
 
 import static com.yavuzavci.utility.StaticValues.*;
 
-public class PersonelMenu extends AnaMenu {
+/**
+ * Personel işlemlerinin yapıldığı menü.
+ * @author Yavuz AVCI
+ */
+public class PersonelMenu implements IMenu {
     private void personelMenuBaslik(){
         System.out.println("************************************************************");
         System.out.println("******************* PERSONEL İŞLEMLERİ *********************");
@@ -44,12 +48,6 @@ public class PersonelMenu extends AnaMenu {
             case 3:
                 if(personelController.findAll().isEmpty()){
                     System.out.println("HATA: Sistemde kayıtlı personel yoktur.");
-                    break;
-                }
-                System.out.print("Bilgilerini güncellemek istediğiniz personelin numarasını giriniz..: ");
-                long id = scanner.nextLong();
-                if(personelController.findById(id).equals(null)){
-                    System.out.println("HATA: Sistemde " + id + " numaralı personel yoktur.");
                     break;
                 }
                 personelController.update();

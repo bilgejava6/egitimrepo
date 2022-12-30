@@ -5,6 +5,11 @@ import com.yavuzavci.entity.ECinsiyet;
 
 import static com.yavuzavci.utility.StaticValues.*;
 
+/**
+ * Personel işlemlerini kolaylaştırmak amacıyla
+ * oluşturulmuş işlevsel sınıf.
+ * @author Yavuz AVCI
+ */
 public class PersonelUtility {
     public static ECinsiyet cinsiyetAl(){
         System.out.println("Personelin cinsiyet bilgisini giriniz");
@@ -42,7 +47,6 @@ public class PersonelUtility {
     public static Departman departmanAl(){
         System.out.println("Departman numarasını giriniz.");
         long id = scanner.nextLong();
-        scanner.nextLine();
         return departmanController.findById(id);
     }
 
@@ -58,6 +62,14 @@ public class PersonelUtility {
         return id;
     }
 
+    /**
+     * Yeni personel eklerken, personel türüne göre
+     * eklenecek yeni özellikleri belirlemek için
+     * kullanılan method.
+     * @return Hedef personel türü sistemde varsa
+     * personel türüne göre sıfırdan büyük bir değer,
+     * diğer durumlarda sıfırdan küçük bir değer döner.
+     */
     public static int yeniPersonelTuruSec(){
         System.out.println("Oluşturabileceğiniz personel türleri ve kodları aşağıdaki gibidir.");
         System.out.println("1 - Büro Personeli [buro]");
@@ -89,31 +101,28 @@ public class PersonelUtility {
         }
     }
 
-    public static int personelTuruSec(){
-        System.out.println("Aşağıda bilgilerini güncelleyebileceğiniz personel türleri ve kodları yer almaktadır.");
-        System.out.println("1 - Büro Personeli [buro]");
-        System.out.println("2 - Genel Müdür [genelmudur]");
-        System.out.println("3 - Hizmetli [hizmetli]");
-        System.out.println("4 - İnsan Kaynakları Personeli [insankaynaklari]");
-        System.out.println("5 - Müdür [mudur]");
-        System.out.println("6 - Muhasebe Personeli [muhasebe]");
-        System.out.println("7 - Teknik Personel [teknik]");
-        System.out.println("Lütfen seçiniz.");
-        String personelTuru = scanner.nextLine();
-        switch (personelTuru.toLowerCase()){
-            case "buro":
+    /**
+     * Mevcut personeli güncellerken, personel türüne göre
+     * güncellenecek özellikleri belirlemek için kullanılan method.
+     * @return Hedef personel türü sistemde varsa
+     * personel türüne göre sıfırdan büyük bir değer,
+     * diğer durumlarda sıfırdan küçük bir değer döner.
+     */
+    public static int personelTuruBelirle(String personelTuru){
+        switch (personelTuru){
+            case "Buro":
                 return 1;
-            case "genelmudur":
+            case "GenelMudur":
                 return 2;
-            case "hizmetli":
+            case "Hizmetli":
                 return 3;
-            case "insankaynaklari":
+            case "InsanKaynaklariPersoneli":
                 return 4;
-            case "mudur":
+            case "Mudur":
                 return 5;
-            case "muhasebe":
+            case "MuhasebePersoneli":
                 return 6;
-            case "teknik":
+            case "TeknikPersonel":
                 return 7;
             default:
                 return -1;
@@ -154,12 +163,12 @@ public class PersonelUtility {
     }
 
     /**
-     * Hizmetli ve teknik personeller için ortak.
+     * Hizmetli ve teknik personeller için ortak
+     * vardiya süresi tanımlama methodu.
      */
     public static Integer vardiyaSuresiTanimla(){
         System.out.println("Personelin vardiya süresini giriniz.");
         Integer vardiya = scanner.nextInt();
-        scanner.nextLine();
         return vardiya;
     }
 

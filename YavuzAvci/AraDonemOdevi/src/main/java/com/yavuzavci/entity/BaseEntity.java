@@ -2,6 +2,10 @@ package com.yavuzavci.entity;
 
 import static com.yavuzavci.utility.StaticValues.*;
 
+/**
+ * Temel sınıf. Sistemde her verinin sahip olması gereken
+ * özellikler burada yer almaktadır.
+ */
 public abstract class BaseEntity {
     private Long id;
     private Long createDate;
@@ -21,7 +25,7 @@ public abstract class BaseEntity {
 
     /**
      * Başlangıç ve özel durumlarda değiştirebilmek için eklendi.
-     * @param id
+     * @param id Değiştirilecek verinin sistemde kayıtlı numarası.
      */
     public void setId(Long id) {
         this.id = id;
