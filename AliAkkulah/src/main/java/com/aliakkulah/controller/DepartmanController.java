@@ -2,6 +2,8 @@ package com.aliakkulah.controller;
 
 import com.aliakkulah.entity.Departman;
 import com.aliakkulah.service.DepartmanService;
+
+import java.util.List;
 import java.util.Scanner;
 
 import static com.aliakkulah.utility.Utility.departmanListesi;
@@ -39,4 +41,33 @@ public class DepartmanController {
     }
 
     public void findAll() {ds.findAll().forEach(System.out::println);}
+
+    public void departmanPersonelListesi(int depId) {
+        Departman departman = new Departman();
+        for(int i = 0; i < departmanListesi.size(); i++){
+            if(departmanListesi.get(i).getId() == depId) {
+                departman = departmanListesi.get(i);
+                break;
+            }
+        }
+        if(departman != null){
+            System.out.println(departman.getAd() + " departmani personel listesi:");
+            ds.departmanPersonelListesi(departman).forEach(System.out::println);
+        }else
+            System.out.println("Girdiginiz id'ye ait bir departman bulunamadi.");
+    }
+
+    public void enCokPersonelliDepartman(){
+        List<Departman> departmanList = ds.enCokPersonelliDepartman();
+        if(departmanList.size() == 1){
+            System.out.println("En cok personel bulunduran departman: " + departmanList.get(0).getAd());
+            System.out.println("Personel sayısı = " + departmanList.get(0).getPersonelList().size());
+        }else{
+            System.out.print("En cok personel bulunduran departmanlar: ");
+            departmanList.forEach(System.out::println);
+            System.out.println("Personel sayısı = " + departmanList.get(0).getPersonelList().size());
+        }
+
+
+    }
 }

@@ -30,6 +30,7 @@ public abstract class Personel {
         this.maas = maas;
         this.id = idOlustur();
         this.departman = departmanListesi.get(depIndex);
+        departmanListesi.get(depIndex).getPersonelList().add(this);
     }
 
     @Override

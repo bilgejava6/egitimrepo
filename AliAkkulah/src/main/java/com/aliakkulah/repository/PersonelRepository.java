@@ -41,9 +41,9 @@ public class PersonelRepository implements ICrud<Personel>{
 
     @Override
     public Personel findById(Long id) {
-        for(int i = 0; i < personelListesi.size(); i++) {
-            if(personelListesi.get(i).getId().equals(id))
-                return personelListesi.get(i);
+        for (Personel personel : personelListesi) {
+            if (personel.getId().equals(id))
+                return personel;
         }
         System.out.println("Boyle id'ye sahip bir personel bulunmamaktadir.");
         return null;
@@ -63,9 +63,7 @@ public class PersonelRepository implements ICrud<Personel>{
     @Override
     public Map<String,Double> odemeListesi() {
         Map<String,Double> odemeListesi = new TreeMap<>();
-        personelListesi.forEach(x-> {
-            odemeListesi.put("id: " + x.getId() + " Isım Soyisim:" + x.getAd()+" "+x.getSoyad(), x.getMaas());
-        });
+        personelListesi.forEach(x-> odemeListesi.put("id: " + x.getId() + " Isım Soyisim:" + x.getAd()+" "+x.getSoyad(), x.getMaas()));
         return odemeListesi;
     }
 }

@@ -2,6 +2,8 @@ package com.aliakkulah.utility;
 
 import com.aliakkulah.controller.DepartmanController;
 import com.aliakkulah.controller.PersonelController;
+import com.aliakkulah.entity.Departman;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -95,8 +97,17 @@ public class Menu {
                     System.out.println("Secim yapiniz.");
                     secim2 = sc.nextInt();
                     switch (secim2){
-                        case 1: break;
-                        case 2: break;
+                        case 1:
+                            System.out.println("Istediginiz departman id sini giriniz.");
+                            Utility.departmanListesi.forEach(x->{
+                                System.out.println("id: " + x.getId() + " departman: " + x.getAd());
+                            });
+                            int id = sc.nextInt();
+                            dc.departmanPersonelListesi(id);
+                            break;
+                        case 2:
+                            dc.enCokPersonelliDepartman();
+                            break;
                         case 3: break;
                         case 4: break;
                         case 5: break;

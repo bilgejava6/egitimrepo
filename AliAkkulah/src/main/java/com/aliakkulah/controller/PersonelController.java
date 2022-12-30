@@ -298,6 +298,7 @@ public class PersonelController {
     public void baslangicKisileriAtama() {
         Personel bp1 = new BuroPersoneli("Umit","Gelecek","Yeni","09.01.2022",
                 2000,"Erkek",10_000,1,3);
+
         Personel gm1 = new GenelMudur("Ozgur","Erturk","Genel Mudur","08.02.2007",
                 1988,"Erkek",63_500,2,15);
         Personel hzmt1 = new Hizmetli("Selda","Dogru","Kidemli","22.11.2001",
