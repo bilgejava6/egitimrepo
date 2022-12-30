@@ -3,14 +3,13 @@ package com.emreustun.controller;
 import com.emreustun.entity.Departman;
 import com.emreustun.entity.ECinsiyet;
 import com.emreustun.entity.InsanKaynaklariPersoneli;
-import com.emreustun.service.InsanKaynaklariPersoneliService;
 import com.emreustun.service.PersonelService;
 import com.emreustun.utility.StaticValues;
 
 import java.util.Scanner;
 
 public class InsanKaynaklariPersoneliController {
-    InsanKaynaklariPersoneliService insanKaynaklariPersoneliService = new InsanKaynaklariPersoneliService();
+    PersonelService personelService = new PersonelService();
     Scanner sc;
     InsanKaynaklariPersoneli insanKaynaklariPersoneli;
     public void save() {
@@ -54,7 +53,7 @@ public class InsanKaynaklariPersoneliController {
         insanKaynaklariPersoneli.setDepartman(StaticValues.departmanListesi.get(secim-1));
         insanKaynaklariPersoneli.getDepartman().getDepartmanPersonelListesi().add(insanKaynaklariPersoneli);
 
-        insanKaynaklariPersoneliService.save(insanKaynaklariPersoneli);
+        personelService.save(insanKaynaklariPersoneli);
     }
 
     public void update() {
@@ -103,7 +102,7 @@ public class InsanKaynaklariPersoneliController {
         insanKaynaklariPersoneli.setDepartman(StaticValues.departmanListesi.get(secim-1));
         insanKaynaklariPersoneli.getDepartman().getDepartmanPersonelListesi().add(insanKaynaklariPersoneli);
 
-        insanKaynaklariPersoneliService.update(insanKaynaklariPersoneli);
+        personelService.update(insanKaynaklariPersoneli);
 
     }
 }

@@ -3,12 +3,11 @@ package com.emreustun.menu;
 import com.emreustun.controller.DepartmanController;
 import com.emreustun.controller.PersonelController;
 import com.emreustun.entity.Departman;
-import com.emreustun.entity.GenelMudur;
 import com.emreustun.entity.Personel;
 import com.emreustun.utility.StaticValues;
 
 import java.util.*;
-import java.util.stream.Collector;
+
 import java.util.stream.Collectors;
 
 public class Menu {

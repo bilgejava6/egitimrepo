@@ -1,12 +1,9 @@
 package com.emreustun.controller;
 
 import com.emreustun.entity.*;
-import com.emreustun.repository.PersonelRepository;
-import com.emreustun.service.GenelMudurService;
 import com.emreustun.service.PersonelService;
 import com.emreustun.utility.StaticValues;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class PersonelController {
@@ -21,15 +18,14 @@ public class PersonelController {
     Scanner sc;
     Personel personel;
 
-    public void  save() {
+    public void save() {
         sc = new Scanner(System.in);
         if (StaticValues.departmanListesi.isEmpty()) {
             System.out.println();
-            System.out.println("DEPARTMAN EKLEMEDEN PERSONEL EKLEYEMEZSİNİZ !!");
+            System.err.println("DEPARTMAN EKLEMEDEN PERSONEL EKLEYEMEZSİNİZ !!");
             System.out.println();
         } else {
             System.out.println("Personel kayıt ekranina hosgeldiniz..");
-
             System.out.println("Lütfen önce hangi ünvan'da personel ekleyeceğinizi giriniz");
             System.out.println("1. Genel Müdür");
             System.out.println("2. Müdür");
@@ -64,7 +60,6 @@ public class PersonelController {
             }
         }
     }
-
     public void update() {
         sc = new Scanner(System.in);
         System.out.println("Düzenlenecek kişinin ID sini aynı girerek oluşuturunuz..: ");
@@ -102,7 +97,6 @@ public class PersonelController {
                 hizmetliController.update();
                 break;
         }
-
         int id = sc.nextInt();
         for (Personel personel : StaticValues.personelListesi) {
             if (id == personel.getId()) {
@@ -111,36 +105,39 @@ public class PersonelController {
         }
         StaticValues.id--; // id'yi bir azaltıyoruz. çünkü baseentitydeki idOlustur() metodu tekrar calısıyor.
     }
-
     public void findAll() {
         System.out.println("Tüm Personelin Listesi");
         for (Personel personel : service.findAll()) {
             System.out.println(personel);
         }
     }
-
-
     public void maasPersonelTanimlama() {
-        System.out.println("Maaşını değiştirmek istediğiniz personelin id'sini giriniz.");
+        System.out.println("Maaşını değiştermek istediğiniz personelin id'sini giriniz.");
         StaticValues.personelListesi.forEach(System.out::println);
         int secim = sc.nextInt();
         System.out.println("Yeni maaşı giriniz ...: ");
         int maas = sc.nextInt();
-        for (Personel personel : StaticValues.personelListesi){
-            if(secim == personel.getId()){
+        for (Personel personel : StaticValues.personelListesi) {
+            if (secim == personel.getId()) {
                 personel.setMaas(maas);
                 break;
             }
         }
     }
-
     public void odemeListesi() {
+        // her personelin maaşını ekrana verme ve her personelin yıllık kazancını basmak
+        for(Personel personel : StaticValues.personelListesi){
+            System.out.println(personel.getAdSoyad() + " kişisinin maaşı -> "+ personel.getMaas()+
+                    " Yıllık hesaplanması -> "+personel.getMaas()*12);
+        }
+        //bir aylık toplam tutar hesaplama
         int result = 0;
-        for(Personel personel : StaticValues.personelListesi) {
+        for (Personel personel : StaticValues.personelListesi) {
             result += personel.getMaas();
         }
-        System.out.println(" 1 Aylık personellere ödenecek toplam tutar..: ");
-        System.out.println("- > " +result + " TURK LIRASI");
-
+        System.out.println(" Personellere ödenecek 1 Aylık toplam tutar..: ");
+        System.out.println("- > " + result + " TURK LIRASI");
+        System.out.println(" Personellere ödenecek 1 Yıllık toplam tutar..: ");
+        System.out.println("- > " + 12*result + " TURK LIRASI");
     }
 }

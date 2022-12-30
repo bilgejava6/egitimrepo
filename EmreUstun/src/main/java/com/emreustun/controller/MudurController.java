@@ -3,12 +3,12 @@ package com.emreustun.controller;
 import com.emreustun.entity.Departman;
 import com.emreustun.entity.ECinsiyet;
 import com.emreustun.entity.Mudur;
-import com.emreustun.service.MudurService;
+import com.emreustun.service.PersonelService;
 import com.emreustun.utility.StaticValues;
 import java.util.Scanner;
 
 public class MudurController {
-    MudurService mudurService = new MudurService();
+    PersonelService personelService = new PersonelService();
     Scanner sc;
     Mudur mudur;
     public void save() {
@@ -62,8 +62,8 @@ public class MudurController {
                     break;
             }
             departmanSahiplikSayisi++;
-            System.out.println("1-> "+departmanSahiplikSayisi+". Departmanı ata");
-            System.out.println("0-> Personelin bilgilerini oluşturmaya devam et");
+            System.out.println("[1] -> "+departmanSahiplikSayisi+". departmanı ekle");
+            System.out.println("[0] -> Departman atama işleminden çık ve mudurun bilgilerini oluşturmaya devam et");
             value = sc.nextInt();
         }while(value != 0);
         // stat values da mapin içine atıyoruz
@@ -82,7 +82,7 @@ public class MudurController {
 
         mudur.getDepartman().getDepartmanPersonelListesi().add(mudur);
 
-        mudurService.save(mudur);
+        personelService.save(mudur);
     }
 
     public void update() {
@@ -142,12 +142,13 @@ public class MudurController {
                     break;
             }
             departmanSahiplikSayisi++;
-            System.out.println("1-> "+departmanSahiplikSayisi+". Departmanı ata");
-            System.out.println("0-> Personelin bilgilerini oluşturmaya devam et");
+            System.out.println("[1] -> "+departmanSahiplikSayisi+". departmanı ekle");
+            System.out.println("[0] -> Departman atama işleminden çık ve mudurun bilgilerini oluşturmaya devam et");
             value = sc.nextInt();
         }while(value != 0);
         // stat values da mapin içine atıyoruz
         StaticValues.mapMudurDepartmanListesi.put(mudur,mudur.getMudurlerinSorumluOlduguDepartmanListesi());
+
         System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         // Departman atamak...
         int index = 1;
@@ -159,9 +160,6 @@ public class MudurController {
         mudur.setDepartman(StaticValues.departmanListesi.get(secim-1));
         mudur.getDepartman().getDepartmanPersonelListesi().add(mudur);
 
-        mudurService.update(mudur);
-    }
-    public void mudurlerinSorumluOlduguDepartmanListesi(){
-        mudur.getMudurlerinSorumluOlduguDepartmanListesi().stream();
+        personelService.update(mudur);
     }
 }

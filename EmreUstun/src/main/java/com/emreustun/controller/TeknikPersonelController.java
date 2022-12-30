@@ -2,13 +2,12 @@ package com.emreustun.controller;
 
 import com.emreustun.entity.*;
 import com.emreustun.service.PersonelService;
-import com.emreustun.service.TeknikPersonelService;
 import com.emreustun.utility.StaticValues;
 
 import java.util.Scanner;
 
 public class TeknikPersonelController {
-    TeknikPersonelService teknikPersonelService = new TeknikPersonelService();
+    PersonelService personelService = new PersonelService();
     Scanner sc;
     TeknikPersonel teknikPersonel;
 
@@ -24,7 +23,7 @@ public class TeknikPersonelController {
         System.out.println("Teknik personelin cinsiyeti..: (ERKEK-KADIN-BELIRTMEKISTEMIYOR)");
         teknikPersonel.setCinsiyet(ECinsiyet.valueOf(sc.nextLine().toUpperCase()));
 
-        System.out.println("Teknink personelin yaşı..: ");
+        System.out.println("Teknik personelin yaşı..: ");
         teknikPersonel.setYas(sc.nextInt());
 
         System.out.println("Teknik personelin maaşı..: ");
@@ -58,7 +57,7 @@ public class TeknikPersonelController {
         teknikPersonel.setDepartman(StaticValues.departmanListesi.get(secim - 1));
         teknikPersonel.getDepartman().getDepartmanPersonelListesi().add(teknikPersonel);
 
-        teknikPersonelService.save(teknikPersonel);
+        personelService.save(teknikPersonel);
     }
 
     public void update() {
@@ -113,6 +112,6 @@ public class TeknikPersonelController {
 
         teknikPersonel.getDepartman().getDepartmanPersonelListesi().add(teknikPersonel);
 
-        teknikPersonelService.update(teknikPersonel);
+        personelService.update(teknikPersonel);
     }
 }

@@ -1,14 +1,13 @@
 package com.emreustun.controller;
 
 import com.emreustun.entity.*;
-import com.emreustun.service.HizmetliService;
 import com.emreustun.service.PersonelService;
 import com.emreustun.utility.StaticValues;
 
 import java.util.Scanner;
 
 public class HizmetliController{
-    HizmetliService hizmetliService = new HizmetliService();
+    PersonelService personelService = new PersonelService();
     Scanner sc;
     Hizmetli hizmetli;
     public void save() {
@@ -29,10 +28,8 @@ public class HizmetliController{
         hizmetli.setMaas(sc.nextInt());
 
         sc.nextLine();
-        System.out.println("Hizmetinin çalışacağı yerleri giriniz...: ");
+        System.out.println("Hizmetlinin sorumlu olduğu alanları giriniz...: ");
         hizmetli.setCalismaYeri(sc.nextLine());
-
-        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
 
         System.out.println("Personelin işe başlama tarihi..: ");
         System.out.println("Lütfen rakamları kullanınız !!");
@@ -45,6 +42,7 @@ public class HizmetliController{
         hizmetli.setIseBaslamaTarihi(yil-1900,ay-1,gun);
 
         // Departman atamak...
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){
             System.out.println(index+" -> "+departman.getAd());
@@ -54,7 +52,7 @@ public class HizmetliController{
         hizmetli.setDepartman(StaticValues.departmanListesi.get(secim-1));
         hizmetli.getDepartman().getDepartmanPersonelListesi().add(hizmetli);
 
-        hizmetliService.save(hizmetli);
+        personelService.save(hizmetli);
     }
 
     public void update() {
@@ -81,8 +79,6 @@ public class HizmetliController{
         System.out.println("Hizmetinin çalışacağı yerleri giriniz...: ");
         hizmetli.setCalismaYeri(sc.nextLine());
 
-        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
-
         System.out.println("Personelin işe başlama tarihi..: ");
         System.out.println("Lütfen rakamları kullanınız !!");
         System.out.println("Yıl giriniz");
@@ -94,6 +90,7 @@ public class HizmetliController{
         hizmetli.setIseBaslamaTarihi(yil-1900,ay-1,gun);
 
         // Departman atamak...
+        System.out.println("Personelin çalışacağı departmanın numarasını giriniz..: ");
         int index = 1;
         for(Departman departman : StaticValues.departmanListesi){
             System.out.println(index+" -> "+departman.getAd());
@@ -103,6 +100,6 @@ public class HizmetliController{
         hizmetli.setDepartman(StaticValues.departmanListesi.get(secim-1));
         hizmetli.getDepartman().getDepartmanPersonelListesi().add(hizmetli);
 
-        hizmetliService.update(hizmetli);
+        personelService.update(hizmetli);
     }
 }

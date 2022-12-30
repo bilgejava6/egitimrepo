@@ -2,10 +2,7 @@ package com.emreustun.controller;
 
 import com.emreustun.entity.Departman;
 import com.emreustun.entity.ECinsiyet;
-import com.emreustun.entity.GenelMudur;
 import com.emreustun.entity.MuhasebePersoneli;
-import com.emreustun.repository.PersonelRepository;
-import com.emreustun.service.MuhasebePersoneliService;
 import com.emreustun.service.PersonelService;
 import com.emreustun.utility.StaticValues;
 
@@ -13,7 +10,7 @@ import java.util.Scanner;
 
 public class MuhasebePersoneliController {
     MuhasebePersoneli muhasebePersoneli;
-    MuhasebePersoneliService muhasebePersoneliService = new MuhasebePersoneliService();
+    PersonelService personelService = new PersonelService();
     Scanner sc ;
     public void save() {
 
@@ -58,7 +55,7 @@ public class MuhasebePersoneliController {
         muhasebePersoneli.setDepartman(StaticValues.departmanListesi.get(secim-1));
         muhasebePersoneli.getDepartman().getDepartmanPersonelListesi().add(muhasebePersoneli);
 
-        muhasebePersoneliService.save(muhasebePersoneli);
+        personelService.save(muhasebePersoneli);
     }
 
     public void update() {
@@ -109,6 +106,6 @@ public class MuhasebePersoneliController {
         muhasebePersoneli.setDepartman(StaticValues.departmanListesi.get(secim-1));
         muhasebePersoneli.getDepartman().getDepartmanPersonelListesi().add(muhasebePersoneli);
 
-        muhasebePersoneliService.update(muhasebePersoneli);
+        personelService.update(muhasebePersoneli);
     }
 }

@@ -1,14 +1,13 @@
 package com.emreustun.controller;
 
 import com.emreustun.entity.*;
-import com.emreustun.service.BuroPersoneliService;
 import com.emreustun.service.PersonelService;
 import com.emreustun.utility.StaticValues;
 
 import java.util.Scanner;
 
 public class BuroPersoneliController {
-    BuroPersoneliService buroPersoneliService = new BuroPersoneliService();
+    PersonelService personelService = new PersonelService();
     Scanner sc;
     BuroPersoneli buroPersoneli;
 
@@ -56,7 +55,7 @@ public class BuroPersoneliController {
         //girilen personeli departmanın personel listesinede atmalıyız.
         buroPersoneli.getDepartman().getDepartmanPersonelListesi().add(buroPersoneli);
 
-        buroPersoneliService.save(buroPersoneli);
+        personelService.save(buroPersoneli);
     }
 
     public void update() {
@@ -107,6 +106,6 @@ public class BuroPersoneliController {
 
         buroPersoneli.getDepartman().getDepartmanPersonelListesi().add(buroPersoneli);
 
-        buroPersoneliService.update(buroPersoneli);
+        personelService.update(buroPersoneli);
     }
 }
