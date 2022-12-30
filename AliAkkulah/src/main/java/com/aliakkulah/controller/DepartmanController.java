@@ -70,4 +70,13 @@ public class DepartmanController {
 
 
     }
+
+    public void departmanaGoreMaasOrtalamalari() {
+        sc = new Scanner(System.in);
+        for(int i = 0; i < departmanListesi.size(); i++)
+            System.out.println((i+1) + ")" + departmanListesi.get(i).getAd());
+        System.out.println("Departman seciniz.");
+        int index = Integer.parseInt(sc.nextLine()) - 1;
+        ds.departmanaGoreMaasOrtalamalari(departmanListesi.get(index));
+    }
 }

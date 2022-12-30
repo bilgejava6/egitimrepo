@@ -108,7 +108,9 @@ public class Menu {
                         case 2:
                             dc.enCokPersonelliDepartman();
                             break;
-                        case 3: break;
+                        case 3:
+                            dc.departmanaGoreMaasOrtalamalari();
+                            break;
                         case 4: break;
                         case 5: break;
                         case 6: break;

@@ -27,4 +27,6 @@ public class DepartmanService {
     public List<Departman> enCokPersonelliDepartman() {
         return dr.enCokPersonelliDepartman();
     }
+
+    public void departmanaGoreMaasOrtalamalari(Departman departman) { dr.departmanaGoreMaasOrtalamalari(departman);}
 }
