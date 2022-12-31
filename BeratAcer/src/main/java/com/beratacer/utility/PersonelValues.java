@@ -17,7 +17,7 @@ public class PersonelValues {
         String telNo=stringScanner("Personel telNo giriniz : ");
         String tcNo=stringScanner("Personel tcNo giriniz : ");
         String adres=stringScanner("Personel adres giriniz : ");
-        Departman departman=departmanService.findByName(stringScanner("Personel departman giriniz"));
+        Departman departman=departmanService.findByName(stringScanner("Personel departman giriniz : "));
         String isBasi=stringScanner("Personel is baslangic tarihi giriniz : ");
         String uzmanlikAlani=stringScanner("Personel uzmanlik alani giriniz : ");
         return new GenelMudur(adSoyad, telNo, tcNo, adres, departman, isBasi, uzmanlikAlani);

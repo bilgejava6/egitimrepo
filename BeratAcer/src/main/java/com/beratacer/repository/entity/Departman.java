@@ -1,12 +1,14 @@
 package com.beratacer.repository.entity;
 
+import com.beratacer.utility.StaticValues;
+
 public class Departman {
     private Long id;
     private String ad;
 
 
     public Departman(String ad) {
-        //this.id = ++StaticValues.departmanId;
+        this.id = ++StaticValues.departmanId;
         this.ad = ad;
     }
 
