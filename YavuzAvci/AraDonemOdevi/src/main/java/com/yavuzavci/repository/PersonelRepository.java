@@ -4,7 +4,7 @@ import com.yavuzavci.entity.Personel;
 
 import java.util.List;
 
-import static com.yavuzavci.utility.StaticValues.personelListesi;
+import static com.yavuzavci.utility.StaticValues.PERSONEL_LISTESI;
 
 /**
  * Personel verilerinin sisteme işlendiği katman.
@@ -17,15 +17,15 @@ public class PersonelRepository implements ICrud<Personel> {
 
     @Override
     public void save(Personel personel) {
-        personelListesi.add(personel);
+        PERSONEL_LISTESI.add(personel);
         personel.getDepartman().getPersonelListesi().add(personel);
     }
 
     @Override
     public void update(Personel personel) {
-        for(int i = 0 ; i < personelListesi.size();i++) {
-            if(personelListesi.get(i).getId().equals(personel.getId())){
-                personelListesi.set(i,personel);
+        for(int i = 0; i < PERSONEL_LISTESI.size(); i++) {
+            if(PERSONEL_LISTESI.get(i).getId().equals(personel.getId())){
+                PERSONEL_LISTESI.set(i,personel);
                 personel.getDepartman()
                         .getPersonelListesi()
                         .set(
@@ -38,12 +38,12 @@ public class PersonelRepository implements ICrud<Personel> {
 
     @Override
     public void delete(Long id) {
-        for(int i = 0 ; i < personelListesi.size(); i++) {
-            if(personelListesi.get(i).getId().equals(id)){
-                personelListesi.remove(i);
-                personelListesi.get(i).getDepartman()
+        for(int i = 0; i < PERSONEL_LISTESI.size(); i++) {
+            if(PERSONEL_LISTESI.get(i).getId().equals(id)){
+                PERSONEL_LISTESI.remove(i);
+                PERSONEL_LISTESI.get(i).getDepartman()
                         .getPersonelListesi()
-                        .remove(personelListesi.get(i));
+                        .remove(PERSONEL_LISTESI.get(i));
                 break;
             }
         }
@@ -51,14 +51,14 @@ public class PersonelRepository implements ICrud<Personel> {
 
     @Override
     public List<Personel> findAll() {
-        return personelListesi;
+        return PERSONEL_LISTESI;
     }
 
     @Override
     public Personel findById(Long id) {
-        for(int i =0;i<personelListesi.size();i++) {
-            if(personelListesi.get(i).getId().equals(id))
-                return personelListesi.get(i);
+        for(int i = 0; i< PERSONEL_LISTESI.size(); i++) {
+            if(PERSONEL_LISTESI.get(i).getId().equals(id))
+                return PERSONEL_LISTESI.get(i);
         }
         return null;
     }
