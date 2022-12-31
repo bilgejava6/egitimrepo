@@ -4,7 +4,7 @@ import com.yavuzavci.entity.Departman;
 
 import java.util.List;
 
-import static com.yavuzavci.utility.StaticValues.departmanListesi;
+import static com.yavuzavci.utility.StaticValues.DEPARTMAN_LISTESI;
 
 /**
  * Departman verilerinin sisteme işlendiği katman.
@@ -18,28 +18,28 @@ public class DepartmanRepository implements ICrud<Departman> {
 
     @Override
     public void save(Departman departman) {
-        departmanListesi.put(departman.getId(),departman);
+        DEPARTMAN_LISTESI.put(departman.getId(),departman);
     }
 
     @Override
     public void update(Departman departman) {
-        if(departmanListesi.containsKey(departman.getId())){
-            departmanListesi.replace(departman.getId(), departman);
+        if(DEPARTMAN_LISTESI.containsKey(departman.getId())){
+            DEPARTMAN_LISTESI.replace(departman.getId(), departman);
         }
     }
 
     @Override
     public void delete(Long id) {
-        departmanListesi.remove(id);
+        DEPARTMAN_LISTESI.remove(id);
     }
 
     @Override
     public List<Departman> findAll() {
-        return departmanListesi.values().stream().toList();
+        return DEPARTMAN_LISTESI.values().stream().toList();
     }
 
     @Override
     public Departman findById(Long id) {
-        return departmanListesi.get(id);
+        return DEPARTMAN_LISTESI.get(id);
     }
 }

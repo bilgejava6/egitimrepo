@@ -8,8 +8,8 @@ public class MuhasebePersoneli extends Personel {
 
     }
 
-    public MuhasebePersoneli(String ad, String soyad, String email, String telefon, String pozisyon, int maas, String kayitTarihi, double maasEkle) {
-        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi);
+    public MuhasebePersoneli(String ad, String soyad, String email, String telefon, String pozisyon, int maas, String kayitTarihi, double maasEkle,String departman) {
+        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi,departman);
         this.maasEkle = maasEkle;
     }
 

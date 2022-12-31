@@ -1,5 +1,6 @@
 package com.aliakkulah.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import static com.aliakkulah.utility.Utility.*;
 
@@ -11,6 +12,11 @@ public class Departman {
     public Departman(String ad) {
         this.ad = ad;
         this.id = depIdOlustur();
+        this.personelList = new ArrayList<>();
+    }
+
+    public Departman() {
+
     }
 
     public String getAd() {
@@ -35,5 +41,12 @@ public class Departman {
 
     public void setPersonelList(List<Personel> personelList) {
         this.personelList = personelList;
+    }
+
+    @Override
+    public String toString() {
+        return "Departman{" +
+                "ad='" + ad + '\'' +
+                '}';
     }
 }

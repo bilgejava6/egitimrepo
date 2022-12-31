@@ -14,13 +14,14 @@ public abstract class Personel {
     private String iseGirisTarihi;
     private int dogumYili;
     private String cinsiyet;
-
+    private Long createDate;
     private double maas;
 
     public Personel() {
     }
 
     public Personel(String ad, String soyad, String unvan, String iseGirisTarihi, int dogumYili, String cinsiyet, double maas, int  depIndex) {
+        this.createDate = System.currentTimeMillis();
         this.ad = ad;
         this.soyad = soyad;
         this.unvan = unvan;
@@ -30,12 +31,13 @@ public abstract class Personel {
         this.maas = maas;
         this.id = idOlustur();
         this.departman = departmanListesi.get(depIndex);
+        departmanListesi.get(depIndex).getPersonelList().add(this);
     }
 
     @Override
     public String toString() {
-        return "Personel{" +
-                "departman=" + departman.getAd() + " departman id=" + departman.getId() +
+        return  "createDate=" + createDate +
+                ", departman=" + departman.getAd() + " departman id=" + departman.getId() +
                 ", id=" + id +
                 ", ad='" + ad + '\'' +
                 ", soyad='" + soyad + '\'' +

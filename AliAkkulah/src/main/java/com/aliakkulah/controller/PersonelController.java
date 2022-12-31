@@ -3,6 +3,8 @@ package com.aliakkulah.controller;
 import com.aliakkulah.entity.*;
 import com.aliakkulah.service.PersonelService;
 import static com.aliakkulah.utility.Utility.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
@@ -14,7 +16,6 @@ public class PersonelController {
     public PersonelController() {
         this.ps = new PersonelService();
     }
-
     public void odemeListesi(Personel yetkili) {
         sc = new Scanner(System.in);
         if(yetkili.getDepartman().getAd().equalsIgnoreCase("Muhasebe")){
@@ -40,33 +41,44 @@ public class PersonelController {
         }else
             System.out.println("Maas tanimlama yetkiniz bulunmamaktadir.");
     }
-
     public void guncellenecekPersonelSecme() {
         sc = new Scanner(System.in);
         System.out.println("Guncellenecek personel id'sini giriniz.");
         int guncellenecekId = Integer.parseInt(sc.nextLine());
         Personel guncellenecekPersonel = null;
         for(int i = 0; i < personelListesi.size(); i++){
-            if(personelListesi.get(i).getId().equals(guncellenecekId)){
+            if(personelListesi.get(i).getId() == guncellenecekId){
                 guncellenecekPersonel = personelListesi.get(i);
                 break;
             }
         } if(!guncellenecekPersonel.equals(null)) {
+
         }else
             System.out.println("Girilen id'ye ait bir personel bulunmamaktadir. Guncelleme yapilamadi.");
     }
-
     public void deleteById(){
-        ps.deleteById(null);
+        sc = new Scanner(System.in);
+        System.out.println("Silmek istediginiz personelin id'sini giriniz.");
+        Long id = Long.parseLong(sc.nextLine());
+        ps.deleteById(id);
     }
-    public void delete(Long id){
-        ps.delete(null);
+    public void delete(){
+        sc = new Scanner(System.in);
+        for(int i = 0; i < personelListesi.size(); i++){
+            System.out.println((i+1) + ") " + personelListesi.get(i).getAd() + " " + personelListesi.get(i).getSoyad());
+        }
+        System.out.println("Silmek istediginiz personelin sira numarasini giriniz.");
+        int index = Integer.parseInt(sc.nextLine()) - 1;
+        ps.delete(personelListesi.get(index));
     }
     public void findAll(){
         ps.findAll().forEach(System.out::println);
     }
-    public Personel findById(Long id){
-        return ps.findById(id);
+    public void findById(){
+        sc = new Scanner(System.in);
+        System.out.println("Istediginiz personelin id'sini giriniz.");
+        Long id = Long.parseLong(sc.nextLine());
+        ps.findById(id);
     }
     public void eklenecekPersonelTipiSecme(int personelTipi) {
         switch (personelTipi) {
@@ -298,6 +310,7 @@ public class PersonelController {
     public void baslangicKisileriAtama() {
         Personel bp1 = new BuroPersoneli("Umit","Gelecek","Yeni","09.01.2022",
                 2000,"Erkek",10_000,1,3);
+
         Personel gm1 = new GenelMudur("Ozgur","Erturk","Genel Mudur","08.02.2007",
                 1988,"Erkek",63_500,2,15);
         Personel hzmt1 = new Hizmetli("Selda","Dogru","Kidemli","22.11.2001",
@@ -336,4 +349,29 @@ public class PersonelController {
         personelListesi.add(tp1);
         personelListesi.add(tp2);
     }
+    public void siraliPersonelListesi() {ps.siraliPersonelListesi();}
+    public void ayniGunBaslayanlarListesi() { ps.ayniGunBaslayanlarListesi();}
+    public void mudureSorumluOlduguDepartmanEkle() {
+        sc = new Scanner(System.in);
+        List<Personel> mudurler = new ArrayList<>();
+        for(Departman departman : departmanListesi){
+            if(departman.getAd().equalsIgnoreCase("Mudur"))
+                mudurler = departman.getPersonelList();
+        }
+        for(int i = 0; i < mudurler.size(); i++) {
+            Mudur mudur = (Mudur) mudurler.get(i);
+            System.out.println((i + 1) + ". Mudur: " + mudur.getAd() + " " + mudur.getSoyad() + "'nın departmanları:");
+            mudur.getSorumluOlduguDepartmanlar().forEach(System.out::println);
+        }
+        System.out.println("Departman eklemek istediginiz mudurun sira numarasini giriniz.");
+        int index = Integer.parseInt(sc.nextLine()) - 1;
+        for(int i = 0; i < departmanListesi.size(); i++){
+            System.out.println((i+1) + ") " + departmanListesi.get(i));
+        }
+        System.out.println("Eklemek istediginiz departmanin sira numarasini giriniz.");
+        int index2 = Integer.parseInt(sc.nextLine()) - 1;
+        ps.mudureSorumluOlduguDepartmanEkle((Mudur) mudurler.get(index), departmanListesi.get(index2));
+    }
+
+    public void mudurlerinSorumluOlduguDepartmanlar() {ps.mudurlerinSorumluOlduguDepartmanlar();}
 }

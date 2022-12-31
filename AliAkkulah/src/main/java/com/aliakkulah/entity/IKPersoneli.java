@@ -56,8 +56,6 @@ public class IKPersoneli extends Personel {
     public String toString() {
         return "IKPersoneli [iletisimKurmnaDerecesi=" + iletisimKurmnaDerecesi + ", iseAlimSayisi=" + iseAlimSayisi
                 + ", istenCikarmaSayisi=" + istenCikarmaSayisi + ", girdigiMulakatSayisi=" + girdigiMulakatSayisi
-                + ", getCinsiyet()=" + getCinsiyet() + ", getId()=" + getId() + ", getAd()=" + getAd() + ", getSoyad()="
-                + getSoyad() + ", getUnvan()=" + getUnvan() + ", getIseGirisTarihi()=" + getIseGirisTarihi()
-                + ", getDogumYili()=" + getDogumYili() + ", getMaas()=" + getMaas() + "]";
+                + "," + super.toString();
     }
 }

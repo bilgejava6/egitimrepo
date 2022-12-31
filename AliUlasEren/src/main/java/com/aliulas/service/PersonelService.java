@@ -12,6 +12,7 @@ public class PersonelService {
     private final PersonelRepository personelRepository;
 
     public PersonelService() {
+        super();
         this.personelRepository = new PersonelRepository();
     }
 

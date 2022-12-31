@@ -27,11 +27,11 @@ public class MuhasebeMenu implements IMenu {
         do{
             muhasebeMenuBaslik();
             System.out.print("Lütfen seçiminizi yapınız...: ");
-            secim = scanner.nextInt();
-            scanner.nextLine();
+            secim = SCANNER.nextInt();
+            SCANNER.nextLine();
             islemSec(secim);
         } while (secim != 0);
-        anaMenu.menu();
+        ANA_MENU.menu();
     }
 
     @Override
@@ -40,50 +40,50 @@ public class MuhasebeMenu implements IMenu {
         Personel personel;
         switch(secim){
             case 1:
-                if (personelController.findAll().isEmpty()) {
+                if (PERSONEL_CONTROLLER.findAll().isEmpty()) {
                     System.out.println("HATA: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
                 System.out.print("Personel numaranızı giriniz..: ");
-                id = scanner.nextLong();
-                personel = personelController.findById(id);
+                id = SCANNER.nextLong();
+                personel = PERSONEL_CONTROLLER.findById(id);
                 if(!personel.isMaasTanimlayabilirMi()){
                     System.out.println("HATA: Maaş tanımlama yetkiniz yoktur. İşlem başarısız.");
                     break;
                 }
                 System.out.print("Maaş bilgisini tanımlayacağınız personelin numarasını giriniz..: ");
-                id = scanner.nextLong();
-                personel = personelController.findById(id);
+                id = SCANNER.nextLong();
+                personel = PERSONEL_CONTROLLER.findById(id);
                 if (Objects.isNull(personel)) {
                     System.out.println("HATA: Sistemde " + id + " numaralı personel yoktur.");
                     break;
                 }
                 Double maas = maasAl();
                 personel.setMaas(maas);
-                personelController.findAll()
-                        .set(personelController.findAll().indexOf(personel), personel);
-                departmanController.findById(personel.getDepartman().getId())
+                PERSONEL_CONTROLLER.findAll()
+                        .set(PERSONEL_CONTROLLER.findAll().indexOf(personel), personel);
+                DEPARTMAN_CONTROLLER.findById(personel.getDepartman().getId())
                         .getPersonelListesi()
-                        .set(departmanController.findById(personel.getDepartman().getId())
+                        .set(DEPARTMAN_CONTROLLER.findById(personel.getDepartman().getId())
                                 .getPersonelListesi().indexOf(personel),
                                 personel);
                 System.out.println("Personel maaş bilgisi tanımlandı.");
                 break;
             case 2:
-                if (personelController.findAll().isEmpty()) {
+                if (PERSONEL_CONTROLLER.findAll().isEmpty()) {
                     System.out.println("HATA: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
                 System.out.print("Kaç personele ödeme yapılacağını giriniz..: ");
-                int personelSayisi = scanner.nextInt();
+                int personelSayisi = SCANNER.nextInt();
                 if (personelSayisi <= 0) {
                     System.out.println("HATA: En az 1 personel için ödeme yapmak zorundasınız.");
                     break;
                 }
                 for (int i = 0; i < personelSayisi; i++) {
                     System.out.print("Maaş bilgisini tanımlayacağınız personelin numarasını giriniz..: ");
-                    id = scanner.nextLong();
-                    personel = personelController.findById(id);
+                    id = SCANNER.nextLong();
+                    personel = PERSONEL_CONTROLLER.findById(id);
                     if (Objects.isNull(personel)) {
                         System.out.println("HATA: Sistemde " + id + " numaralı personel yoktur.");
                         System.out.println("İşlem personel için başarısız.");
@@ -92,32 +92,32 @@ public class MuhasebeMenu implements IMenu {
                     System.out.println("Personele maaş ödemesi yapacaksanız 'maas'\n" +
                             "Başka bir tutar ödemesi yapacaksanız 'diger' yazmalısınız.");
                     System.out.print("Seçiminizi yapınız..: ");
-                    String odemeSecim= scanner.nextLine();
+                    String odemeSecim= SCANNER.nextLine();
                     switch (odemeSecim.toLowerCase()){
                         case "maas":
                             personel.setOdenmisUcret(personel.getMaas());
-                            personelController.findAll()
-                                    .set(personelController.findAll().indexOf(personel), personel);
-                            departmanController.findById(personel.getDepartman().getId())
+                            PERSONEL_CONTROLLER.findAll()
+                                    .set(PERSONEL_CONTROLLER.findAll().indexOf(personel), personel);
+                            DEPARTMAN_CONTROLLER.findById(personel.getDepartman().getId())
                                     .getPersonelListesi()
-                                    .set(departmanController.findById(personel.getDepartman().getId())
+                                    .set(DEPARTMAN_CONTROLLER.findById(personel.getDepartman().getId())
                                                     .getPersonelListesi().indexOf(personel),
                                             personel);
                             break;
                         case "diger":
                             System.out.print("Personele ödenecek tutarı giriniz..: ");
-                            Double tutar = scanner.nextDouble();
+                            Double tutar = SCANNER.nextDouble();
                             if(tutar <= 0){
                                 System.out.println("HATA: Ödenecek tutar sıfırdan büyük olmalıdır.");
                                 System.out.println("İşlem personel için başarısız.");
                                 break;
                             }
                             personel.setOdenmisUcret(tutar);
-                            personelController.findAll()
-                                    .set(personelController.findAll().indexOf(personel), personel);
-                            departmanController.findById(personel.getDepartman().getId())
+                            PERSONEL_CONTROLLER.findAll()
+                                    .set(PERSONEL_CONTROLLER.findAll().indexOf(personel), personel);
+                            DEPARTMAN_CONTROLLER.findById(personel.getDepartman().getId())
                                     .getPersonelListesi()
-                                    .set(departmanController.findById(personel.getDepartman().getId())
+                                    .set(DEPARTMAN_CONTROLLER.findById(personel.getDepartman().getId())
                                                     .getPersonelListesi().indexOf(personel),
                                             personel);
                             break;

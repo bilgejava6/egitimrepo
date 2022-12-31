@@ -1,6 +1,6 @@
 package com.yavuzavci.entity;
 
-import static com.yavuzavci.utility.StaticValues.departmanListesi;
+import static com.yavuzavci.utility.StaticValues.DEPARTMAN_LISTESI;
 
 /**
  * Genel müdür sınıfı.
@@ -23,14 +23,14 @@ public class GenelMudur extends Mudur {
     public GenelMudur(String adSoyad, ECinsiyet cinsiyet, Integer yas, String telefon, Departman departman,
                       boolean odemeyeYetkiliMi, boolean maasTanimlayabilirMi, boolean istenCikarabilirMi) {
         super(adSoyad,cinsiyet,yas,telefon,departman,maasTanimlayabilirMi,istenCikarabilirMi);
-        setDepartmanlar(departmanListesi.values().stream().toList());
+        setDepartmanlar(DEPARTMAN_LISTESI.values().stream().toList());
         setOdemeyeYetkiliMi(odemeyeYetkiliMi);
     }
 
     public GenelMudur(String adSoyad, ECinsiyet cinsiyet, Integer yas, String telefon, Departman departman,
                       Double maas, boolean odemeyeYetkiliMi, boolean maasTanimlayabilirMi, boolean istenCikarabilirMi) {
         super(adSoyad,cinsiyet,yas,telefon,departman,maas,maasTanimlayabilirMi,istenCikarabilirMi);
-        setDepartmanlar(departmanListesi.values().stream().toList());
+        setDepartmanlar(DEPARTMAN_LISTESI.values().stream().toList());
         setOdemeyeYetkiliMi(odemeyeYetkiliMi);
     }
 

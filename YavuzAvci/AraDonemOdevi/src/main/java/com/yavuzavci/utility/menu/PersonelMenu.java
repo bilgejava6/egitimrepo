@@ -24,44 +24,44 @@ public class PersonelMenu implements IMenu {
         do{
             personelMenuBaslik();
             System.out.print("Lütfen seçiminizi yapınız...: ");
-            secim = scanner.nextInt();
-            scanner.nextLine();
+            secim = SCANNER.nextInt();
+            SCANNER.nextLine();
             islemSec(secim);
         } while (secim != 0);
-        anaMenu.menu();
+        ANA_MENU.menu();
     }
 
     @Override
     public void islemSec(int secim) {
         switch(secim){
             case 1:
-                personelController.save();
+                PERSONEL_CONTROLLER.save();
                 break;
             case 2:
-                if(personelController.findAll().isEmpty()){
+                if(PERSONEL_CONTROLLER.findAll().isEmpty()){
                     System.out.println("Bilgi : Sistemde kayıtlı personel bulunmamaktadır.");
                     break;
                 }
                 System.out.println("### Personel Listesi ###");
-                personelController.findAll().forEach(System.out::println);
+                PERSONEL_CONTROLLER.findAll().forEach(System.out::println);
                 break;
             case 3:
-                if(personelController.findAll().isEmpty()){
+                if(PERSONEL_CONTROLLER.findAll().isEmpty()){
                     System.out.println("HATA: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
-                personelController.update();
+                PERSONEL_CONTROLLER.update();
                 break;
             case 4:
-                departmanController.save();
+                DEPARTMAN_CONTROLLER.save();
                 break;
             case 5:
-                if(departmanController.findAll().isEmpty()){
+                if(DEPARTMAN_CONTROLLER.findAll().isEmpty()){
                     System.out.println("Bilgi : Sistemde kayıtlı departman bulunmamaktadır.");
                     break;
                 }
                 System.out.println("### Departman Listesi ###");
-                departmanController.findAll().forEach(System.out::println);
+                DEPARTMAN_CONTROLLER.findAll().forEach(System.out::println);
                 break;
             case 0:
                 break;

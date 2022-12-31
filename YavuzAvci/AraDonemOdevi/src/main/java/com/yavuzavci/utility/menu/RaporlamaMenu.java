@@ -33,26 +33,26 @@ public class RaporlamaMenu implements IMenu {
         do {
             raporlamaMenuBaslik();
             System.out.print("Lütfen seçiminizi yapınız...: ");
-            secim = scanner.nextInt();
-            scanner.nextLine();
+            secim = SCANNER.nextInt();
+            SCANNER.nextLine();
             islemSec(secim);
         } while (secim != 0);
-        anaMenu.menu();
+        ANA_MENU.menu();
     }
 
     @Override
     public void islemSec(int secim) {
         switch (secim) {
             case 1:
-                if (personelController.findAll().isEmpty()) {
+                if (PERSONEL_CONTROLLER.findAll().isEmpty()) {
                     System.out.println("Bilgi: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
-                if (departmanController.findAll().isEmpty()) {
+                if (DEPARTMAN_CONTROLLER.findAll().isEmpty()) {
                     System.out.println("Bilgi: Sistemde kayıtlı departman yoktur.");
                     break;
                 }
-                for (Departman departman : departmanController.findAll()) {
+                for (Departman departman : DEPARTMAN_CONTROLLER.findAll()) {
                     if (departman.getPersonelListesi().isEmpty())
                         continue;
                     System.out.println("Departman: " + departman.getAd());
@@ -60,15 +60,15 @@ public class RaporlamaMenu implements IMenu {
                 }
                 break;
             case 2:
-                if (personelController.findAll().isEmpty()) {
+                if (PERSONEL_CONTROLLER.findAll().isEmpty()) {
                     System.out.println("Bilgi: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
-                if (departmanController.findAll().isEmpty()) {
+                if (DEPARTMAN_CONTROLLER.findAll().isEmpty()) {
                     System.out.println("Bilgi: Sistemde kayıtlı departman yoktur.");
                     break;
                 }
-                String ad = departmanController.findAll()
+                String ad = DEPARTMAN_CONTROLLER.findAll()
                         .stream()
                         .collect(Collectors.toMap(
                                 Departman::getAd,
@@ -80,15 +80,15 @@ public class RaporlamaMenu implements IMenu {
                 System.out.println("En çok personel bulunan departman : " + ad);
                 break;
             case 3:
-                if (personelController.findAll().isEmpty()) {
+                if (PERSONEL_CONTROLLER.findAll().isEmpty()) {
                     System.out.println("Bilgi: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
-                if (departmanController.findAll().isEmpty()) {
+                if (DEPARTMAN_CONTROLLER.findAll().isEmpty()) {
                     System.out.println("Bilgi: Sistemde kayıtlı departman yoktur.");
                     break;
                 }
-                departmanController.findAll().stream()
+                DEPARTMAN_CONTROLLER.findAll().stream()
                         .collect(
                                 Collectors.toMap(
                                         Departman::getAd,
@@ -102,15 +102,15 @@ public class RaporlamaMenu implements IMenu {
                         );
                 break;
             case 4:
-                if (personelController.findAll().isEmpty()) {
+                if (PERSONEL_CONTROLLER.findAll().isEmpty()) {
                     System.out.println("Bilgi: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
-                if (departmanController.findAll().isEmpty()) {
+                if (DEPARTMAN_CONTROLLER.findAll().isEmpty()) {
                     System.out.println("Bilgi: Sistemde kayıtlı departman yoktur.");
                     break;
                 }
-                if (personelController.findAll()
+                if (PERSONEL_CONTROLLER.findAll()
                         .stream()
                         .filter(Mudur.class::isInstance)
                         .map(Mudur.class::cast)
@@ -119,7 +119,7 @@ public class RaporlamaMenu implements IMenu {
                     System.out.println("Bilgi: Sistemde kayıtlı müdür veya genel müdür yoktur.");
                 }
                 System.out.println("## Müdürler ve sorumlu olduğu departmanlar ##");
-                personelController.findAll()
+                PERSONEL_CONTROLLER.findAll()
                         .stream()
                         .filter(Mudur.class::isInstance)
                         .map(Mudur.class::cast)
@@ -131,28 +131,28 @@ public class RaporlamaMenu implements IMenu {
                         });
                 break;
             case 5:
-                if (personelController.findAll().isEmpty()) {
+                if (PERSONEL_CONTROLLER.findAll().isEmpty()) {
                     System.out.println("Bilgi: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
                 System.out.println("## Kayıt tarihine göre personeller ##");
-                personelController.findAll()
+                PERSONEL_CONTROLLER.findAll()
                         .stream()
                         .sorted(Comparator.comparing(Personel::getCreateDate))
                         .toList()
                         .forEach(System.out::println);
                 break;
             case 6:
-                if (personelController.findAll().isEmpty()) {
+                if (PERSONEL_CONTROLLER.findAll().isEmpty()) {
                     System.out.println("Bilgi: Sistemde kayıtlı personel yoktur.");
                     break;
                 }
                 // (Personel p1, Personel p2) -> p1.getCreateDate().equals(p2.getCreateDate())
                 System.out.println("## Aynı gün işe başlayan personeller ##");
-                personelController.findAll()
+                PERSONEL_CONTROLLER.findAll()
                         .stream()
                         .filter(p ->
-                                Collections.frequency(personelController.findAll(),p.getCreateDate()) > 1)
+                                Collections.frequency(PERSONEL_CONTROLLER.findAll(),p.getCreateDate()) > 1)
                         .toList()
                         .forEach(System.out::println);
                 break;

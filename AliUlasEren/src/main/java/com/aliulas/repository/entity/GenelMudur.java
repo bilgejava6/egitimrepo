@@ -8,8 +8,8 @@ public class GenelMudur extends Personel {
     public GenelMudur() {
     }
 
-    public GenelMudur(String ad, String soyad, String email, String telefon, String pozisyon, int maas, String kayitTarihi, String sorumluOlduguAlanlar) {
-        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi);
+    public GenelMudur(String ad, String soyad, String email, String telefon, String pozisyon, int maas, String kayitTarihi, String sorumluOlduguAlanlar,String departman) {
+        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi,departman);
         this.sorumluOlduguDepartmanlar = sorumluOlduguAlanlar;
     }
 

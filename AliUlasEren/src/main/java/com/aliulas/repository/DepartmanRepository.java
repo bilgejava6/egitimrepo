@@ -3,18 +3,13 @@ package com.aliulas.repository;
 import java.util.HashMap;
 import com.aliulas.repository.entity.Departman;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+
+import static com.aliulas.utility.StaticValues.departmanListesi;
 
 public class DepartmanRepository implements ICrudD<Departman> {
-    private Map<Long, Departman> departmanListesi;
 
 
-    public DepartmanRepository() {
-        departmanListesi = new HashMap<>();
-    }
 
     @Override
     public void save(Departman departman) {

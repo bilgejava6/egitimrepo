@@ -7,8 +7,8 @@ public class InsanKaynaklariPersoneli extends Personel{
 
     }
 
-    public InsanKaynaklariPersoneli(String ad, String soyad, String email, String telefon, String pozisyon, int maas, String kayitTarihi, String calismaAlani) {
-        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi);
+    public InsanKaynaklariPersoneli(String ad, String soyad, String email, String telefon, String pozisyon, int maas, String kayitTarihi, String calismaAlani,String departman) {
+        super(ad, soyad, email, telefon, pozisyon, maas, kayitTarihi,departman);
         this.calismaAlani = calismaAlani;
     }
 
@@ -18,16 +18,16 @@ public class InsanKaynaklariPersoneli extends Personel{
     }
 
 
-    public String getCalismaAlanı() {
+    public String getCalismaAlani() {
         return calismaAlani;
     }
 
-    public void setCalismaAlanı(String calismaAlanı) {
-        this.calismaAlani = calismaAlanı;
+    public void setCalismaAlani(String calismaAlani) {
+        this.calismaAlani = calismaAlani;
     }
 
     @Override
     public String toString() {
-        return "InsanKaynaklariPersoneli [calismaAlanı=" + calismaAlani + ", calismaYılı=" + "]";
+        return "InsanKaynaklariPersoneli [calismaAlani=" + calismaAlani + ", calismaYili=" + "]";
     }
 }

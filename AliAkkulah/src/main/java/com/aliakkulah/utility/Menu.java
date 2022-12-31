@@ -2,13 +2,13 @@ package com.aliakkulah.utility;
 
 import com.aliakkulah.controller.DepartmanController;
 import com.aliakkulah.controller.PersonelController;
+
 import java.util.Scanner;
 
 public class Menu {
     private static Scanner sc;
     private final PersonelController pc;
     private final DepartmanController dc;
-
 
     public Menu() {
         this.pc = new PersonelController();
@@ -31,12 +31,16 @@ public class Menu {
             switch (secim) {
                 case 1:
                     System.out.println("*******   Personel Islemleri   *******");
-                    System.out.println("1. Personel Ekleme");
-                    System.out.println("2. Personel Listesi");
+                    System.out.println("1. Personel Ekleme"); //yapıldı.
+                    System.out.println("2. Personel Listesi"); //yapıldı.
                     System.out.println("3. Personel Duzenleme");
-                    System.out.println("4. Departman Ekleme");
-                    System.out.println("5. Departman Listesi");
-                    System.out.println("0. Ana Menuye Don");
+                    System.out.println("4. Departman Ekleme"); //yapıldı.
+                    System.out.println("5. Departman Listesi"); //yapıldı.
+                    System.out.println("6. Personel Sil");
+                    System.out.println("7. Id'ye Gore Personel Sil");
+                    System.out.println("8. Id'ye Gore Personel Bul");
+                    System.out.println("9. Mudure Sorumlu Oldugu Departmani Ekle");
+                    System.out.println("0. Ana Menuye Don"); //yapıldı.
                     System.out.println("Secim yapiniz.");
                     secim2 = sc.nextInt();
                     switch (secim2){
@@ -63,15 +67,27 @@ public class Menu {
                         case 5:
                             dc.findAll();
                             break;
+                        case 6:
+                            pc.delete();
+                            break;
+                        case 7:
+                            pc.deleteById();
+                            break;
+                        case 8:
+                            pc.findById();
+                            break;
+                        case 9:
+                            pc.mudureSorumluOlduguDepartmanEkle();
+                            break;
                         case 0: break;
                         default: System.out.println("Lutfen gecerli secim yapiniz.\nAna menuye donuldu.");
                             break;
                     }   break;
                 case 2:
                     System.out.println("*******   Muhasebe Islemleri   *******");
-                    System.out.println("1 Maas Personel Tanimlama");
-                    System.out.println("2 Odeme Listesi");
-                    System.out.println("0. Ana Menuye Don");
+                    System.out.println("1 Maas Personel Tanimlama"); //yapıldı.
+                    System.out.println("2 Odeme Listesi"); //yapıldı.
+                    System.out.println("0. Ana Menuye Don"); //yapıldı.
                     System.out.println("Secim yapiniz.");
                     secim2 = sc.nextInt();
                     switch (secim2){
@@ -85,22 +101,39 @@ public class Menu {
                     }   break;
                 case 3:
                     System.out.println("*******   Raporlamalar   *******");
-                    System.out.println("1 Departman Personel Listesi");
-                    System.out.println("2 En Cok Personel Bulunan Departman");
-                    System.out.println("3 Departmanlara Gore Maas Ortalamalari");
+                    System.out.println("1 Departman Personel Listesi"); //yapıldı.
+                    System.out.println("2 En Cok Personel Bulunan Departman"); //yapıldı.
+                    System.out.println("3 Departmanlara Gore Maas Ortalamalari"); //yapıldı.
                     System.out.println("4 Mudurlerin Sorumlu Oldugu Departman Listesi");
-                    System.out.println("5 Kayit Tarihlerine Gore Personellerin Sirali Listesi");
-                    System.out.println("6 Ayni Gun Icinde Ise Baslayan Personellerin Listesi");
+                    System.out.println("5 Kayit Tarihlerine Gore Personellerin Sirali Listesi"); //yapıldı.
+                    System.out.println("6 Ayni Gun Icinde Ise Baslayan Personellerin Listesi"); //yapıldı.
                     System.out.println("0. Ana Menuye Don");
                     System.out.println("Secim yapiniz.");
                     secim2 = sc.nextInt();
                     switch (secim2){
-                        case 1: break;
-                        case 2: break;
-                        case 3: break;
-                        case 4: break;
-                        case 5: break;
-                        case 6: break;
+                        case 1:
+                            System.out.println("Istediginiz departman id sini giriniz.");
+                            Utility.departmanListesi.forEach(x->{
+                                System.out.println("id: " + x.getId() + " departman: " + x.getAd());
+                            });
+                            int id = sc.nextInt();
+                            dc.departmanPersonelListesi(id);
+                            break;
+                        case 2:
+                            dc.enCokPersonelliDepartman();
+                            break;
+                        case 3:
+                            dc.departmanaGoreMaasOrtalamalari();
+                            break;
+                        case 4:
+                            pc.mudurlerinSorumluOlduguDepartmanlar();
+                            break;
+                        case 5:
+                            pc.siraliPersonelListesi();
+                            break;
+                        case 6:
+                            pc.ayniGunBaslayanlarListesi();
+                            break;
                         case 0: break;
                         default: System.out.println("Lutfen gecerli secim yapiniz.\nAna menuye donuldu.");
                             break;
@@ -108,7 +141,7 @@ public class Menu {
                 case 0:
                     secim = 0;
                     break;
-                default:
+                default: System.out.println("Lutfen gecerli secim yapiniz.\nAna menuye donuldu.");
                     break;
             }
         }while(secim!=0);

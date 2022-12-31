@@ -5,6 +5,18 @@ import java.util.List;
 
 public class Departman extends BaseEntity{
     private String ad;
+    private Long id;
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     private int calisanSayisi;
     private List<Personel> personelListesi;
 
@@ -13,8 +25,9 @@ public class Departman extends BaseEntity{
         personelListesi = new ArrayList<>();
     }
 
-    public Departman(String ad){
+    public Departman(Long id,String ad){
         super();
+        this.id = id;
         this.ad = ad;
         personelListesi = new ArrayList<>();
     }
@@ -41,6 +54,14 @@ public class Departman extends BaseEntity{
 
     public void setPersonelListesi(List<Personel> personelListesi) {
         this.personelListesi = personelListesi;
+    }
+    @Override
+    public String toString() {
+        return "Departman{" +
+                "ad='" + ad + '\'' +
+                ", calisanSayisi=" + calisanSayisi +
+                ", personelListesi=" + personelListesi.size() +
+                "} "  ;
     }
 }
 

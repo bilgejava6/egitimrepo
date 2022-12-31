@@ -24,9 +24,6 @@ public class BuroPersoneli extends Personel {
 
     @Override
     public String toString() {
-        return "BuroPersoneli [dosyalamaHiziDerecesi=" + dosyalamaHiziDerecesi + ", getCinsiyet()=" + getCinsiyet()
-                + ", getId()=" + getId() + ", getAd()=" + getAd() + ", getSoyad()=" + getSoyad() + ", getUnvan()="
-                + getUnvan() + ", getIseGirisTarihi()=" + getIseGirisTarihi() + ", getDogumYili()=" + getDogumYili()
-                + ", getMaas()=" + getMaas() + "]";
+        return "BuroPersoneli [dosyalamaHiziDerecesi=" + dosyalamaHiziDerecesi + "," + super.toString();
     }
 }
