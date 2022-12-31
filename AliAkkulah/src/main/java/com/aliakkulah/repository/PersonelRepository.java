@@ -40,7 +40,7 @@ public class PersonelRepository implements ICrud<Personel>{
     public void findById(Long id) {
         boolean control = false;
         for (Personel personel : personelListesi) {
-            if (personel.getId() == id) {
+            if (personel.getId().equals(id)) {
                 System.out.println(personel);
                 control = true;
             }
@@ -57,7 +57,6 @@ public class PersonelRepository implements ICrud<Personel>{
             if(personelListesi.get(i).getId().equals(id)) {
                 personelListesi.get(i).getDepartman().getPersonelList().remove(personelListesi.get(i));
                 personelListesi.remove(i);
-                System.out.println("Personel basarili bir sekilde silinmistir.");
                 silindimi = true;
                 break;
                 }

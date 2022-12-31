@@ -36,10 +36,10 @@ public class Menu {
                     System.out.println("3. Personel Duzenleme");
                     System.out.println("4. Departman Ekleme"); //yapıldı.
                     System.out.println("5. Departman Listesi"); //yapıldı.
-                    System.out.println("6. Personel Sil");
-                    System.out.println("7. Id'ye Gore Personel Sil");
-                    System.out.println("8. Id'ye Gore Personel Bul");
-                    System.out.println("9. Mudure Sorumlu Oldugu Departmani Ekle");
+                    System.out.println("6. Personel Sil"); //yapıldı.
+                    System.out.println("7. Id'ye Gore Personel Sil"); //yapıldı.
+                    System.out.println("8. Id'ye Gore Personel Bul"); //yapıldı.
+                    System.out.println("9. Mudure Sorumlu Oldugu Departmani Ekle"); //yapıldı.
                     System.out.println("0. Ana Menuye Don"); //yapıldı.
                     System.out.println("Secim yapiniz.");
                     secim2 = sc.nextInt();
@@ -59,7 +59,7 @@ public class Menu {
                             pc.findAll();
                             break;
                         case 3:
-
+                            pc.update();
                             break;
                         case 4:
                             dc.departmanEkle();
@@ -104,7 +104,7 @@ public class Menu {
                     System.out.println("1 Departman Personel Listesi"); //yapıldı.
                     System.out.println("2 En Cok Personel Bulunan Departman"); //yapıldı.
                     System.out.println("3 Departmanlara Gore Maas Ortalamalari"); //yapıldı.
-                    System.out.println("4 Mudurlerin Sorumlu Oldugu Departman Listesi");
+                    System.out.println("4 Mudurlerin Sorumlu Oldugu Departman Listesi"); //yapıldı.
                     System.out.println("5 Kayit Tarihlerine Gore Personellerin Sirali Listesi"); //yapıldı.
                     System.out.println("6 Ayni Gun Icinde Ise Baslayan Personellerin Listesi"); //yapıldı.
                     System.out.println("0. Ana Menuye Don");

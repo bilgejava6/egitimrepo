@@ -41,20 +41,47 @@ public class PersonelController {
         }else
             System.out.println("Maas tanimlama yetkiniz bulunmamaktadir.");
     }
-    public void guncellenecekPersonelSecme() {
+    public void update(){
         sc = new Scanner(System.in);
-        System.out.println("Guncellenecek personel id'sini giriniz.");
-        int guncellenecekId = Integer.parseInt(sc.nextLine());
-        Personel guncellenecekPersonel = null;
-        for(int i = 0; i < personelListesi.size(); i++){
-            if(personelListesi.get(i).getId() == guncellenecekId){
-                guncellenecekPersonel = personelListesi.get(i);
-                break;
+        boolean control = true;
+        Long id;
+        System.out.println("Guncellemek istediginiz personelin id sini giriniz.");
+        id = Long.parseLong(sc.nextLine());
+            for (Personel personel : personelListesi) {
+                if (personel.getId().equals(id)) {
+                    System.out.println("id = " + personel.getId() + " Ad Soyad: " + personel.getAd() + " " + personel.getSoyad());
+                    if (personel.getDepartman().getAd().equalsIgnoreCase("Buro")) {
+                        ps.deleteById(id);
+                        eklenecekPersonelTipiSecme(1);
+                        personel.setId(id);
+                    } else if (personel.getDepartman().getAd().equalsIgnoreCase("Genel Mudur")) {
+                        ps.deleteById(id);
+                        eklenecekPersonelTipiSecme(2);
+                        personel.setId(id);
+                    } else if (personel.getDepartman().getAd().equalsIgnoreCase("Hizmetli")) {
+                        ps.deleteById(id);
+                        eklenecekPersonelTipiSecme(3);
+                        personel.setId(id);
+                    } else if (personel.getDepartman().getAd().equalsIgnoreCase("Insan Kaynaklari")) {
+                        ps.deleteById(id);
+                        eklenecekPersonelTipiSecme(4);
+                        personel.setId(id);
+                    } else if (personel.getDepartman().getAd().equalsIgnoreCase("Mudur")) {
+                        ps.deleteById(id);
+                        eklenecekPersonelTipiSecme(5);
+                        personel.setId(id);
+                    } else if (personel.getDepartman().getAd().equalsIgnoreCase("Muhasebe")) {
+                        ps.deleteById(id);
+                        eklenecekPersonelTipiSecme(6);
+                        personel.setId(id);
+                    } else if (personel.getDepartman().getAd().equalsIgnoreCase("Teknik")) {
+                        ps.deleteById(id);
+                        eklenecekPersonelTipiSecme(7);
+                        personel.setId(id);
+                    } else System.out.println("Bu id'ye ait bir personel bulunamadi.");
+                    break;
+                }
             }
-        } if(!guncellenecekPersonel.equals(null)) {
-
-        }else
-            System.out.println("Girilen id'ye ait bir personel bulunmamaktadir. Guncelleme yapilamadi.");
     }
     public void deleteById(){
         sc = new Scanner(System.in);
@@ -372,6 +399,5 @@ public class PersonelController {
         int index2 = Integer.parseInt(sc.nextLine()) - 1;
         ps.mudureSorumluOlduguDepartmanEkle((Mudur) mudurler.get(index), departmanListesi.get(index2));
     }
-
     public void mudurlerinSorumluOlduguDepartmanlar() {ps.mudurlerinSorumluOlduguDepartmanlar();}
 }
