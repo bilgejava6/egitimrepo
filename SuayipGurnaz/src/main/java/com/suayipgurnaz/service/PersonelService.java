@@ -1,12 +1,10 @@
-package aradonemodev.service;
+package com.suayipgurnaz.service;
 
-import aradonemodev.repository.ICrud;
-import aradonemodev.repository.PersonelRepository;
-import aradonemodev.repository.entity.Personel;
+import com.suayipgurnaz.repository.ICrud;
+import com.suayipgurnaz.repository.PersonelRepository;
+import com.suayipgurnaz.repository.entity.Personel;
 
 import java.util.List;
-
-import static aradonemodev.utility.PtsUtility.personelList;
 
 public class PersonelService implements ICrud <Personel> {
     PersonelRepository repository;

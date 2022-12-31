@@ -1,10 +1,10 @@
-package aradonemodev.repository;
+package com.suayipgurnaz.repository;
 
-import aradonemodev.repository.entity.Departman;
+import com.suayipgurnaz.repository.entity.Departman;
 
 import java.util.List;
 
-import static aradonemodev.utility.PtsUtility.departmanList;
+import static com.suayipgurnaz.utility.PtsUtility.departmanList;
 
 public class DepartmanRepository implements ICrud<Departman>{
 

@@ -1,7 +1,7 @@
-package aradonemodev.utility;
+package com.suayipgurnaz.utility;
 
-import aradonemodev.repository.entity.Departman;
-import aradonemodev.repository.entity.Personel;
+import com.suayipgurnaz.repository.entity.Departman;
+import com.suayipgurnaz.repository.entity.Personel;
 
 import java.util.*;
 

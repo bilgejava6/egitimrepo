@@ -1,6 +1,6 @@
-package aradonemodev.repository.entity;
+package com.suayipgurnaz.repository.entity;
 
-import aradonemodev.utility.StaticValues;
+import com.suayipgurnaz.utility.StaticValues;
 
 public class MuhasebePersoneli extends Personel{
     public MuhasebePersoneli(String ad, String iseBaslamaTarihi) {

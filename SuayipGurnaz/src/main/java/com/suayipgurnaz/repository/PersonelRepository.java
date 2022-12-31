@@ -1,10 +1,10 @@
-package aradonemodev.repository;
+package com.suayipgurnaz.repository;
 
-import aradonemodev.repository.entity.Personel;
+import com.suayipgurnaz.repository.entity.Personel;
 
 import java.util.List;
 
-import static aradonemodev.utility.PtsUtility.personelList;
+import static com.suayipgurnaz.utility.PtsUtility.personelList;
 
 public class PersonelRepository implements ICrud<Personel>{
     @Override

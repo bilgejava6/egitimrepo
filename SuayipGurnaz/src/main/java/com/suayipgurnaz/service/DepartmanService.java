@@ -1,8 +1,8 @@
-package aradonemodev.service;
+package com.suayipgurnaz.service;
 
-import aradonemodev.repository.DepartmanRepository;
-import aradonemodev.repository.ICrud;
-import aradonemodev.repository.entity.Departman;
+import com.suayipgurnaz.repository.DepartmanRepository;
+import com.suayipgurnaz.repository.ICrud;
+import com.suayipgurnaz.repository.entity.Departman;
 
 import java.util.List;
 

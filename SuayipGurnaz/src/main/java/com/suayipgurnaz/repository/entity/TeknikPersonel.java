@@ -1,6 +1,6 @@
-package aradonemodev.repository.entity;
+package com.suayipgurnaz.repository.entity;
 
-import aradonemodev.utility.StaticValues;
+import com.suayipgurnaz.utility.StaticValues;
 
 public class TeknikPersonel extends Personel{
     public TeknikPersonel(String ad, String iseBaslamaTarihi, double maas) {

@@ -1,11 +1,11 @@
-package aradonemodev;
+package com.suayipgurnaz;
 
-import aradonemodev.controller.DepartmanController;
-import aradonemodev.controller.PersonelController;
-import aradonemodev.repository.entity.Departman;
-import aradonemodev.repository.entity.Mudur;
-import aradonemodev.repository.entity.Personel;
-import aradonemodev.utility.PtsUtility;
+import com.suayipgurnaz.controller.DepartmanController;
+import com.suayipgurnaz.controller.PersonelController;
+import com.suayipgurnaz.repository.entity.Departman;
+import com.suayipgurnaz.repository.entity.Mudur;
+import com.suayipgurnaz.repository.entity.Personel;
+import com.suayipgurnaz.utility.PtsUtility;
 
 import java.util.stream.Collectors;
 

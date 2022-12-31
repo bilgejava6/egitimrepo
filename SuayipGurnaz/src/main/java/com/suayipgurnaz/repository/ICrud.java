@@ -1,6 +1,4 @@
-package aradonemodev.repository;
-
-import aradonemodev.repository.entity.Personel;
+package com.suayipgurnaz.repository;
 
 import java.util.List;
 

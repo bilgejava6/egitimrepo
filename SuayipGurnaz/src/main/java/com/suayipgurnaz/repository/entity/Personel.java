@@ -1,8 +1,7 @@
-package aradonemodev.repository.entity;
+package com.suayipgurnaz.repository.entity;
 
-import aradonemodev.utility.Departmanlar;
-import aradonemodev.utility.PtsUtility;
-import aradonemodev.utility.StaticValues;
+import com.suayipgurnaz.utility.PtsUtility;
+import com.suayipgurnaz.utility.StaticValues;
 
 public class Personel extends BaseEntity{
     private String ad;

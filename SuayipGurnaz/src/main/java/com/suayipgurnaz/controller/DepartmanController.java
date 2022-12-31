@@ -1,12 +1,12 @@
-package aradonemodev.controller;
+package com.suayipgurnaz.controller;
 
-import aradonemodev.repository.entity.*;
-import aradonemodev.service.DepartmanService;
+import com.suayipgurnaz.repository.entity.*;
+import com.suayipgurnaz.service.DepartmanService;
 
 import java.util.Scanner;
 
-import static aradonemodev.utility.PtsUtility.*;
-import static aradonemodev.utility.PtsUtility.intDegerAlma;
+import static com.suayipgurnaz.utility.PtsUtility.*;
+import static com.suayipgurnaz.utility.PtsUtility.intDegerAlma;
 
 public class DepartmanController {
     private static Scanner sc;

@@ -1,8 +1,8 @@
-package aradonemodev.controller;
+package com.suayipgurnaz.controller;
 
-import aradonemodev.repository.entity.*;
-import aradonemodev.service.PersonelService;
-import static aradonemodev.utility.PtsUtility.*;
+import com.suayipgurnaz.repository.entity.*;
+import com.suayipgurnaz.service.PersonelService;
+import static com.suayipgurnaz.utility.PtsUtility.*;
 
 import java.util.List;
 import java.util.Scanner;

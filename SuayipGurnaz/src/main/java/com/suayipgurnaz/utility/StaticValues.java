@@ -1,4 +1,4 @@
-package aradonemodev.utility;
+package com.suayipgurnaz.utility;
 
 public class StaticValues {
     public static Long personelId=0L;

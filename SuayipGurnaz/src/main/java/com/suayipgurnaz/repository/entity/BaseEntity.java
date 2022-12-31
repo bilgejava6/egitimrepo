@@ -1,4 +1,4 @@
-package aradonemodev.repository.entity;
+package com.suayipgurnaz.repository.entity;
 
 public abstract class BaseEntity {
     private Long id;
