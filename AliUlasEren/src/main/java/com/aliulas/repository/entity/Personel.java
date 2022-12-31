@@ -3,13 +3,11 @@ package com.aliulas.repository.entity;
 import static com.aliulas.utility.StaticValues.idOlustur;
 
 public class Personel extends BaseEntity {
-    private Long id;
+    private int id;
     private String ad;
     private String soyad;
     private String email;
     private String telefon;
-
-
 
     private String departman;
     private String pozisyon;
@@ -85,12 +83,12 @@ public class Personel extends BaseEntity {
         this.kayitTarihi = kayitTarihi;
     }
     @Override
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
     @Override
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

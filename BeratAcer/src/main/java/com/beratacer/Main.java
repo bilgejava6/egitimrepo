@@ -1,14 +1,18 @@
 package com.beratacer;
 
+import com.beratacer.controller.DepartmanController;
+import com.beratacer.repository.entity.Departman;
+import com.beratacer.service.DepartmanService;
+import com.beratacer.utility.MenuManager;
+
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Merhaba ben berat");
+        MenuManager test=new MenuManager();
+        test.runner();
 
-        for (int i=0;i<10;i++){
-            System.out.println("i....: "+i);
 
-        }
+
     }
 
 }

@@ -1,5 +1,7 @@
 package com.beratacer.repository.entity;
 
+import com.beratacer.utility.StaticValues;
+
 public abstract class Personel {
     private Long id;
     private String adSoyad;
@@ -14,7 +16,7 @@ public abstract class Personel {
     }
 
     public Personel(String adSoyad, String telNo, String tcNo, String adres,Departman departman,String iseBaslamaTarihi) {
-        //this.id= ++StaticValues.personelId;
+        this.id= ++StaticValues.personelId;
         this.adSoyad = adSoyad;
         this.telNo = telNo;
         this.tcNo = tcNo;

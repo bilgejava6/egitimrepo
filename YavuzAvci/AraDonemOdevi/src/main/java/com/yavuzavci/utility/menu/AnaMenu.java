@@ -24,11 +24,11 @@ public class AnaMenu implements IMenu {
         do{
             anaMenuBaslik();
             System.out.print("Lütfen seçiminizi yapınız...: ");
-            secim = scanner.nextInt();
-            scanner.nextLine();
+            secim = SCANNER.nextInt();
+            SCANNER.nextLine();
             islemSec(secim);
         } while (secim != 0);
-        scanner.close();
+        SCANNER.close();
         System.out.println("Uygulama sonlandırıldı.");
         System.exit(0);
     }
@@ -37,13 +37,13 @@ public class AnaMenu implements IMenu {
     public void islemSec(int secim) {
         switch(secim){
             case 1:
-                personelMenu.menu();
+                PERSONEL_MENU.menu();
                 break;
             case 2:
-                muhasebeMenu.menu();
+                MUHASEBE_MENU.menu();
                 break;
             case 3:
-                raporlamaMenu.menu();
+                RAPORLAMA_MENU.menu();
                 break;
             case 0:
                 break;

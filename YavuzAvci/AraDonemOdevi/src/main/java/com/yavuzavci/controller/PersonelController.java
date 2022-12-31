@@ -1,6 +1,5 @@
 package com.yavuzavci.controller;
 
-import static com.yavuzavci.entity.ECinsiyet.*;
 import static com.yavuzavci.utility.PersonelUtility.*;
 import static com.yavuzavci.utility.StaticValues.*;
 
@@ -97,7 +96,7 @@ public class PersonelController {
             return;
         }
         System.out.print("Bilgilerini güncellemek istediğiniz personelin numarasını giriniz..: ");
-        long id = scanner.nextLong();
+        long id = SCANNER.nextLong();
         Personel personel = personelService.findById(id);
         if(Objects.isNull(personel)){
             System.out.println("HATA: Sistemde " + id + " numaralı personel yoktur.");

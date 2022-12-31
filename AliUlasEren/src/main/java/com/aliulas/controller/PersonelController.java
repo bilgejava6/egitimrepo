@@ -9,7 +9,7 @@ public class PersonelController {
     private static Scanner sc = new Scanner(System.in);
     PersonelService ps;
     DepartmanController dc = new DepartmanController();
-
+    String secim2;
     public PersonelController() {
         this.ps = new PersonelService();
     }
@@ -46,10 +46,10 @@ public class PersonelController {
                 personelIslemleriMenu();
                 break;
             case 2:
-                //muhasebeIslemleriMenu();
+                muhasebeIslemleriMenu();
                 break;
             case 3:
-                //raporlamalarMenu();
+                raporlamalarMenu();
                 break;
             case 4:
                 System.exit(0);
@@ -61,6 +61,42 @@ public class PersonelController {
         }
 
     }
+
+    private void muhasebeIslemleriMenu() {
+        System.out.println("1. Maaş Personel Tanımlama");
+        System.out.println("2. Ödeme Listesi");
+    }
+
+    private void raporlamalarMenu() {
+        System.out.println("1. Departman Personel Listesi");
+        System.out.println("2. En Çok Personel Bulunan Departman");
+        System.out.println("3. Departmanlara Göre Maaş Ortalamaları");
+        System.out.println("4. Müdürlerin Sorumlu Olduğu Departman Listesi");
+        System.out.println("5. Kayıt Tarihlerine Göre Personellerin Sıralı Listesi");
+        System.out.println("6. Aynı Gün İçinde İşe Başlayan Personellerin Listesi");
+        System.out.println();
+        System.out.print("Seçiminiz: ");
+        sc = new Scanner(System.in);
+        int raporSecim = sc.nextInt();
+        switch (raporSecim) {
+            case 1:
+                System.out.println("Lütfen departman adı girin:");
+                sc = new Scanner(System.in);
+                String departmanAdi = sc.nextLine();
+                dc.departmanPersonelListesi(departmanAdi);
+                anaMenu();
+            case 2:
+                dc.enCokPersonelBulunanDepertman();
+                anaMenu();
+            case 3:
+                dc.departmanlaraGoreMaasOrtalamasi();
+                anaMenu();
+            case 4:
+                dc.mudurSorumlu();
+                anaMenu();
+        }
+    }
+
     public void personelIslemleriMenu() {
         System.out.println("1. Personel Ekleme");
         System.out.println("2. Personel Listesi");
@@ -108,7 +144,6 @@ public class PersonelController {
                 System.out.print("Yeni işe giriş tarihini girin (gg.aa.yyyy formatında): ");
                 String iseGirisTarihiStr = sc.nextLine();
                 personel.setKayitTarihi(iseGirisTarihiStr);
-
                 ps.update(personel);
                 System.out.println("Personel başarıyla güncellendi.");
                 break;
@@ -132,51 +167,28 @@ public class PersonelController {
     }
 
     public void personelEkleme(){
-        /*
-        * Personeli eklemek istediğiniz departmanın adını girin (string)
-        * bu departman adı listede var mı yok mu kontrol et
-        * varsa ekle, yoksa uyar
-        * elimizde olanlardansa isimler için case'ler yaz
-        * değilse dümdüz personel oluştur.
-        * */
-       /* System.out.println("Buro Personeli");
-        System.out.println("Genel Mudur");
-        System.out.println("Hizmetli");
-        System.out.println("Insan Kaynaklari");
-        System.out.println("Mudur");
-        System.out.println("Muhasebe Personeli");
-        System.out.println("Teknik Personel");*/
+
         System.out.println("Personeli eklemek istediğiniz departmanın adını yazınız");
         sc = new Scanner(System.in);
-        String secim2 = sc.nextLine();
-        switch (secim2) {
-            case "Buro":
-                buroPersoneli(personelOzellik());
-                break;
-            case "Genel Mudur":
-                genelMudur(personelOzellik());
-                break;
-            case "Hizmetli":
-                hizmetli(personelOzellik());
-                break;
-            case "İnsan Kaynakları":
-                insanKaynaklari(personelOzellik());
-                break;
-            case "Müdür":
-                mudur(personelOzellik());
-                break;
-            case "Muhasebe Personeli":
-                muhasebe(personelOzellik());
-                break;
-            case "Teknik Personel":
-                teknik(personelOzellik());
-                break;
-            default:
+        secim2 = sc.nextLine();
+            if (secim2.equals("Buro")) buroPersoneli(personelOzellik());
+            else if (secim2.equals("Genel Mudur")) genelMudur(personelOzellik());
+            else if (secim2.equals("Hizmetli"))  hizmetli(personelOzellik());
+            else if (secim2.equals("İnsan Kaynakları"))  insanKaynaklari(personelOzellik());
+            else if (secim2.equals("Müdür"))  mudur(personelOzellik());
+            else if (secim2.equals("Muhasebe Personeli")) muhasebe(personelOzellik());
+            else if (secim2.equals("Teknik Personel"))  teknik(personelOzellik());
+            else {
+                for (int i = 0; i<departmanListesi.size();i++){
+                    if(departmanListesi.get(i).getAd().equals(secim2)){
+                        baskaDep(personelOzellik());
+                        anaMenu();
+                    }
+                }
                 System.out.println("Böyle bir departman bulunamadı, departman listesi: ");
                 System.out.println(dc.findAll().stream().toList());
                 personelEkleme();
-                break;
-        }
+            }
     }
     public Queue<String> personelOzellik(){
         sc = new Scanner(System.in);
@@ -205,12 +217,14 @@ public class PersonelController {
         String birim = sc.nextLine();
         Personel buroPersoneli = new BuroPersoneli(personelOzellik.poll(),personelOzellik.poll(),
                 personelOzellik.poll(),personelOzellik.poll(), personelOzellik.poll(),Integer.parseInt(personelOzellik.poll()),personelOzellik.poll(),birim,"Buro");
-        System.out.println("Ulaş");
-        System.out.println(departmanListesi.size());
-        for(int i = 0 ; i< departmanListesi.size()+3;i++){
-            System.out.println(departmanListesi.get(i).getAd());
-        }
 
+        for(int i = 0 ; i< departmanListesi.size();i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase(buroPersoneli.getDepartman())){
+               List<Personel> newList = departmanListesi.get(i).getPersonelListesi();
+               newList.add(buroPersoneli);
+               departmanListesi.get(i).setPersonelListesi(newList);
+            }
+        }
         ps.save(buroPersoneli);
         anaMenu();
     }
@@ -223,6 +237,13 @@ public class PersonelController {
                 personelOzellik.poll(),personelOzellik.poll(),
                 personelOzellik.poll(),Integer.parseInt(personelOzellik.poll()),
                 personelOzellik.poll(),sorumluOlduguDepartmanlar,"Genel Müdür");
+        for(int i = 0 ; i< departmanListesi.size();i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase(genelMudur.getDepartman())){
+                List<Personel> newList = departmanListesi.get(i).getPersonelListesi();
+                newList.add(genelMudur);
+                departmanListesi.get(i).setPersonelListesi(newList);
+            }
+        }
         ps.save(genelMudur);
         anaMenu();
     }
@@ -235,6 +256,13 @@ public class PersonelController {
                 personelOzellik.poll(),personelOzellik.poll(),
                 personelOzellik.poll(),Integer.parseInt(personelOzellik.poll()),
                 personelOzellik.poll(),hizmetAlani,calismaSaatleri,"Hizmetli");
+        for(int i = 0 ; i< departmanListesi.size();i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase(hizmetli.getDepartman())){
+                List<Personel> newList = departmanListesi.get(i).getPersonelListesi();
+                newList.add(hizmetli);
+                departmanListesi.get(i).setPersonelListesi(newList);
+            }
+        }
         ps.save(hizmetli);
         anaMenu();
 
@@ -247,17 +275,31 @@ public class PersonelController {
                 personelOzellik.poll(),personelOzellik.poll(),
                 personelOzellik.poll(),Integer.parseInt(personelOzellik.poll()),
                 personelOzellik.poll(),calismaAlani,"Insan Kaynaklari");
+        for(int i = 0 ; i< departmanListesi.size();i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase(insanKaynaklari.getDepartman())){
+                List<Personel> newList = departmanListesi.get(i).getPersonelListesi();
+                newList.add(insanKaynaklari);
+                departmanListesi.get(i).setPersonelListesi(newList);
+            }
+        }
         ps.save(insanKaynaklari);
         anaMenu();
     }
     public void mudur(Queue<String> personelOzellik){
-        System.out.println("Sorumlu olduğu departmanlar");
+        System.out.println("Sorumlu olduğu departmanı girin:");
         sc = new Scanner(System.in);
         String sorumluOlduguDepartman = sc.nextLine();
         Personel mudur = new Mudur(personelOzellik.poll(),personelOzellik.poll(),
                 personelOzellik.poll(),personelOzellik.poll(),
                 personelOzellik.poll(),Integer.parseInt(personelOzellik.poll()),
                 personelOzellik.poll(),sorumluOlduguDepartman,"Mudur");
+        for(int i = 0 ; i< departmanListesi.size();i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase(mudur.getDepartman())){
+                List<Personel> newList = departmanListesi.get(i).getPersonelListesi();
+                newList.add(mudur);
+                departmanListesi.get(i).setPersonelListesi(newList);
+            }
+        }
         ps.save(mudur);
         anaMenu();
     }
@@ -270,6 +312,13 @@ public class PersonelController {
                 personelOzellik.poll(),personelOzellik.poll(),
                 personelOzellik.poll(),Integer.parseInt(personelOzellik.poll()),
                 personelOzellik.poll(),maasEkle,"Muhasebe");
+        for(int i = 0 ; i< departmanListesi.size();i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase(muhasebe.getDepartman())){
+                List<Personel> newList = departmanListesi.get(i).getPersonelListesi();
+                newList.add(muhasebe);
+                departmanListesi.get(i).setPersonelListesi(newList);
+            }
+        }
         ps.save(muhasebe);
         anaMenu();
     }
@@ -281,10 +330,32 @@ public class PersonelController {
                 personelOzellik.poll(),personelOzellik.poll(),
                 personelOzellik.poll(),Integer.parseInt(personelOzellik.poll()),
                 personelOzellik.poll(),bilgiSeviyesi,"Teknik");
+        for(int i = 0 ; i< departmanListesi.size();i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase(teknik.getDepartman())){
+                List<Personel> newList = departmanListesi.get(i).getPersonelListesi();
+                newList.add(teknik);
+                departmanListesi.get(i).setPersonelListesi(newList);
+            }
+        }
         ps.save(teknik);
         anaMenu();
     }
-
+    public void baskaDep(Queue<String> personelOzellik){
+        Personel baska = new Personel(personelOzellik.poll(),personelOzellik.poll(),
+                personelOzellik.poll(),personelOzellik.poll(),
+                personelOzellik.poll(),Integer.parseInt(personelOzellik.poll()),
+                personelOzellik.poll(),secim2);
+        for(int i = 0 ; i< departmanListesi.size();i++){
+            if(departmanListesi.get(i).getAd().equalsIgnoreCase(baska.getDepartman())){
+                List<Personel> newList = departmanListesi.get(i).getPersonelListesi();
+                newList.add(baska);
+                departmanListesi.get(i).setPersonelListesi(newList);
+            }
+        }
+        ps.save(baska);
+        System.out.println(baska.getId());
+        anaMenu();
+    }
 
 
 

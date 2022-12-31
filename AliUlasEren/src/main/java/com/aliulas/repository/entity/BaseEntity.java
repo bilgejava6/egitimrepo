@@ -4,7 +4,7 @@ import com.aliulas.utility.StaticValues;
 
 public abstract class BaseEntity {
 
-        Long id;
+        int id;
         Long createDate;
         Long updateDate;
 
@@ -12,16 +12,16 @@ public abstract class BaseEntity {
         int state;// 1- silinmiş ,2 dondurulmuş
 
         public BaseEntity() {
-            this.id = StaticValues.idOlustur();
+            this.id = (int) StaticValues.idOlustur();
             createDate = System.currentTimeMillis();
             updateDate = System.currentTimeMillis();
         }
 
-        public Long getId() {
+        public int getId() {
             return id;
         }
 
-        public void setId(Long id) {
+        public void setId(int id) {
             this.id = id;
         }
 

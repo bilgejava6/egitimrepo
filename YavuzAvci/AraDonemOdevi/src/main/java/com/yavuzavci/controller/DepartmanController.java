@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.yavuzavci.utility.DepartmanUtility.*;
-import static com.yavuzavci.utility.StaticValues.scanner;
+import static com.yavuzavci.utility.StaticValues.SCANNER;
 import static com.yavuzavci.utility.StaticValues.sistemSaatiniAl;
 
 /**
@@ -23,7 +23,7 @@ public class DepartmanController {
 
     public void save(){
         Departman departman = departmanOlustur();
-        scanner.nextLine();
+        SCANNER.nextLine();
         departmanService.save(departman);
     }
     public void update(){
@@ -32,15 +32,15 @@ public class DepartmanController {
             return;
         }
         System.out.print("Bilgilerini güncellemek istediğiniz departmanın numarasını giriniz..: ");
-        long id = scanner.nextLong();
-        scanner.nextLine();
+        long id = SCANNER.nextLong();
+        SCANNER.nextLine();
         Departman departman = departmanService.findById(id);
         if(Objects.isNull(departman)){
             System.out.println("HATA: Departman sistemde kayıtlı değildir.");
             return;
         }
         System.out.println("Departmanın yeni adını giriniz.");
-        String deparmanAdi = scanner.nextLine();
+        String deparmanAdi = SCANNER.nextLine();
         departman.setAd(deparmanAdi);
         departman.setUpdateDate(sistemSaatiniAl());
         departmanService.update(departman);
@@ -51,7 +51,7 @@ public class DepartmanController {
             return;
         }
         Long id = silinecekDepartmanIdAl();
-        scanner.nextLine();
+        SCANNER.nextLine();
         departmanService.delete(id);
     }
     public Departman findById(Long id){

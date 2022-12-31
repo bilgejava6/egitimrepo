@@ -30,7 +30,7 @@ public class PersonelRepository implements ICrudD<Personel> {
     @Override
     public void update(Personel personel) {
         for(int i = 0 ; i < personelListesi.size();i++) {
-            if(personelListesi.get(i).getId().equals(personel.getId())){
+            if(personelListesi.get(i).getId()== personel.getId()){
                 personelListesi.set(i,personel);
                 break;
             }
@@ -40,7 +40,7 @@ public class PersonelRepository implements ICrudD<Personel> {
     @Override
     public void delete(Long id) {
         for(int i = 0 ; i < personelListesi.size(); i++) {
-            if(personelListesi.get(i).getId().equals(id)){
+            if(personelListesi.get(i).getId()== (id)){
                 personelListesi.remove(i);
                 break;
             }
@@ -55,7 +55,7 @@ public class PersonelRepository implements ICrudD<Personel> {
     @Override
     public Personel findById(Long id) {
         for(int i =0;i<personelListesi.size();i++) {
-            if(personelListesi.get(i).getId().equals(id))
+            if(personelListesi.get(i).getId()== id)
                 return personelListesi.get(i);
         }
         return null;

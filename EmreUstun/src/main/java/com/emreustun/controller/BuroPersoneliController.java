@@ -12,7 +12,6 @@ public class BuroPersoneliController {
     BuroPersoneli buroPersoneli;
 
     public void save() {
-
         sc = new Scanner(System.in);
         buroPersoneli = new BuroPersoneli();
         System.out.println("Büro Personel Kayıt ediyorusunuz..");
