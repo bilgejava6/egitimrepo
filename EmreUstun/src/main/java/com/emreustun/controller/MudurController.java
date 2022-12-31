@@ -49,10 +49,8 @@ public class MudurController {
         do{
             switch (value) {
                 case 1:
-                    int index2 = 1;
                     for (Departman departman : StaticValues.departmanListesi) {
-                        System.out.println(index2 + " -> " + departman.getAd());
-                        index2++;
+                        System.out.println(StaticValues.departmanListesi.indexOf(departman) + 1 + " -> " + departman.getAd());
                     }
                     int secim2 = sc.nextInt();
                     mudur.getMudurlerinSorumluOlduguDepartmanListesi().add(StaticValues.departmanListesi.get(secim2 - 1));
@@ -60,6 +58,8 @@ public class MudurController {
                 case 0:
                     System.out.println("Cıkıs Yapiliyor");
                     break;
+                default:
+                    System.out.println("Lütfen geçerli bir seçim yapınız");
             }
             departmanSahiplikSayisi++;
             System.out.println("[1] -> "+departmanSahiplikSayisi+". departmanı ekle");
@@ -129,10 +129,8 @@ public class MudurController {
         do{
             switch (value) {
                 case 1:
-                    int index2 = 1;
                     for (Departman departman : StaticValues.departmanListesi) {
-                        System.out.println(index2 + " -> " + departman.getAd());
-                        index2++;
+                        System.out.println(StaticValues.departmanListesi.indexOf(departman) + 1 + " -> " + departman.getAd());
                     }
                     int secim2 = sc.nextInt();
                     mudur.getMudurlerinSorumluOlduguDepartmanListesi().add(StaticValues.departmanListesi.get(secim2 - 1));
@@ -140,6 +138,8 @@ public class MudurController {
                 case 0:
                     System.out.println("Cıkıs Yapiliyor");
                     break;
+                default:
+                    System.out.println("Lütfen geçerli bir sayı giriniz.");
             }
             departmanSahiplikSayisi++;
             System.out.println("[1] -> "+departmanSahiplikSayisi+". departmanı ekle");
