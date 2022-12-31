@@ -6,11 +6,11 @@ import com.aliulas.repository.entity.Personel;
 import java.util.*;
 
 public class StaticValues {
-    public static Long id = 0L;
+    public static int id = 0;
 
-    public static Map<Long, Departman> departmanListesi = new HashMap<Long, Departman>();
+    public static List<Departman> departmanListesi = new ArrayList<>();
 
-    public static long idOlustur() {
+    public static int idOlustur() {
         ++id;
         return id;
     }
