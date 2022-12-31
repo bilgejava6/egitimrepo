@@ -96,6 +96,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/ErincKocaoglu" />
+            <option value="$PROJECT_DIR$/ErincKocaoglu/src" />
+            <option value="$PROJECT_DIR$/ErincKocaoglu/src/main" />
+            <option value="$PROJECT_DIR$/ErincKocaoglu/src/main/Odev" />
           </set>
         </option>
       </GradleProjectSettings>

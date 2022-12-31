@@ -1,2 +1,4 @@
 rootProject.name = 'ErincKocaoglu'
+include 'src:main:Odev'
+findProject(':src:main:Odev')?.name = 'Odev'
 
