@@ -28,7 +28,7 @@ public class InsanKaynaklariPersoneli extends Personel {
 
     @Override
     public String toString() {
-        return "Büro Personeli" + '\n'
+        return "İnsan Kaynakları Personeli" + '\n'
                 + "Adı - Soyadı -> " + getAdSoyad() + '\n'
                 + "Yaşı ->  " + getYas() + '\n'
                 + "Telefonu -> '" + getTelefon() + '\n'
