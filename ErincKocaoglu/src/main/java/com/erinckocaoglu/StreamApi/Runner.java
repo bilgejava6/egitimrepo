@@ -134,7 +134,7 @@ public class Runner {
 
         Stream<Integer> streamInt1= Stream.of(3,5,8,2);
         Integer sonuc1= streamInt1.reduce(1, (a,b) -> a+b);
-        System.out.println("Sonuc.....: "+ sonuc1);
+        System.out.println("Sonuc1.....: "+ sonuc1);
 
         /**
          * BinaryOperator
@@ -145,7 +145,7 @@ public class Runner {
         streamInt2.reduce(op).ifPresent(System.out::println);
         Stream<Integer> bosDizi = Stream.of(4,3,2);
         bosDizi.reduce(op).ifPresentOrElse(p->{
-            System.out.println("Sonuc....: "+p);
+            System.out.println("Sonuc2....: "+p);
         },()->{
             System.out.println("Herhangi bir sonuc uretilemedi.");
         });
