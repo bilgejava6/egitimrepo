@@ -1,10 +1,16 @@
 package com.aliakkulah;
 
+import com.aliakkulah.controller.DepartmanController;
+import com.aliakkulah.controller.PersonelController;
+import com.aliakkulah.utility.Menu;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Merhaba Ben Ali Akkülah");
-        for(int i = 0; i<10; i++){
-            System.out.println("i....:" + i);
-        }
+        PersonelController pc = new PersonelController();
+        DepartmanController dc = new DepartmanController();
+        Menu menu = new Menu();
+        dc.baslangicDepartmanlariEkle();
+        pc.baslangicKisileriAtama();
+        menu.runAna();
     }
 }

@@ -171,6 +171,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/YavuzAvci" />
+            <option value="$PROJECT_DIR$/YavuzAvci/AraDonemOdevi" />
           </set>
         </option>
       </GradleProjectSettings>
