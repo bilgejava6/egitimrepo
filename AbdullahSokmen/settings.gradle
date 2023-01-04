@@ -1,2 +1,6 @@
 rootProject.name = 'AbdullahSokmen'
+include 'src:main:araDonemOdevi'
+findProject(':src:main:araDonemOdevi')?.name = 'araDonemOdevi'
+include 'src:main:araDonemOdevi:com.abdullah'
+findProject(':src:main:araDonemOdevi:com.abdullah')?.name = 'com.abdullah'
 
