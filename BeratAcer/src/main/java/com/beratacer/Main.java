@@ -10,6 +10,7 @@ public class Main {
 
         MenuManager test=new MenuManager();
         test.runner() ;
+        System.out.println("Denendi");
 
 
 
