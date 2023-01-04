@@ -11,5 +11,6 @@ public class TeknikPersonel extends Personel{
         this.setId(StaticValues.personlerIdOlustur());
         this.setAd(ad);
         this.setIseBaslamaTarihi(iseBaslamaTarihi);
+        this.setDepartman("TEKNIK");
     }
 }

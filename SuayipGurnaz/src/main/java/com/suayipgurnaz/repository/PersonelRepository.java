@@ -1,5 +1,6 @@
 package com.suayipgurnaz.repository;
 
+import com.suayipgurnaz.repository.entity.Departman;
 import com.suayipgurnaz.repository.entity.Personel;
 
 import java.util.List;
@@ -9,6 +10,8 @@ import static com.suayipgurnaz.utility.PtsUtility.personelList;
 public class PersonelRepository implements ICrud<Personel>{
     @Override
     public void save(Personel t) {
+    	Departman departman=t.getDepartman();
+        departman.setPersonelSayisi(departman.getPersonelSayisi()+1);
         personelList.add(t);
     }
 

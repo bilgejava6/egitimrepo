@@ -7,5 +7,6 @@ public class IKPersoneli extends Personel{
         this.setId(StaticValues.personlerIdOlustur());
         this.setAd(ad);
         this.setIseBaslamaTarihi(iseBaslamaTarihi);
+        this.setDepartman("IK");
     }
 }

@@ -4,7 +4,7 @@ import com.suayipgurnaz.utility.StaticValues;
 
 public class Departman extends BaseEntity{
     private String ad;
-    private static int personelSayisi=0;
+    private int personelSayisi=0;
 
     public Departman() {
         super();

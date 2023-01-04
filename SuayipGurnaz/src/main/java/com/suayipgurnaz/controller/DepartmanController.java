@@ -28,6 +28,15 @@ public class DepartmanController {
         }
         departmanService.save(new Departman(ad));
     }// save sonu
+    
+    public void baslangicDepartmanlariOlustur() {
+    	departmanService.save(new Departman("HIZMETLI"));
+    	departmanService.save(new Departman("BURO"));
+    	departmanService.save(new Departman("IK"));
+    	departmanService.save(new Departman("TEKNIK"));
+    	departmanService.save(new Departman("MUHASEBE"));
+    	departmanService.save(new Departman("YONETICI"));
+    }
 
     public void update() {
         System.out.println("***** DEPARTMAN BİLGİSİ GÜNCELLEME *****");

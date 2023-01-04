@@ -7,5 +7,6 @@ public class MuhasebePersoneli extends Personel{
         this.setId(StaticValues.personlerIdOlustur());
         this.setAd(ad);
         this.setIseBaslamaTarihi(iseBaslamaTarihi);
+        this.setDepartman("MUHASEBE");
     }
 }

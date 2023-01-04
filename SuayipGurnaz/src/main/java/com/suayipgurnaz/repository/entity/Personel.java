@@ -13,14 +13,14 @@ public class Personel extends BaseEntity{
     private double maas;
 
     public Personel() {
-        this.setId(StaticValues.personlerIdOlustur());
+//        this.setId(StaticValues.personlerIdOlustur());
     }
 
     public Personel(String ad, String iseBaslamaTarihi,  double maas) {
         this.ad = ad;
         this.iseBaslamaTarihi = iseBaslamaTarihi;
         this.maas = maas;
-        this.setId(StaticValues.personlerIdOlustur());
+//        this.setId(StaticValues.personlerIdOlustur());
     }
 
     public String getIseBaslamaTarihi() {
@@ -84,8 +84,10 @@ public class Personel extends BaseEntity{
         this.maas = maas;
     }
 
-    @Override
-    public String toString() {
-        return "Personel [ad=" + ad + ", soyad=" + soyad + ", departman=" + departman + ", maas=" + maas + "]";
-    }
+	@Override
+	public String toString() {
+		return "Personel [ad=" + ad + ", iseBaslamaTarihi=" + iseBaslamaTarihi + ", departman=" + departman.getAd() + ", maas="
+				+ maas + ", getId()=" + getId() + "]";
+	}
+
 }

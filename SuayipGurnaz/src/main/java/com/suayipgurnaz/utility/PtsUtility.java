@@ -8,7 +8,7 @@ import java.util.*;
 public class PtsUtility {
     public static List<Personel> personelList = new ArrayList<>();
     public static List<Departman> departmanList = new ArrayList<>();
-    public static Map<Departman,List<Personel>> personelMap = new LinkedHashMap();
+    public static Map<String,List<Personel>> personelMap = new LinkedHashMap();
 
     static Scanner sc = new Scanner(System.in);
 

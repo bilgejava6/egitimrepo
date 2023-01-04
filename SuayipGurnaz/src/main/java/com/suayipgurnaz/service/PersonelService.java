@@ -2,6 +2,7 @@ package com.suayipgurnaz.service;
 
 import com.suayipgurnaz.repository.ICrud;
 import com.suayipgurnaz.repository.PersonelRepository;
+import com.suayipgurnaz.repository.entity.Departman;
 import com.suayipgurnaz.repository.entity.Personel;
 
 import java.util.List;

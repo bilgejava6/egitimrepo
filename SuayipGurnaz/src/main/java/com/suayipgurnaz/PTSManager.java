@@ -7,23 +7,35 @@ import com.suayipgurnaz.repository.entity.Mudur;
 import com.suayipgurnaz.repository.entity.Personel;
 import com.suayipgurnaz.utility.PtsUtility;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class PTSManager {
     public PersonelController personelController;
     public DepartmanController departmanController;
 
-    public void run(){
+    public PTSManager() {
+		super();
+		personelController=new PersonelController();
+		departmanController=new DepartmanController(); 
+	}
 
+	public void run(){
+		departmanController.baslangicDepartmanlariOlustur();
+		personelController.baslangicVerisiOlustur();
         int secim=0;
         int secim2=0;
         do{
             anaMenu();
-            secim= PtsUtility.intDegerAlma("İşlem Seçiniz...: ");
+            secim= PtsUtility.intDegerAlma("Islem Seciniz...: ");
             switch (secim){
                 case 1:
                     personelIslemleriMenu();
-                    secim2= PtsUtility.intDegerAlma("İşlem Seçiniz...: ");
+                    secim2= PtsUtility.intDegerAlma("Islem Seciniz...: ");
                     switch (secim2){
                         case 1:
                             personelController.save();
@@ -46,7 +58,7 @@ public class PTSManager {
                     break;
                 case 2:
                     muhasebeIslemleriMenu();
-                    secim2= PtsUtility.intDegerAlma("İşlem Seçiniz...: ");
+                    secim2= PtsUtility.intDegerAlma("��lem Seciniz...: ");
                     switch (secim2){
                         case 1:
                             maasPersonelTanimlama();
@@ -60,7 +72,7 @@ public class PTSManager {
                     break;
                 case 3:
                     raporlamalarMenu();
-                    secim2= PtsUtility.intDegerAlma("İşlem Seçiniz...: ");
+                    secim2= PtsUtility.intDegerAlma("��lem Seciniz...: ");
                     switch (secim2){
                         case 1:
                             departmanPersonelListesi();
@@ -72,20 +84,20 @@ public class PTSManager {
                             departmanMaasOrtalamalari();
                             break;
                         case 4:
-                            mudurSorumlulukListesi();
+                            mudurSorumlulukListesi2();
                             break;
                         case 5:
                             kayitTarihineGorePersonelListesi();
                             break;
                         case 6:
-
+                            ayniGunIseBaslayanlar();
                             break;
                         default:
-                            System.out.println("Uygun değer girmediniz");
+                            System.out.println("Uygun deger girmediniz");
                     }
                     break;
                 case 0:
-                    System.out.println("Çıkış yapılıyor...");
+                    System.out.println("Cikis yapılıyor...");
                     break;
                 default:
                     System.out.println("Uygun bir değer girmediniz...");
@@ -94,13 +106,37 @@ public class PTSManager {
         }while(secim!=0);
     }
 
-    private void kayitTarihineGorePersonelListesi() {
-
+    private void ayniGunIseBaslayanlar() {
+        System.out.println("Aynı gün işe başlayanlar...: ");
+        List<Personel> sortedPersonelList=sortedPersonelList();
+        Set<Integer> ayniGunIndexSet = new LinkedHashSet<>();
+        for (int i=0; i<sortedPersonelList.size()-1; i++){
+            if(sortedPersonelList.get(i).getIseBaslamaTarihi().equalsIgnoreCase(sortedPersonelList.get(i+1).getIseBaslamaTarihi())){
+                ayniGunIndexSet.add(i);
+                ayniGunIndexSet.add(i+1);
+            }
+        }
+        List<Integer> ayniGunIndexList = ayniGunIndexSet.stream().toList();
+        if(ayniGunIndexList.size()>0){
+            for(int i=0; i<ayniGunIndexList.size(); i++){
+                System.out.println(sortedPersonelList.get(ayniGunIndexList.get(i)));
+            }
+        }
     }
-
+    private void kayitTarihineGorePersonelListesi() {
+        System.out.println("Kayıt Tarihine Göre Personel Listesi");
+        List<Personel> sortedPersonelList=sortedPersonelList();
+        for (Personel personel : sortedPersonelList ) {
+            System.out.println(personel);
+        }
+    }
+    private List<Personel> sortedPersonelList(){
+        return PtsUtility.personelList.stream().sorted(Comparator.comparing(Personel::getIseBaslamaTarihi))
+                .collect(Collectors.toList());
+    }
     private void mudurSorumlulukListesi() {
         System.out.println("Müdür Sorumluluk Listesi");
-        long mudurId=PtsUtility.intDegerAlma("Sorumluluk Listesini Görmek İStediğiniz Müdürün ID'sini giriniz..: ");
+        long mudurId=PtsUtility.intDegerAlma("Sorumluluk Listesini Görmek İstediğiniz Müdürün ID'sini giriniz..: ");
         for(int i=0; i<PtsUtility.personelList.size(); i++){
             if(PtsUtility.personelList.get(i).getId()==mudurId &&
                     PtsUtility.personelList.get(i).getClass().getSimpleName().equalsIgnoreCase("mudur")){
@@ -111,17 +147,30 @@ public class PTSManager {
             }
         }
     }
-
+    private void mudurSorumlulukListesi2() {
+    	System.out.println("T�m m�d�rler ve sorumlu oldu�u departmanlar");
+    	List<Personel> mudurList =  PtsUtility.personelList.stream().filter(x-> x.getDepartman().getAd().equalsIgnoreCase("YONETICI"))
+    			.collect(Collectors.toList());
+    	
+    	for(Personel mudur : mudurList) {
+    		Mudur m=(Mudur)mudur;
+    		System.out.println(m.getAd()+" isimli mudure bagli departmanlar:");
+    		for(Departman departman : m.getSorumluOlduguDepartmanlar()) {
+    			System.out.println(departman.getAd());
+    		}
+    	}
+    }
+    
     private void departmanMaasOrtalamalari() {
         System.out.println("Departmanlara göre maaş ortalamaları ");
         departmanPersonelMapYap();
 
         PtsUtility.personelMap.forEach((k,v)->{
-            System.out.println(k.getAd()+"-"+v.stream().collect(Collectors.averagingDouble(z->z.getMaas())));
+            System.out.println(k+"-"+v.stream().collect(Collectors.averagingDouble(z->z.getMaas())));
         });
     }
     private void enCokPersoneliOlanDepartman() {
-        int max=0;
+        int max=-1;
         int index=-1;
         for(int i=0; i<PtsUtility.departmanList.size(); i++){
             if(PtsUtility.departmanList.get(i).getPersonelSayisi()>max) {
@@ -132,17 +181,14 @@ public class PTSManager {
         System.out.println("En çok elemanı olan "+PtsUtility.departmanList.get(index).getAd()
         +" departmanının "+PtsUtility.departmanList.get(index).getPersonelSayisi()+" adet personeli vardır...");
     }
-
     private void departmanPersonelMapYap(){
-         PtsUtility.personelMap = PtsUtility.personelList.stream().collect(Collectors.groupingBy(g->g.getDepartman()));
+         PtsUtility.personelMap = PtsUtility.personelList.stream().collect(Collectors.groupingBy(g->g.getDepartman().getAd()));
     }
-
     private void departmanPersonelListesi() {
         System.out.println("Departmanlara Göre Personel Listesi");
         departmanPersonelMapYap();
         PtsUtility.personelMap.forEach((x,y)->System.out.println(x+"-"+y));
     }
-
     private void odemeListesi() {
         System.out.println("Ödeme Listesi");
         PtsUtility.personelList.stream().filter(x->{
@@ -165,13 +211,13 @@ public class PTSManager {
         System.out.println("****** PERSONEL TAKİP SİSTEMİ *******");
         System.out.println("*************************************");
         System.out.println();
-        System.out.println("1- Personel İşlemleri");
-        System.out.println("2- Muhasebe İşlemleri");
+        System.out.println("1- Personel Islemleri");
+        System.out.println("2- Muhasebe Islemleri");
         System.out.println("3- Raporlamalar");
-        System.out.println("0- Ç I K I Ş");
+        System.out.println("0- C I K I S");
     }
     public void personelIslemleriMenu(){
-        System.out.println("***** Personel İşlemleri *****");
+        System.out.println("***** Personel Islemleri *****");
         System.out.println("1- Personel Ekleme ");
         System.out.println("2- Personel Listesi ");
         System.out.println("3- Personel Düzenleme ");
@@ -179,7 +225,7 @@ public class PTSManager {
         System.out.println("5- Departman Listesi ");
     }
     public void muhasebeIslemleriMenu(){
-        System.out.println("***** Muhasebe İşlemleri *****");
+        System.out.println("***** Muhasebe Islemleri *****");
         System.out.println("1- Maaş Personel Tanımlama ");
         System.out.println("2- Ödeme Listesi ");
     }
@@ -188,9 +234,9 @@ public class PTSManager {
         System.out.println("1- Departman Personel Listesi ");
         System.out.println("2- En Çok Personel Bulunduran Departman ");
         System.out.println("3- Departmanlara Göre Maaş Ortalamaları ");
-        System.out.println("4- Müdürlerin Sorumlu Olduğu Departman Listesi ");
-        System.out.println("5- Kayıt Tarihine Göre Personellerin Sıralı Listesi ");
-        System.out.println("6- Aynı Gün İçinde İşe Başlayan Personellerin Listesi ");
+        System.out.println("4- Mudurlerin Sorumlu Olduğu Departman Listesi ");
+        System.out.println("5- Kay�t Tarihine Göre Personellerin Sirali Listesi ");
+        System.out.println("6- Aynı Gun İçinde Ise Başlayan Personellerin Listesi ");
     }
 }
 
