@@ -12,5 +12,6 @@ public class Main {
         dc.baslangicDepartmanlariEkle();
         pc.baslangicKisileriAtama();
         menu.runAna();
+        System.out.println("yeni branch eklendi.");
     }
 }
