@@ -1,12 +1,12 @@
 package com.ogulcantekin;
 
+import com.ogulcantekin.controller.PersonelController;
+
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Merhaba ben Ogulcan");
-        for (int i=0; i<10;i++){
-        System.out.println("i...."+i);
-        }
-        System.out.println("Guncellendi...");
+        PersonelController personelController = new PersonelController();
+        personelController.run();
+
     }
 }
